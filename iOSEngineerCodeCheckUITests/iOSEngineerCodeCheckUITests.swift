@@ -28,8 +28,25 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let searchField = app.searchFields.allElementsBoundByIndex.first
+        XCTAssert(searchField?.exists ?? false)
+        searchField?.tap()
+        searchField?.typeText("Swift")
+        app.buttons["search"].tap()
+        
+        let cell = app.staticTexts["apple/swift"]
+        XCTAssert(cell.waitForExistence(timeout: 5))
+        cell.tap()
+        
+        let navigationButton = app.buttons["Root View Controller"]
+        XCTAssert(navigationButton.waitForExistence(timeout: 5))
+        
+        let issuesText = app.staticTexts.allElementsBoundByIndex.first(where: { (element) in
+            print(element)
+            return element.label.contains("open issues")
+        })
+        XCTAssert(issuesText?.exists ?? false)
+        
     }
 
     func testLaunchPerformance() throws {
