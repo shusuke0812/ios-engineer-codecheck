@@ -78,6 +78,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C0804A2256D4FD900A8CBEF /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9C0804A3256D4FE000A8CBEF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9C0804A4256D4FEE00A8CBEF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BFD945E2244DC5E80012785A /* ViewController.swift */,
+				BF0A658C244F2A3B00280FA6 /* ViewController2.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		9C0804A5256D500C00A8CBEF /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		9C0804A6256D505A00A8CBEF /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				BFD945E9244DC5EB0012785A /* LaunchScreen.storyboard */,
+				BFD945E4244DC5E80012785A /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		9C0804A7256D507900A8CBEF /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		BFD945D2244DC5E80012785A = {
 			isa = PBXGroup;
 			children = (
@@ -103,11 +149,13 @@
 			children = (
 				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
 				BFD945E0244DC5E80012785A /* SceneDelegate.swift */,
-				BFD945E2244DC5E80012785A /* ViewController.swift */,
-				BF0A658C244F2A3B00280FA6 /* ViewController2.swift */,
-				BFD945E4244DC5E80012785A /* Main.storyboard */,
+				9C0804A5256D500C00A8CBEF /* Entity */,
+				9C0804A2256D4FD900A8CBEF /* View */,
+				9C0804A3256D4FE000A8CBEF /* ViewModel */,
+				9C0804A4256D4FEE00A8CBEF /* ViewController */,
+				9C0804A6256D505A00A8CBEF /* Storyboard */,
+				9C0804A7256D507900A8CBEF /* Repository */,
 				BFD945E7244DC5EB0012785A /* Assets.xcassets */,
-				BFD945E9244DC5EB0012785A /* LaunchScreen.storyboard */,
 				BFD945EC244DC5EB0012785A /* Info.plist */,
 			);
 			path = iOSEngineerCodeCheck;
