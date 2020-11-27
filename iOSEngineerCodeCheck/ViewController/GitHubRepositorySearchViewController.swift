@@ -68,8 +68,15 @@ class GitHubRepositorySearchViewController: UITableViewController, UISearchBarDe
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 画面遷移時に呼ばれる
-        idx = indexPath.row
-        performSegue(withIdentifier: "Detail", sender: self)
+        self.transitionGitHubRepositoryDetail()
+    }
+}
+// MARK: - Private Method
+extension GitHubRepositorySearchViewController {
+    // GitHubRepository詳細ページへ遷移
+    private func transitionGitHubRepositoryDetail() {
+        let s = UIStoryboard(name: "GitHubRepositoryDetailViewController", bundle: nil)
+        let vc = s.instantiateInitialViewController() as! GitHubRpositoryDetailViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
