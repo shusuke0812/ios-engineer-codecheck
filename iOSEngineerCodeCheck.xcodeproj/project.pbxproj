@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9CD370D62570D5DB001759F8 /* GitHubRepositoryDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD370D52570D5DB001759F8 /* GitHubRepositoryDetailViewController.storyboard */; };
+		9CD370DB2570D6C9001759F8 /* GitHubRepositorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD370DA2570D6C9001759F8 /* GitHubRepositorySearchViewModel.swift */; };
+		9CD370E12570D738001759F8 /* GitHubRepositorySearchBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD370E02570D738001759F8 /* GitHubRepositorySearchBaseView.swift */; };
+		9CD370E92570D780001759F8 /* GitHubRepositoryDetailBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD370E82570D780001759F8 /* GitHubRepositoryDetailBaseView.swift */; };
 		BF0A658D244F2A3B00280FA6 /* GitHubRpositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* GitHubRpositoryDetailViewController.swift */; };
 		BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945DE244DC5E80012785A /* AppDelegate.swift */; };
 		BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD945E0244DC5E80012785A /* SceneDelegate.swift */; };
@@ -38,6 +41,9 @@
 
 /* Begin PBXFileReference section */
 		9CD370D52570D5DB001759F8 /* GitHubRepositoryDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GitHubRepositoryDetailViewController.storyboard; sourceTree = "<group>"; };
+		9CD370DA2570D6C9001759F8 /* GitHubRepositorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositorySearchViewModel.swift; sourceTree = "<group>"; };
+		9CD370E02570D738001759F8 /* GitHubRepositorySearchBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositorySearchBaseView.swift; sourceTree = "<group>"; };
+		9CD370E82570D780001759F8 /* GitHubRepositoryDetailBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositoryDetailBaseView.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* GitHubRpositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRpositoryDetailViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +89,7 @@
 		9C0804A2256D4FD900A8CBEF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9CD370DF2570D6D6001759F8 /* BaseView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -90,6 +97,7 @@
 		9C0804A3256D4FE000A8CBEF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				9CD370DA2570D6C9001759F8 /* GitHubRepositorySearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -125,6 +133,15 @@
 			children = (
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		9CD370DF2570D6D6001759F8 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				9CD370E02570D738001759F8 /* GitHubRepositorySearchBaseView.swift */,
+				9CD370E82570D780001759F8 /* GitHubRepositoryDetailBaseView.swift */,
+			);
+			path = BaseView;
 			sourceTree = "<group>";
 		};
 		BFD945D2244DC5E80012785A = {
@@ -315,6 +332,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD945E3244DC5E80012785A /* GitHubRepositorySearchViewController.swift in Sources */,
+				9CD370E92570D780001759F8 /* GitHubRepositoryDetailBaseView.swift in Sources */,
+				9CD370DB2570D6C9001759F8 /* GitHubRepositorySearchViewModel.swift in Sources */,
+				9CD370E12570D738001759F8 /* GitHubRepositorySearchBaseView.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* GitHubRpositoryDetailViewController.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
