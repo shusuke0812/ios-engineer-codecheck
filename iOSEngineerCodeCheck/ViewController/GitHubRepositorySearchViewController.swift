@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GitHubRepositorySearchViewController: UITableViewController, UISearchBarDelegate {
+class GitHubRepositorySearchViewController: UITableViewController {
 
     @IBOutlet weak var SchBr: UISearchBar!
     
@@ -23,20 +23,6 @@ class GitHubRepositorySearchViewController: UITableViewController, UISearchBarDe
         // Do any additional setup after loading the view.
         SchBr.text = "GitHubのリポジトリを検索できるよー"
         SchBr.delegate = self
-    }
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // ↓こうすれば初期のテキストを消せる
-        searchBar.text = ""
-        return true
-    }
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        task?.cancel()
-    }
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        word = searchBar.text!
-        if word.count != 0 {
-            // TODO: APIをコールするメソッドを追加
-        }
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repo.count
@@ -60,5 +46,22 @@ extension GitHubRepositorySearchViewController {
         let s = UIStoryboard(name: "GitHubRepositoryDetailViewController", bundle: nil)
         let vc = s.instantiateInitialViewController() as! GitHubRpositoryDetailViewController
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+// MARK: - UISearchBar Delegate Method
+extension GitHubRepositorySearchViewController: UISearchBarDelegate {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        // ↓こうすれば初期のテキストを消せる
+        searchBar.text = ""
+        return true
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        task?.cancel()
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        word = searchBar.text!
+        if word.count != 0 {
+            // TODO: APIをコールするメソッドを追加
+        }
     }
 }
