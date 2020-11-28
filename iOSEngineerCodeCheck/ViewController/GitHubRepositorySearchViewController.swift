@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GitHubRepositorySearchViewController: UITableViewController {
+class GitHubRepositorySearchViewController: UIViewController {
 
     @IBOutlet weak var SchBr: UISearchBar!
     
@@ -23,20 +23,6 @@ class GitHubRepositorySearchViewController: UITableViewController {
         // Do any additional setup after loading the view.
         SchBr.text = "GitHubのリポジトリを検索できるよー"
         SchBr.delegate = self
-    }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repo.count
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let rp = repo[indexPath.row]
-        cell.textLabel?.text = rp["full_name"] as? String ?? ""
-        cell.detailTextLabel?.text = rp["language"] as? String ?? ""
-        cell.tag = indexPath.row
-        return cell
-    }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.transitionGitHubRepositoryDetail()
     }
 }
 // MARK: - Private Method
@@ -63,5 +49,11 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
         if word.count != 0 {
             // TODO: APIをコールするメソッドを追加
         }
+    }
+}
+// MARK: - UITableVIew Delegate Method
+extension GitHubRepositorySearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.transitionGitHubRepositoryDetail()
     }
 }

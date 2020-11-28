@@ -16,7 +16,7 @@ protocol GitHubRepositorySearchViewModelDelegate: class {
     func didFailedGetGitHubRepositorys(errorMessage: String)
 }
 
-class GitHubRepositorySearchViewModel {
+class GitHubRepositorySearchViewModel: NSObject {
     /// GitHubRepositoryのリポジトリクラス
     private let gitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol
     /// GitHubRepository一覧
@@ -46,5 +46,19 @@ extension GitHubRepositorySearchViewModel {
                                         self.delegate?.didFailedGetGitHubRepositorys(errorMessage: "GitHubRepositoryの取得に失敗しました。\n" + "DEBUG: error=\(error)")
                                     }
                                   })
+    }
+}
+// MARK: - UITableView DataSource Method
+extension GitHubRepositorySearchViewModel: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return repo.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        let rp = repo[indexPath.row]
+        cell.textLabel?.text = rp["full_name"] as? String ?? ""
+        cell.detailTextLabel?.text = rp["language"] as? String ?? ""
+        cell.tag = indexPath.row
+        return cell
     }
 }
