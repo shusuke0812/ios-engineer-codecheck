@@ -62,7 +62,7 @@ struct GitHubRepositoryOwner: Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-w        self.avaterImage = try values.decode(String.self, forKey: .avatarImage)
+        self.avaterImage = try values.decode(String.self, forKey: .avatarImage)
     }
     
     func encode(to encoder: Encoder) throws {
