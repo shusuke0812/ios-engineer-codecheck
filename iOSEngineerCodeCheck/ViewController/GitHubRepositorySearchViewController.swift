@@ -9,8 +9,6 @@
 import UIKit
 
 class GitHubRepositorySearchViewController: UIViewController {
-
-    @IBOutlet weak var SchBr: UISearchBar!
     
     var repo: [[String: Any]] = []
     var task: URLSessionTask?
@@ -21,7 +19,6 @@ class GitHubRepositorySearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        SchBr.text = "GitHubのリポジトリを検索できるよー"
         SchBr.delegate = self
     }
 }

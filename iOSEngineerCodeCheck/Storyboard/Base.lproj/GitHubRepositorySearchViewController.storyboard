@@ -4,36 +4,49 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
-        <scene sceneID="0Yw-Vc-k2Q">
+        <!--Git Hub Repository Search View Controller-->
+        <scene sceneID="ZE2-KL-CvP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xer-fe-JeW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tableViewController id="MOh-CZ-3ki" customClass="GitHubRepositorySearchViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Fpt-Ev-QNW">
+                <viewController id="8M2-k1-JwI" customClass="GitHubRepositorySearchViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CeI-vP-Fdh" customClass="GitHubRepositorySearchBaseView" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="WA9-ek-zss">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Ip-gM-BCM">
+                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FrM-J7-GfC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="6rq-CD-Hob">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
+                        <constraints>
+                            <constraint firstItem="WA9-ek-zss" firstAttribute="leading" secondItem="FrM-J7-GfC" secondAttribute="leading" id="2Rh-AV-fDb"/>
+                            <constraint firstItem="WA9-ek-zss" firstAttribute="top" secondItem="FrM-J7-GfC" secondAttribute="top" id="F8M-Bi-1gd"/>
+                            <constraint firstItem="WA9-ek-zss" firstAttribute="trailing" secondItem="FrM-J7-GfC" secondAttribute="trailing" id="JBb-rG-egH"/>
+                            <constraint firstItem="9Ip-gM-BCM" firstAttribute="leading" secondItem="FrM-J7-GfC" secondAttribute="leading" id="OtJ-jW-Led"/>
+                            <constraint firstItem="FrM-J7-GfC" firstAttribute="bottom" secondItem="9Ip-gM-BCM" secondAttribute="bottom" id="bvG-tJ-6vu"/>
+                            <constraint firstItem="9Ip-gM-BCM" firstAttribute="top" secondItem="WA9-ek-zss" secondAttribute="bottom" id="eEU-KN-0oy"/>
+                            <constraint firstItem="FrM-J7-GfC" firstAttribute="trailing" secondItem="9Ip-gM-BCM" secondAttribute="trailing" id="eKN-iB-dFo"/>
+                        </constraints>
                         <connections>
-                            <outlet property="dataSource" destination="MOh-CZ-3ki" id="mX7-Ab-ERr"/>
-                            <outlet property="delegate" destination="MOh-CZ-3ki" id="A6Y-Dm-cjQ"/>
+                            <outlet property="searchBar" destination="WA9-ek-zss" id="Xth-VB-W9N"/>
+                            <outlet property="tableView" destination="9Ip-gM-BCM" id="Myj-4m-ie6"/>
                         </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="ktq-eC-ZBq"/>
-                    <connections>
-                        <outlet property="SchBr" destination="6rq-CD-Hob" id="3gq-mK-4M3"/>
-                    </connections>
-                </tableViewController>
+                    </view>
+                    <navigationItem key="navigationItem" id="sbv-hk-gi8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R01-3Y-uoI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-577" y="137"/>
+            <point key="canvasLocation" x="-597" y="137"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hWi-qa-NBR">
@@ -44,7 +57,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="MOh-CZ-3ki" kind="relationship" relationship="rootViewController" id="tOh-FN-tGd"/>
+                        <segue destination="8M2-k1-JwI" kind="relationship" relationship="rootViewController" id="IE6-KW-dHP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scZ-hy-tAz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

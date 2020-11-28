@@ -10,4 +10,19 @@ import UIKit
 
 class GitHubRepositorySearchBaseView: UIView {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.initUI()
+    }
+}
+// MARK: - Setting UI Method
+extension GitHubRepositorySearchBaseView {
+    private func initUI() {
+        self.searchBar.text = ""
+    }
+    func setUI() {
+    }
 }
