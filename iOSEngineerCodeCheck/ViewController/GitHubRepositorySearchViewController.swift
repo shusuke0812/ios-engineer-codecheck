@@ -15,10 +15,15 @@ class GitHubRepositorySearchViewController: UIViewController {
     var word: String!
     var url: String!
     var idx: Int!
+    /// BaseView
+    private var baseView: GitHubRepositorySearchBaseView { self.view as! GitHubRepositorySearchBaseView }
+    /// ViewModel
+    private var viewModel: GitHubRepositorySearchViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.viewModel = GitHubRepositorySearchViewModel(gitHubRepositorySearchRepository: GitHubRepositorySearchRepository())
         SchBr.delegate = self
     }
 }
