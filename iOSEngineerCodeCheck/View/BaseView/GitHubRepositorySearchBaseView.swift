@@ -21,7 +21,10 @@ class GitHubRepositorySearchBaseView: UIView {
 // MARK: - Setting UI Method
 extension GitHubRepositorySearchBaseView {
     private func initUI() {
+        // 検索バーの入力値を初期化
         self.searchBar.text = ""
+        // TableViewセル登録
+        self.tableView.register(UINib(nibName: "GitHubRepositoryCell", bundle: nil), forCellReuseIdentifier: "GitHubRepositoryCell")
     }
     func setUI() {
     }
