@@ -38,12 +38,6 @@ class GitHubRepositorySearchViewController: UITableViewController, UISearchBarDe
             // TODO: APIをコールするメソッドを追加
         }
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Detail" {
-            let dtl = segue.destination as! GitHubRpositoryDetailViewController
-            dtl.gitHubRepositorySearchVC = self
-        }
-    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repo.count
     }
