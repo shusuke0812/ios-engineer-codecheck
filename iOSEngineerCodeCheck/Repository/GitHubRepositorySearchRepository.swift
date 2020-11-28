@@ -9,15 +9,38 @@
 import UIKit
 
 protocol GitHubRepositorySearchRepositoryProtocol {
-    /// GitHubRepositoryを取得する
-    /// - Parameter searchingWord: 検索単語
-    func getGitHubRepositorys(searchingWord: String, completion: @escaping (Result<GitHubRepository, Error>) -> Void)
+    /// GET：GitHubRepositoryを取得する
+    /// - Parameter urlString: APIのURL
+    func getGitHubRepositorys(urlString: String, completion: @escaping (Result<GitHubRepository, Error>) -> Void)
 }
 class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol {
 }
 // MARK: - API Method
 extension GitHubRepositorySearchRepository {
-    internal func getGitHubRepositorys(searchingWord: String,
+    // GitHubRepositoryを取得する
+    internal func getGitHubRepositorys(urlString: String,
                                        completion: @escaping (Result<GitHubRepository, Error>) -> Void) {
+        guard let url = URL(string: urlString) else {
+            completion(.failure(NetworkError.invalidUrl))
+            return
+        }
+        // レスポンスを受け取る
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let data = data else {
+                completion(.failure(NetworkError.unknown))
+                return
+            }
+            let decoder = JSONDecoder()
+            guard let gitHubRepository = try?decoder.decode(GitHubRepository.self, from: data) else {
+                completion(.failure(NetworkError.invalidResponse))
+                return
+            }
+            completion(.success(gitHubRepository))
+        })
+        task.resume()
     }
 }

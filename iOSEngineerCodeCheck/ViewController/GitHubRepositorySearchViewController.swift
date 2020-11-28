@@ -35,19 +35,7 @@ class GitHubRepositorySearchViewController: UITableViewController, UISearchBarDe
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         word = searchBar.text!
         if word.count != 0 {
-            url = "https://api.github.com/search/repositories?q=\(word!)"
-            task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, res, err) in
-                if let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
-                    if let items = obj["items"] as? [[String: Any]] {
-                        self.repo = items
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-                    }
-                }
-            }
-            // これ呼ばなきゃリストが更新されません
-            task?.resume()
+            // TODO: APIをコールするメソッドを追加
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
