@@ -50,23 +50,23 @@ struct GitHubRepository: Codable {
 /// GitHubRepositoryのOwnerデータ格納
 struct GitHubRepositoryOwner: Codable {
     /// アバター画像URL
-    let avaterImage: String?
+    let avatarImage: String?
     
     enum CodingKeys: String, CodingKey {
         case avatarImage = "avatar_url"
     }
     
-    init(avaterImage: String) {
-        self.avaterImage = avaterImage
+    init(avatarImage: String) {
+        self.avatarImage = avatarImage
     }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.avaterImage = try values.decode(String.self, forKey: .avatarImage)
+        self.avatarImage = try values.decode(String.self, forKey: .avatarImage)
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(avaterImage, forKey: .avatarImage)
+        try container.encode(avatarImage, forKey: .avatarImage)
     }
 }
