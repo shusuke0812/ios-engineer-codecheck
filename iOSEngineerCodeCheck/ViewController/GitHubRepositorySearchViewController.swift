@@ -24,7 +24,7 @@ class GitHubRepositorySearchViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.viewModel = GitHubRepositorySearchViewModel(gitHubRepositorySearchRepository: GitHubRepositorySearchRepository())
-        SchBr.delegate = self
+        self.setDelegateDataSource()
     }
 }
 // MARK: - Private Method
@@ -34,6 +34,12 @@ extension GitHubRepositorySearchViewController {
         let s = UIStoryboard(name: "GitHubRepositoryDetailViewController", bundle: nil)
         let vc = s.instantiateInitialViewController() as! GitHubRpositoryDetailViewController
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    // DelegateとDataSourceの登録
+    private func setDelegateDataSource() {
+        self.baseView.searchBar.delegate = self
+        self.baseView.tableView.delegate = self
+        self.baseView.tableView.dataSource = self.viewModel
     }
 }
 // MARK: - UISearchBar Delegate Method
