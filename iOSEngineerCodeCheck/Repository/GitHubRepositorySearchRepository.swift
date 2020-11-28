@@ -8,17 +8,16 @@
 
 import UIKit
 
-protocol GitHubRepositoryProtocol {
+protocol GitHubRepositorySearchRepositoryProtocol {
     /// GitHubRepositoryを取得する
     /// - Parameter searchingWord: 検索単語
     func getGitHubRepositorys(searchingWord: String, completion: @escaping (Result<GitHubRepository, Error>) -> Void)
 }
-class GitHubRepository: GitHubRepositoryProtocol {
+class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol {
 }
 // MARK: - API Method
-extension GitHubRepository {
+extension GitHubRepositorySearchRepository {
     internal func getGitHubRepositorys(searchingWord: String,
                                        completion: @escaping (Result<GitHubRepository, Error>) -> Void) {
-        <#code#>
     }
 }
