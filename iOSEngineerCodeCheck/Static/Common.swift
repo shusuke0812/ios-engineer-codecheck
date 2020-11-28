@@ -9,8 +9,9 @@
 import Foundation
 
 struct Common {
+    /// API URLのプレフィックス
     struct ApiUrl {
-        /// GitHubReppositoryのSearch URLプレフィックス
+        /// GET /search/repositories
         internal static let gitHubSearchApi = "https://api.github.com/search/repositories"
     }
 }
