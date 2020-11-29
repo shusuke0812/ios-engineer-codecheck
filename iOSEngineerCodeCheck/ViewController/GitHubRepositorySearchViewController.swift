@@ -50,6 +50,8 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchWord: String = searchBar.text else { return }
         self.getRepositorys(searchWord: searchWord)
+        // キーボードを閉じる
+        self.baseView.searchBar.endEditing(true)
     }
 }
 // MARK: - UITableVIew Delegate Method
