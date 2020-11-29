@@ -44,11 +44,6 @@ extension GitHubRepositorySearchViewController {
 }
 // MARK: - UISearchBar Delegate Method
 extension GitHubRepositorySearchViewController: UISearchBarDelegate {
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // ↓こうすれば初期のテキストを消せる
-        searchBar.text = ""
-        return true
-    }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.getRepositorys(searchWord: searchText)
     }
