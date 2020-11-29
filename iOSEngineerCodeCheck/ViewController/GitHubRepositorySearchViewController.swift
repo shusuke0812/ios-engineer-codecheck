@@ -65,6 +65,8 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
 extension GitHubRepositorySearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.transitionGitHubRepositoryDetail(indexPath: indexPath)
+        // セルの選択状態を解除
+        self.baseView.tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 // MARK: - ViewModel Delegate Method
