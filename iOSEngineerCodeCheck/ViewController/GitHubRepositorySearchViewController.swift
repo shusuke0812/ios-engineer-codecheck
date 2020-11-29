@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class GitHubRepositorySearchViewController: UIViewController {
     /// BaseView
@@ -57,6 +58,8 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchWord: String = searchBar.text else { return }
         self.getRepositorys(searchWord: searchWord)
+        // HUD表示（始）
+        HUD.show(.progress)
         // キーボードを閉じる
         self.baseView.searchBar.endEditing(true)
     }
@@ -73,8 +76,12 @@ extension GitHubRepositorySearchViewController: UITableViewDelegate {
 extension GitHubRepositorySearchViewController: GitHubRepositorySearchViewModelDelegate {
     func didSuccessGetGitHubRepositorys() {
         self.baseView.tableView.reloadData()
+        // HUD表示（終）
+        HUD.hide()
     }
     func didFailedGetGitHubRepositorys(errorMessage: String) {
         print("DEBUG: \(errorMessage)")
+        // HUD表示（終）
+        HUD.hide()
     }
 }
