@@ -51,14 +51,13 @@ extension GitHubRepositorySearchViewModel {
 // MARK: - UITableView DataSource Method
 extension GitHubRepositorySearchViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repo.count
+        return self.gitHubRepositorys.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let rp = repo[indexPath.row]
-        cell.textLabel?.text = rp["full_name"] as? String ?? ""
-        cell.detailTextLabel?.text = rp["language"] as? String ?? ""
-        cell.tag = indexPath.row
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GitHubRepositoryCell", for: indexPath) as! GitHubRepositoryCell
+        if !self.gitHubRepositorys.isEmpty {
+            cell.setUI(gitHubRepository: self.gitHubRepositorys[indexPath.row])
+        }
         return cell
     }
 }
