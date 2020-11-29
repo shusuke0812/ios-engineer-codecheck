@@ -51,7 +51,7 @@ extension GitHubRepositorySearchViewController {
 // MARK: - UISearchBar Delegate Method
 extension GitHubRepositorySearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // TODO: インクリメンタルサーチをしたときにメモリリークを起こさないようにする
+        // TODO: インクリメンタルサーチをしたときにAPIのレスポンスがエラーになる
         self.getRepositorys(searchWord: searchText)
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
