@@ -31,7 +31,7 @@ extension GitHubRepositorySearchViewController {
     // GitHubRepository詳細ページへ遷移
     private func transitionGitHubRepositoryDetail() {
         let s = UIStoryboard(name: "GitHubRepositoryDetailViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! GitHubRpositoryDetailViewController
+        let vc = s.instantiateInitialViewController() as! GitHubRepositoryDetailViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     // DelegateとDataSourceの登録
