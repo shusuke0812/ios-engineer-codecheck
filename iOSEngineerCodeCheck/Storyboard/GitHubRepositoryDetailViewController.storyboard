@@ -18,25 +18,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zxf-qn-w9H">
-                                <rect key="frame" x="20" y="74" width="374" height="374"/>
+                                <rect key="frame" x="50" y="74" width="314" height="314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Zxf-qn-w9H" secondAttribute="height" multiplier="1:1" id="zpE-Il-KdH"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjf-NY-jmM">
-                                <rect key="frame" x="16" y="476" width="382" height="33.5"/>
+                                <rect key="frame" x="16" y="416" width="382" height="33.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmO-IS-cTu">
-                                <rect key="frame" x="16" y="519.5" width="382" height="20.5"/>
+                                <rect key="frame" x="16" y="459.5" width="382" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" systemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="obe-qD-iil">
-                                <rect key="frame" x="100" y="600" width="214" height="131"/>
+                                <rect key="frame" x="100" y="520" width="214" height="131"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="oZf-0T-XlV">
                                         <rect key="frame" x="0.0" y="0.0" width="214" height="20.5"/>
@@ -121,9 +121,9 @@
                             <constraint firstItem="fjf-NY-jmM" firstAttribute="leading" secondItem="FWx-NP-zn2" secondAttribute="leading" constant="16" id="EKd-4U-IAn"/>
                             <constraint firstItem="obe-qD-iil" firstAttribute="leading" secondItem="FWx-NP-zn2" secondAttribute="leading" constant="100" id="PKw-NP-c0b"/>
                             <constraint firstItem="FWx-NP-zn2" firstAttribute="trailing" secondItem="fjf-NY-jmM" secondAttribute="trailing" constant="16" id="Q3F-q8-IUL"/>
-                            <constraint firstItem="Zxf-qn-w9H" firstAttribute="leading" secondItem="FWx-NP-zn2" secondAttribute="leading" constant="20" id="ZCq-Zz-Ezj"/>
-                            <constraint firstItem="FWx-NP-zn2" firstAttribute="trailing" secondItem="Zxf-qn-w9H" secondAttribute="trailing" constant="20" id="cS3-kh-udd"/>
-                            <constraint firstItem="obe-qD-iil" firstAttribute="top" secondItem="fmO-IS-cTu" secondAttribute="bottom" constant="60" id="f6q-0V-o87"/>
+                            <constraint firstItem="Zxf-qn-w9H" firstAttribute="leading" secondItem="FWx-NP-zn2" secondAttribute="leading" constant="50" id="ZCq-Zz-Ezj"/>
+                            <constraint firstItem="FWx-NP-zn2" firstAttribute="trailing" secondItem="Zxf-qn-w9H" secondAttribute="trailing" constant="50" id="cS3-kh-udd"/>
+                            <constraint firstItem="obe-qD-iil" firstAttribute="top" secondItem="fmO-IS-cTu" secondAttribute="bottom" constant="40" id="f6q-0V-o87"/>
                             <constraint firstItem="FWx-NP-zn2" firstAttribute="trailing" secondItem="obe-qD-iil" secondAttribute="trailing" constant="100" id="pVS-Op-Md2"/>
                         </constraints>
                         <connections>
