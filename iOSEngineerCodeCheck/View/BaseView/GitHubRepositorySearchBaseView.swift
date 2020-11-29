@@ -23,6 +23,8 @@ extension GitHubRepositorySearchBaseView {
     private func initUI() {
         // 検索バーの入力値を初期化
         self.searchBar.text = ""
+        // 検索バーのプレースホルダーを設定
+        self.searchBar.placeholder = "GitHubのリポジトリを検索できるよー"
         // TableViewセル登録
         self.tableView.register(UINib(nibName: "GitHubRepositoryCell", bundle: nil), forCellReuseIdentifier: "GitHubRepositoryCell")
     }
