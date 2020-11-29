@@ -34,7 +34,7 @@ extension GitHubRepositoryDetailBaseView {
         self.forkNumberLabel.text = "\(defauletNumber)"
         self.issueNumberLabel.text = "\(defauletNumber)"
     }
-    func setUI(gitHubRepository: GitHubRepository) {
+    func setUI(gitHubRepository: GitHubRepository.Item) {
         // TODO：オプショナル型の取り扱いを見直し
         self.avatarImageView.getImage(imageUrlString: (gitHubRepository.owner?.avatarImage)!)
         self.titleLabel.text = gitHubRepository.name

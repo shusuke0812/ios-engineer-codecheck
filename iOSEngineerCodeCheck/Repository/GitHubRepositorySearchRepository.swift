@@ -11,7 +11,7 @@ import UIKit
 protocol GitHubRepositorySearchRepositoryProtocol {
     /// GET：GitHubRepositoryを取得する
     /// - Parameter urlString: APIのURL
-    func getGitHubRepositorys(urlString: String, completion: @escaping (Result<[GitHubRepository], Error>) -> Void)
+    func getGitHubRepositorys(urlString: String, completion: @escaping (Result<[GitHubRepository.Item], Error>) -> Void)
 }
 class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol {
 }
@@ -19,7 +19,7 @@ class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol
 extension GitHubRepositorySearchRepository {
     // GitHubRepositoryを取得する
     internal func getGitHubRepositorys(urlString: String,
-                                       completion: @escaping (Result<[GitHubRepository], Error>) -> Void) {
+                                       completion: @escaping (Result<[GitHubRepository.Item], Error>) -> Void) {
         guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.invalidUrl))
             return
@@ -35,11 +35,11 @@ extension GitHubRepositorySearchRepository {
                 return
             }
             let decoder = JSONDecoder()
-            guard let gitHubRepository = try?decoder.decode([GitHubRepository].self, from: data) else {
+            guard let gitHubRepository = try?decoder.decode(GitHubRepository.self, from: data) else {
                 completion(.failure(NetworkError.invalidResponse))
                 return
             }
-            completion(.success(gitHubRepository))
+            completion(.success(gitHubRepository.items))
         })
         task.resume()
     }

@@ -20,7 +20,7 @@ class GitHubRepositorySearchViewModel: NSObject {
     /// GitHubRepositoryのリポジトリクラス
     private let gitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol
     /// GitHubRepository一覧
-    var gitHubRepositorys: [GitHubRepository] = []
+    var gitHubRepositorys: [GitHubRepository.Item] = []
     /// GitHubRepositorySearchViewModelのデリゲート
     internal weak var delegate: GitHubRepositorySearchViewModelDelegate?
     

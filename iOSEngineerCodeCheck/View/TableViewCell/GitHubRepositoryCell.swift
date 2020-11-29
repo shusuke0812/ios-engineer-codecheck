@@ -24,7 +24,7 @@ extension GitHubRepositoryCell {
         self.title.text = ""
         self.language.text = ""
     }
-    func setUI(gitHubRepository: GitHubRepository) {
+    func setUI(gitHubRepository: GitHubRepository.Item) {
         self.title.text = gitHubRepository.name
         self.language.text = gitHubRepository.language
     }
