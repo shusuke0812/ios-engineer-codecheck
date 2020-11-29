@@ -28,6 +28,4 @@ extension GitHubRepositorySearchBaseView {
         // TableViewセル登録
         self.tableView.register(UINib(nibName: "GitHubRepositoryCell", bundle: nil), forCellReuseIdentifier: "GitHubRepositoryCell")
     }
-    func setUI() {
-    }
 }
