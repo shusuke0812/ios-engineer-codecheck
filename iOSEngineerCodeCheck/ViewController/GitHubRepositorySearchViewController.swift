@@ -52,7 +52,7 @@ extension GitHubRepositorySearchViewController {
 extension GitHubRepositorySearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // TODO: インクリメンタルサーチをしたときにAPIのレスポンスがエラーになる
-        self.getRepositorys(searchWord: searchText)
+        // self.getRepositorys(searchWord: searchText)
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchWord: String = searchBar.text else { return }
