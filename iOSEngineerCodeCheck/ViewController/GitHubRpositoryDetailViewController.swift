@@ -10,7 +10,7 @@ import UIKit
 
 class GitHubRpositoryDetailViewController: UIViewController {
     
-    var gitHubRepositorySearchVC: GitHubRepositorySearchViewController!
+    var gitHubRepository: GitHubRepository!
         
     override func viewDidLoad() {
         super.viewDidLoad()
