@@ -23,9 +23,10 @@ class GitHubRepositorySearchViewController: UIViewController {
 // MARK: - Private Method
 extension GitHubRepositorySearchViewController {
     // GitHubRepository詳細ページへ遷移
-    private func transitionGitHubRepositoryDetail() {
+    private func transitionGitHubRepositoryDetail(indexPath: IndexPath) {
         let s = UIStoryboard(name: "GitHubRepositoryDetailViewController", bundle: nil)
         let vc = s.instantiateInitialViewController() as! GitHubRepositoryDetailViewController
+        vc.gitHubRepository = self.viewModel.gitHubRepositorys[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
     // DelegateとDataSourceの登録
@@ -58,7 +59,7 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
 // MARK: - UITableVIew Delegate Method
 extension GitHubRepositorySearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.transitionGitHubRepositoryDetail()
+        self.transitionGitHubRepositoryDetail(indexPath: indexPath)
     }
 }
 // MARK: - ViewModel Delegate Method
