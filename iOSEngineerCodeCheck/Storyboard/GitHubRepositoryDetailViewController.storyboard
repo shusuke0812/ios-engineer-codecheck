@@ -13,7 +13,7 @@
         <scene sceneID="QHt-3v-NhI">
             <objects>
                 <viewController id="KDs-of-rQP" customClass="GitHubRpositoryDetailViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gWq-bX-Mtk">
+                    <view key="view" contentMode="scaleToFill" id="gWq-bX-Mtk" customClass="GitHubRepositoryDetailBaseView" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -81,16 +81,19 @@
                             <constraint firstItem="FWx-NP-zn2" firstAttribute="trailing" secondItem="Zxf-qn-w9H" secondAttribute="trailing" constant="20" id="cS3-kh-udd"/>
                             <constraint firstItem="YZW-iQ-1My" firstAttribute="width" secondItem="Zxf-qn-w9H" secondAttribute="width" id="rah-IA-gZb"/>
                         </constraints>
+                        <connections>
+                            <outlet property="avatarImageView" destination="Zxf-qn-w9H" id="fDh-gE-beF"/>
+                            <outlet property="forkNumberLabel" destination="W3o-hs-7hE" id="vwE-Np-Ele"/>
+                            <outlet property="issueNumberLabel" destination="bkE-wX-XFa" id="OHD-Vv-Au2"/>
+                            <outlet property="languageLabel" destination="fmO-IS-cTu" id="RAj-F5-mAA"/>
+                            <outlet property="starNumberLabel" destination="yvj-y5-Pla" id="3HQ-ny-13W"/>
+                            <outlet property="titleLabel" destination="fjf-NY-jmM" id="FUC-gq-teH"/>
+                            <outlet property="watchNumberLabel" destination="OIW-lJ-nwu" id="31e-BE-zAB"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="A3y-W4-xkx"/>
                     <connections>
-                        <outlet property="FrksLbl" destination="W3o-hs-7hE" id="EHP-99-f7M"/>
-                        <outlet property="ImgView" destination="Zxf-qn-w9H" id="l9g-Ma-e04"/>
                         <outlet property="IsssLbl" destination="bkE-wX-XFa" id="MOS-VO-ytD"/>
-                        <outlet property="LangLbl" destination="fmO-IS-cTu" id="MAh-RH-ae6"/>
-                        <outlet property="StrsLbl" destination="yvj-y5-Pla" id="Dlp-5P-AvU"/>
-                        <outlet property="TtlLbl" destination="fjf-NY-jmM" id="Bst-7M-0cQ"/>
-                        <outlet property="WchsLbl" destination="OIW-lJ-nwu" id="Jvm-Oz-xKR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9M-Ef-sY3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
