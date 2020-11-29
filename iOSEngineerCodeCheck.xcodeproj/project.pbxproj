@@ -207,18 +207,18 @@
 		BFD945DD244DC5E80012785A /* iOSEngineerCodeCheck */ = {
 			isa = PBXGroup;
 			children = (
-				9C7B98B3257357C200D2521B /* Extension */,
-				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
-				BFD945E0244DC5E80012785A /* SceneDelegate.swift */,
-				9CD370FE2571E251001759F8 /* Static */,
 				9C0804A5256D500C00A8CBEF /* Entity */,
 				9C0804A7256D507900A8CBEF /* Repository */,
 				9C0804A2256D4FD900A8CBEF /* View */,
 				9C0804A3256D4FE000A8CBEF /* ViewModel */,
 				9C0804A4256D4FEE00A8CBEF /* ViewController */,
 				9C0804A6256D505A00A8CBEF /* Storyboard */,
+				9CD370FE2571E251001759F8 /* Static */,
+				9C7B98B3257357C200D2521B /* Extension */,
 				BFD945E7244DC5EB0012785A /* Assets.xcassets */,
 				BFD945EC244DC5EB0012785A /* Info.plist */,
+				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
+				BFD945E0244DC5E80012785A /* SceneDelegate.swift */,
 			);
 			path = iOSEngineerCodeCheck;
 			sourceTree = "<group>";
