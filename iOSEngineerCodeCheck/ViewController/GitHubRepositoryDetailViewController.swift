@@ -16,11 +16,16 @@ class GitHubRepositoryDetailViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNavigation()
         self.setUI()
     }
 }
 // MARK: - Private Method
 extension GitHubRepositoryDetailViewController {
+    // ナビゲーションの設定
+    private func setNavigation() {
+        self.navigationItem.title = "リポジトリ詳細"
+    }
     private func setUI() {
         self.baseView.setUI(gitHubRepository: self.gitHubRepository)
     }

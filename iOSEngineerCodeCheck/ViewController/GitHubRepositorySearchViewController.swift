@@ -18,10 +18,15 @@ class GitHubRepositorySearchViewController: UIViewController {
         super.viewDidLoad()
         self.viewModel = GitHubRepositorySearchViewModel(gitHubRepositorySearchRepository: GitHubRepositorySearchRepository())
         self.setDelegateDataSource()
+        self.setNavigation()
     }
 }
 // MARK: - Private Method
 extension GitHubRepositorySearchViewController {
+    // ナビゲーションの設定
+    private func setNavigation() {
+        self.navigationItem.title = "リポジトリ一覧"
+    }
     // GitHubRepository詳細ページへ遷移
     private func transitionGitHubRepositoryDetail(indexPath: IndexPath) {
         let s = UIStoryboard(name: "GitHubRepositoryDetailViewController", bundle: nil)
