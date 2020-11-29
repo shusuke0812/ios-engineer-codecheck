@@ -33,6 +33,7 @@ extension GitHubRepositorySearchViewController {
         self.baseView.searchBar.delegate = self
         self.baseView.tableView.delegate = self
         self.baseView.tableView.dataSource = self.viewModel
+        self.viewModel.delegate = self
     }
 }
 // MARK: - UISearchBar Delegate Method
@@ -46,15 +47,25 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
         task?.cancel()
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        word = searchBar.text!
-        if word.count != 0 {
-            // TODO: APIをコールするメソッドを追加
-        }
+        guard let searchWord: String = searchBar.text else { return }
+        // リポジトリ検索のクエリとAPIパスを設定
+        let quuery = "?q=\(searchWord)"
+        let urlString = Common.ApiUrl.gitHubSearchApi + quuery
+        self.viewModel.getGitHubRepositorys(urlString: urlString)
     }
 }
 // MARK: - UITableVIew Delegate Method
 extension GitHubRepositorySearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.transitionGitHubRepositoryDetail()
+    }
+}
+// MARK: - ViewModel Delegate Method
+extension GitHubRepositorySearchViewController: GitHubRepositorySearchViewModelDelegate {
+    func didSuccessGetGitHubRepositorys() {
+        self.baseView.tableView.reloadData()
+    }
+    func didFailedGetGitHubRepositorys(errorMessage: String) {
+        print("DEBUG: \(errorMessage)")
     }
 }
