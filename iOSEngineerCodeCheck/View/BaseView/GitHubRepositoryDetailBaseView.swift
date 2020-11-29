@@ -34,6 +34,12 @@ extension GitHubRepositoryDetailBaseView {
         self.forkNumberLabel.text = "\(defauletNumber)"
         self.issueNumberLabel.text = "\(defauletNumber)"
     }
-    func setUI() {
+    func setUI(gitHubRepository: GitHubRepository) {
+        self.titleLabel.text = gitHubRepository.name
+        self.languageLabel.text = gitHubRepository.language
+        self.starNumberLabel.text = String(describing: gitHubRepository.starNumber)
+        self.watchNumberLabel.text = String(describing: gitHubRepository.watchNumber)
+        self.forkNumberLabel.text = String(describing: gitHubRepository.forkNumber)
+        self.issueNumberLabel.text = String(describing: gitHubRepository.isueNumber)
     }
 }

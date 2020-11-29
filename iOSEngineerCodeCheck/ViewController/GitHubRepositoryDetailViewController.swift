@@ -16,5 +16,12 @@ class GitHubRepositoryDetailViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setUI()
+    }
+}
+// MARK: - Private Method
+extension GitHubRepositoryDetailViewController {
+    private func setUI() {
+        self.baseView.setUI(gitHubRepository: self.gitHubRepository)
     }
 }
