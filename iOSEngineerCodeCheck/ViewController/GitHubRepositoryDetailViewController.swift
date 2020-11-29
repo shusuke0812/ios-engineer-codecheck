@@ -8,7 +8,9 @@
 
 import UIKit
 
-class GitHubRpositoryDetailViewController: UIViewController {
+class GitHubRepositoryDetailViewController: UIViewController {
+    /// BaseView
+    private var baseView: GitHubRepositoryDetailBaseView { self.view as! GitHubRepositoryDetailBaseView}
     
     var gitHubRepository: GitHubRepository!
         
