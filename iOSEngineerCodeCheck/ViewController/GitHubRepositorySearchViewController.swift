@@ -9,12 +9,6 @@
 import UIKit
 
 class GitHubRepositorySearchViewController: UIViewController {
-    
-    var repo: [[String: Any]] = []
-    var task: URLSessionTask?
-    var word: String!
-    var url: String!
-    var idx: Int!
     /// BaseView
     private var baseView: GitHubRepositorySearchBaseView { self.view as! GitHubRepositorySearchBaseView }
     /// ViewModel
