@@ -92,9 +92,6 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="A3y-W4-xkx"/>
-                    <connections>
-                        <outlet property="IsssLbl" destination="bkE-wX-XFa" id="MOS-VO-ytD"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h9M-Ef-sY3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
