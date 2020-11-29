@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// GitHubRepositoryのデータ格納
+/// GitHuのリポジトリデータ格納用
 struct GitHubRepository: Codable {
     /// リポジトリデータ集
     let items: [Item]

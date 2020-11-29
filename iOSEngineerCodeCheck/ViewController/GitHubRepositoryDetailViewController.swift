@@ -11,7 +11,7 @@ import UIKit
 class GitHubRepositoryDetailViewController: UIViewController {
     /// BaseView
     private var baseView: GitHubRepositoryDetailBaseView { self.view as! GitHubRepositoryDetailBaseView}
-    /// GitHubRepository
+    /// GitHubのリポジトリ
     var gitHubRepository: GitHubRepository.Item!
         
     override func viewDidLoad() {
