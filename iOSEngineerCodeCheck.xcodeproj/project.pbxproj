@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		279EAF49B715C863CB63E456 /* Pods_iOSEngineerCodeCheck_iOSEngineerCodeCheckUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1487B98A2AD4F01324FADCE2 /* Pods_iOSEngineerCodeCheck_iOSEngineerCodeCheckUITests.framework */; };
 		9C7B98B52573583700D2521B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7B98B42573583700D2521B /* UIImage+Extension.swift */; };
+		9C9684B8257468B500A5AAEA /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9684B7257468B500A5AAEA /* UIAlertController+Extension.swift */; };
 		9CD370D62570D5DB001759F8 /* GitHubRepositoryDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CD370D52570D5DB001759F8 /* GitHubRepositoryDetailViewController.storyboard */; };
 		9CD370DB2570D6C9001759F8 /* GitHubRepositorySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD370DA2570D6C9001759F8 /* GitHubRepositorySearchViewModel.swift */; };
 		9CD370E12570D738001759F8 /* GitHubRepositorySearchBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD370E02570D738001759F8 /* GitHubRepositorySearchBaseView.swift */; };
@@ -54,6 +55,7 @@
 		45D9259610EFD9BDADC52F17 /* Pods-iOSEngineerCodeCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSEngineerCodeCheck.debug.xcconfig"; path = "Target Support Files/Pods-iOSEngineerCodeCheck/Pods-iOSEngineerCodeCheck.debug.xcconfig"; sourceTree = "<group>"; };
 		5B2C933EE51FFD7417374754 /* Pods-iOSEngineerCodeCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSEngineerCodeCheck.release.xcconfig"; path = "Target Support Files/Pods-iOSEngineerCodeCheck/Pods-iOSEngineerCodeCheck.release.xcconfig"; sourceTree = "<group>"; };
 		9C7B98B42573583700D2521B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		9C9684B7257468B500A5AAEA /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		9CD370D52570D5DB001759F8 /* GitHubRepositoryDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GitHubRepositoryDetailViewController.storyboard; sourceTree = "<group>"; };
 		9CD370DA2570D6C9001759F8 /* GitHubRepositorySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositorySearchViewModel.swift; sourceTree = "<group>"; };
 		9CD370E02570D738001759F8 /* GitHubRepositorySearchBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositorySearchBaseView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				9C7B98B42573583700D2521B /* UIImage+Extension.swift */,
+				9C9684B7257468B500A5AAEA /* UIAlertController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -278,7 +281,6 @@
 				F7F593B4F50A0C4AFFBD96F3 /* Pods-iOSEngineerCodeCheckTests.debug.xcconfig */,
 				FF111075365068BFD658BC2A /* Pods-iOSEngineerCodeCheckTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -531,6 +533,7 @@
 				9CD370F72571CAE7001759F8 /* GitHubRepository.swift in Sources */,
 				9CD370E12570D738001759F8 /* GitHubRepositorySearchBaseView.swift in Sources */,
 				9CD370F22571C954001759F8 /* GitHubRepositorySearchRepository.swift in Sources */,
+				9C9684B8257468B500A5AAEA /* UIAlertController+Extension.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* GitHubRepositoryDetailViewController.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				9CD371002571E28E001759F8 /* Common.swift in Sources */,
