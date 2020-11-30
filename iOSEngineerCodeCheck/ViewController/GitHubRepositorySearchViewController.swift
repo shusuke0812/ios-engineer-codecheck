@@ -45,7 +45,7 @@ extension GitHubRepositorySearchViewController {
     // リポジトリ検索APIを呼ぶ
     private func getRepositorys(searchWord: String) {
         let quuery = "?q=\(searchWord)"
-        let urlString = Common.ApiUrl.gitHubSearchApi + quuery
+        let urlString = Common.ApiPrefix.gitHubRepositorySearch + quuery
         self.viewModel.getGitHubRepositorys(urlString: urlString)
     }
 }

@@ -11,9 +11,9 @@ import Foundation
 /// モジュール内共通のデータ
 struct Common {
     /// API URLのプレフィックス
-    struct ApiUrl {
+    struct ApiPrefix {
         /// GET /search/repositories
-        internal static let gitHubSearchApi = "https://api.github.com/search/repositories"
+        internal static let gitHubRepositorySearch = "https://api.github.com/search/repositories"
     }
 }
 /// ネットワークエラー
