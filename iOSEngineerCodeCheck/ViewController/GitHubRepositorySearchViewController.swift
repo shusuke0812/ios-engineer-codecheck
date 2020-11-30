@@ -42,8 +42,8 @@ extension GitHubRepositorySearchViewController {
         self.baseView.tableView.dataSource = self.viewModel
         self.viewModel.delegate = self
     }
+    // リポジトリ検索APIを呼ぶ
     private func getRepositorys(searchWord: String) {
-        // リポジトリ検索のクエリとAPIパスを設定
         let quuery = "?q=\(searchWord)"
         let urlString = Common.ApiUrl.gitHubSearchApi + quuery
         self.viewModel.getGitHubRepositorys(urlString: urlString)
