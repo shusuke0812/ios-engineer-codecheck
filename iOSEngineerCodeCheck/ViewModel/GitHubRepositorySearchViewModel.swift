@@ -43,7 +43,7 @@ extension GitHubRepositorySearchViewModel {
                                             self?.delegate?.didSuccessGetGitHubRepositorys()
                                         }
                                     case .failure(let error):
-                                        self.delegate?.didFailedGetGitHubRepositorys(errorMessage: "GitHubRepositoryの取得に失敗しました。\n" + "DEBUG: error=\(error)")
+                                        self.delegate?.didFailedGetGitHubRepositorys(errorMessage: "GitHubRepositoryの取得に失敗しました。" + "error=\(error.localizedDescription)")
                                     }
                                   })
     }
