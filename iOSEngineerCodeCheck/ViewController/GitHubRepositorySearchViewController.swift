@@ -52,8 +52,10 @@ extension GitHubRepositorySearchViewController {
 // MARK: - UISearchBar Delegate Method
 extension GitHubRepositorySearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // TODO: インクリメンタルサーチをしたときにAPIのレスポンスがエラーになる
-        // self.getRepositorys(searchWord: searchText)
+        //　インクリメンタルサーチの定義：0.5秒以内に入力された連続的なデータでリクエスを発行しないようにする
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.getRepositorys(searchWord: searchText)
+        }
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchWord: String = searchBar.text else { return }
