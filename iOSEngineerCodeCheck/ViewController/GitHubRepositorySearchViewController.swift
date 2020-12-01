@@ -46,6 +46,8 @@ extension GitHubRepositorySearchViewController {
     private func getRepositorys(searchWord: String) {
         // 空文字""検索はエラーになるので除外
         if !searchWord.isEmpty {
+            // HUD表示（始）
+            HUD.show(.progress)
             // クエリを組み立ててAPIを呼ぶ
             let quuery = "?q=\(searchWord)"
             let urlString = Common.ApiPrefix.gitHubRepositorySearch + quuery
@@ -64,8 +66,6 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchWord: String = searchBar.text else { return }
         self.getRepositorys(searchWord: searchWord)
-        // HUD表示（始）
-        HUD.show(.progress)
         // キーボードを閉じる
         self.baseView.searchBar.endEditing(true)
     }
