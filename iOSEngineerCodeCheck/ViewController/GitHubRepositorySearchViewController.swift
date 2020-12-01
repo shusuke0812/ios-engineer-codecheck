@@ -83,10 +83,12 @@ extension GitHubRepositorySearchViewController: GitHubRepositorySearchViewModelD
     }
     func didFailedGetGitHubRepositorys(errorMessage: String) {
         print("DEBUG: \(errorMessage)")
-        // HUD表示（終）
-        HUD.hide()
-        // 失敗メッセージをアラート表示
-        UIAlertController.showAlert(style: .alert, viewController: self,
-                                    title: "読み込みに失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil)
+        DispatchQueue.main.async {
+            // HUD表示（終）
+            HUD.hide()
+            // 失敗メッセージをアラート表示
+            UIAlertController.showAlert(style: .alert, viewController: self,
+                                        title: "読み込みに失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil)
+        }
     }
 }
