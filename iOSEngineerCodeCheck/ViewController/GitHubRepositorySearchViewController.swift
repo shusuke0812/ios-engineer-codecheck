@@ -44,9 +44,13 @@ extension GitHubRepositorySearchViewController {
     }
     // リポジトリ検索APIを呼ぶ
     private func getRepositorys(searchWord: String) {
-        let quuery = "?q=\(searchWord)"
-        let urlString = Common.ApiPrefix.gitHubRepositorySearch + quuery
-        self.viewModel.getGitHubRepositorys(urlString: urlString)
+        // 空文字""検索はエラーになるので除外
+        if !searchWord.isEmpty {
+            // クエリを組み立ててAPIを呼ぶ
+            let quuery = "?q=\(searchWord)"
+            let urlString = Common.ApiPrefix.gitHubRepositorySearch + quuery
+            self.viewModel.getGitHubRepositorys(urlString: urlString)
+        }
     }
 }
 // MARK: - UISearchBar Delegate Method
