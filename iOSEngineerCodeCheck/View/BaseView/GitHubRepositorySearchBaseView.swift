@@ -12,6 +12,8 @@ class GitHubRepositorySearchBaseView: UIView {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noRepositoryView: UIView!
+    @IBOutlet weak var noRepositoryCommentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,5 +29,11 @@ extension GitHubRepositorySearchBaseView {
         self.searchBar.placeholder = "GitHubのリポジトリを検索できるよー"
         // TableViewセル登録
         self.tableView.register(UINib(nibName: "GitHubRepositoryCell", bundle: nil), forCellReuseIdentifier: "GitHubRepositoryCell")
+        // リポジトリ検索結果の表示
+        self.noRepositoryView.isHidden = false
+        self.noRepositoryCommentLabel.text = "リポジトリがないよー"
+    }
+    func setNoRepositoryUI(gitHubRepositorys: [GitHubRepository.Item]) {
+        gitHubRepositorys.isEmpty ? (self.noRepositoryView.isHidden = false) : (self.noRepositoryView.isHidden = true)
     }
 }

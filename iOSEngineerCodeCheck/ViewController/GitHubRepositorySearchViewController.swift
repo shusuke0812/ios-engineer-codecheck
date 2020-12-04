@@ -43,15 +43,26 @@ extension GitHubRepositorySearchViewController {
         self.viewModel.delegate = self
     }
     // リポジトリ検索APIを呼ぶ
-    private func getRepositorys(searchWord: String) {
-        // 空文字""検索はエラーになるので除外
-        if !searchWord.isEmpty {
-            // HUD表示（始）
-            HUD.show(.progress)
-            // クエリを組み立ててAPIを呼ぶ
-            let quuery = "?q=\(searchWord)"
-            let urlString = Common.ApiPrefix.gitHubRepositorySearch + quuery
-            self.viewModel.getGitHubRepositorys(urlString: urlString)
+    private func getRepositorys(searchText: String) {
+        // HUD表示（始）
+        HUD.show(.progress)
+        // クエリを組み立ててAPIを呼ぶ
+        let quuery = "?q=\(searchText)"
+        let urlString = Common.ApiPrefix.gitHubRepositorySearch + quuery
+        self.viewModel.getGitHubRepositorys(urlString: urlString)
+    }
+    // リポジトリがない場合の処理
+    private func setNoRepository() {
+        self.viewModel.gitHubRepositorys = []
+        self.baseView.setNoRepositoryUI(gitHubRepositorys: self.viewModel.gitHubRepositorys)
+    }
+    // リポジトリ検索ハンドル
+    private func searchRepositorys(searchText: String) {
+        // 空文字""だと検索エラーになるのでAPIは発行しない
+        if searchText.isEmpty {
+            self.setNoRepository()
+        } else {
+            self.getRepositorys(searchText: searchText)
         }
     }
 }
@@ -60,12 +71,12 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         //　インクリメンタルサーチの定義：0.5秒以内に入力された連続的なデータでリクエスを発行しないようにする
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.getRepositorys(searchWord: searchText)
+            self.searchRepositorys(searchText: searchText)
         }
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchWord: String = searchBar.text else { return }
-        self.getRepositorys(searchWord: searchWord)
+        guard let searchText: String = searchBar.text else { return }
+        self.searchRepositorys(searchText: searchText)
         // キーボードを閉じる
         self.baseView.searchBar.endEditing(true)
     }
@@ -81,6 +92,7 @@ extension GitHubRepositorySearchViewController: UITableViewDelegate {
 // MARK: - ViewModel Delegate Method
 extension GitHubRepositorySearchViewController: GitHubRepositorySearchViewModelDelegate {
     func didSuccessGetGitHubRepositorys() {
+        self.baseView.setNoRepositoryUI(gitHubRepositorys: self.viewModel.gitHubRepositorys)
         self.baseView.tableView.reloadData()
         // HUD表示（終）
         HUD.hide()
