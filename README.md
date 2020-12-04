@@ -79,14 +79,18 @@ open iOSEngineerCodeCheck.xcworkspace
   - なお、feature branch は必要に応じて push する
 
 ### 設計の考え方
+- １画面 = 1 ViewController + 1 Stroyboard を基本構成としてディレクトリ構造を整理
 - MVVMアーキテクチャを使用
-  - １画面 = 1 ViewController + 1 Stroyboard を基本構成としてディレクトリ構造を整理
-  - ファイルの命名規則は、画面内容+BaseView.swift、画面内容+ViewController.swift、画面内容+ViewController.storyboard、画面内容+ViewModel.swift、画面内容+Repository.swift とした
   - 各ファイルの基本的な役割は、
     - BaseView.swift： 画面表示
     - ViewController.swift： 画面遷移、インタラクション表示、BaseViewとViewModelの接続
     - ViewModel： View表示に必要な値の保持
-    - Repository： サーバーへのリクエスト処理
+    - Repository（Model）： サーバーへのリクエスト処理
+  - ファイルの命名規則は、
+    - BaseView： 画面内容+BaseView.swift、
+    - ViewController: 画面内容+ViewController.swift、画面内容+ViewController.storyboard
+    - ViewModel: 画面内容+ViewModel.swift
+    - Repository（Model）: 画面内容+Repository.swift
 - クラス内でのみ使用するメンバ、メソッドを明示するために `self` キーワード及び `private` キーワードを使用
 - 各ファイルで使用するメソッドは、役割毎に `extension` を使用して分けることで可読性、メンテナンス性の向上を図った
 
