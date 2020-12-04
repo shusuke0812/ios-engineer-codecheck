@@ -35,11 +35,12 @@ extension GitHubRepositorySearchRepository {
                 return
             }
             let decoder = JSONDecoder()
-            guard let gitHubRepository = try?decoder.decode(GitHubRepository.self, from: data) else {
+            do {
+                let gitHubRepository = try decoder.decode(GitHubRepository.self, from: data)
+                completion(.success(gitHubRepository.items))
+            } catch {
                 completion(.failure(NetworkError.invalidResponse))
-                return
             }
-            completion(.success(gitHubRepository.items))
         })
         task.resume()
     }
