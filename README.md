@@ -95,14 +95,15 @@ open iOSEngineerCodeCheck.xcworkspace
 - 各ファイルで使用するメソッドは、役割毎に `extension` を使用して分けることで可読性、メンテナンス性の向上を図った
 
 ### 機能変化点
-- リポジトリ検索中にHUDを表示するようにした
-- リポジトリの読み込み失敗時に「読み込みに失敗しました」というアラートを表示するようにした
 - インクリメンタルサーチができるようにした
   - ただし、導入目的は `searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)` メソッドの使い方を勉強するためである。GitHubリポジトリの検索アプリの仕様としては不要かもしれない
 
 ### UI変化点
 - 画面のタイトルを変更
 - BaseViewで画面表示を管理するために、TableViewをView配下に設置
+- リポジトリの検索結果が空の場合、「リポジトリがないよー」というメッセージを表示するようにした
+- リポジトリ検索中にHUDを表示するようにした
+- リポジトリの読み込み失敗時に「読み込みに失敗しました」というアラートを表示するようにした
 
 ### 今後の取り組み内容
 - [本リポジトリのProject](https://github.com/shusuke0812/ios-engineer-codecheck/projects/1) にあるToDo及びDoingを予定
