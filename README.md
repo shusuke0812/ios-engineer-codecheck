@@ -44,12 +44,14 @@ Issues を確認した上、本プロジェクトを [**Duplicate** してくだ
 - pod version 1.9.3
 - 開発ターゲット iOS 14.0
 
-### バージョン管理
-- [GitFlow](https://danielkummer.github.io/git-flow-cheatsheet/index.ja_JP.html) を採用
-- 開発者２人以上になることを想定して `git flow init` コマンドにてGitFlowのbranchを作成
-- ただし、現在は開発者１人でのコード修正なので feature branch を切らずに develop を直接修正
-
 ### セットアップ
+#### バージョン管理
+1. `git flow` コマンドをインストール
+``` bash
+brew install git-flow
+```
+
+#### プロジェクトファイル
 1. branchを確認して master になっていたら開発用の develop に切り替える
 ``` bash
 git branch
@@ -63,6 +65,15 @@ pod install
 ``` bash
 open iOSEngineerCodeCheck.xcworkspace
 ```
+
+### バージョン管理
+- [GitFlow](https://danielkummer.github.io/git-flow-cheatsheet/index.ja_JP.html) を採用
+- 開発者２人以上になることを想定して `git flow init` コマンドにてGitFlowのbranchを作成
+- ただし、現在は開発者１人でのコード修正なので feature branch を切らずに develop を直接修正
+- feature branch を切る場合は次のステップでローカル開発を行う
+  - `git flow feature start {branch name A}` で branch を作成し編集する
+  - `git flow feature finish {branch name A}` で作業を終了すると develop にマージされる
+  - なお、feature branch は必要に応じて push する
 
 ### 設計の考え方
 - MVVMアーキテクチャを使用
