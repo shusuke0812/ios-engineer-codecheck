@@ -20,6 +20,7 @@ class GitHubRepositorySearchViewController: UIViewController {
         self.viewModel = GitHubRepositorySearchViewModel(gitHubRepositorySearchRepository: GitHubRepositorySearchRepository())
         self.setDelegateDataSource()
         self.setNavigation()
+        setDissmissKeyboard()
     }
 }
 // MARK: - Private Method
