@@ -98,6 +98,7 @@ open iOSEngineerCodeCheck.xcworkspace
 
 ### UI変化点
 - 画面のタイトルを変更
+- BaseViewで画面表示を管理するために、TableViewをView配下に設置
 
 ### 今後の取り組み内容
 - [本リポジトリのProject](https://github.com/shusuke0812/ios-engineer-codecheck/projects/1) にあるToDo及びDoingを予定
