@@ -84,7 +84,7 @@ open iOSEngineerCodeCheck.xcworkspace
   - 各ファイルの基本的な役割は、
     - BaseView.swift： 画面表示
     - ViewController.swift： 画面遷移、インタラクション表示、BaseViewとViewModelの接続
-    - ViewModel： View表示に必要な値の保持
+    - ViewModel： View表示に必要な値の保持、セルの更新
     - Repository（Model）： サーバーへのリクエスト処理
   - ファイルの命名規則は、
     - BaseView： 画面内容+BaseView.swift、
