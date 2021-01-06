@@ -15,15 +15,10 @@ class GitHubRepositoryCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.initUI()
     }
 }
 // MARK: - Setting UI Method
 extension GitHubRepositoryCell {
-    private func initUI() {
-        self.title.text = ""
-        self.language.text = ""
-    }
     func setUI(gitHubRepository: GitHubRepository.Item) {
         self.title.text = gitHubRepository.name
         self.language.text = gitHubRepository.language
