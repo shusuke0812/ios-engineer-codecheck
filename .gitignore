@@ -90,4 +90,7 @@ fastlane/test_output
 # vim
 *.swp
 
+# R.swift
+*.generated.swift
+
 iOSInjectionProject/
