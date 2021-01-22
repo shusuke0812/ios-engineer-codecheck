@@ -23,8 +23,12 @@ extension GitHubRepositorySearchRepository {
             completion(.failure(NetworkError.invalidUrl))
             return
         }
-        // レスポンスを受け取る
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+        // リクエストを生成
+        let request = URLRequest(url: url)
+        // リクエストを送信して、レスポンスを受け取る
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, _, error in
+            // 通信完了時に実行: completionHandler
             if let error = error {
                 completion(.failure(error))
                 return
@@ -41,6 +45,7 @@ extension GitHubRepositorySearchRepository {
                 completion(.failure(NetworkError.invalidResponse))
             }
         }
+        // タスク実行
         task.resume()
     }
 }
