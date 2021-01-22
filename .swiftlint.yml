@@ -5,6 +5,16 @@
 # info    : 下記以外でLintを無効にする場合はソース内にコメントを添える　例）// swiftlint:disable:this force_cast
 # usage   : 本ファイルを別のプロジェクトにコピーした場合、Lint対象のパスを変更すること！
 
+# script  : xcodeのビルド時にlintを起動させるための targetのbulid phaseに記述するshell script
+# if which swiftlint > /dev/null; then
+#   # gitの差分を見て変更があったファイルのみ静的解析を行う
+#   git diff --name-only | grep .swift | while read filename; do
+#     swiftlint
+#   done
+# else
+#  echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+# fi
+
 # 無効設定
 disabled_rules:
 # defaulutルールで無効にするもの
