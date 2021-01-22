@@ -93,6 +93,7 @@ open iOSEngineerCodeCheck.xcworkspace
     - Repository（Model）: 画面内容+Repository.swift
 - クラス内でのみ使用するメンバ、メソッドを明示するために `self` キーワード及び `private` キーワードを使用
 - 各ファイルで使用するメソッドは、役割毎に `extension` を使用して分けることで可読性、メンテナンス性の向上を図った
+- 静的解析ツールはswiftlintを使用した（詳細なルールは[.swift.yml](https://github.com/shusuke0812/ios-engineer-codecheck/blob/develop/.swiftlint.yml)を参照）
 - [補足](https://docs.google.com/document/d/17Yw5mwveyvS5llqP7CnE-C9KhJ9JP55ZnwIiUUik4yE/edit?usp=sharing)
 
 ### 機能変化点
