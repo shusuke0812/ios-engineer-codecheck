@@ -7,10 +7,11 @@ target 'iOSEngineerCodeCheck' do
 
   # Pods for iOSEngineerCodeCheck
   # UI
-	pod 'PKHUD', '~> 5.0'
-
-	# Utility
-	pod 'R.swift'
+  pod 'PKHUD', '~> 5.0'
+  
+  # Utility
+  pod 'R.swift'
+  pod 'LicensePlist'
 
   target 'iOSEngineerCodeCheckTests' do
     inherit! :search_paths
