@@ -52,7 +52,7 @@ extension GitHubRepositorySearchViewModel: UITableViewDataSource {
         self.gitHubRepositorys.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "GitHubRepositoryCell", for: indexPath) as! GitHubRepositoryCell // swiftlint:disable:this force_cast
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.gitHubRepositoryCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
         if !self.gitHubRepositorys.isEmpty {
             cell.setUI(gitHubRepository: self.gitHubRepositorys[indexPath.row])
         }

@@ -27,7 +27,7 @@ extension GitHubRepositorySearchBaseView {
         // 検索バーのプレースホルダーを設定
         self.searchBar.placeholder = "GitHubのリポジトリを検索できるよー"
         // TableViewセル登録
-        self.tableView.register(UINib(nibName: "GitHubRepositoryCell", bundle: nil), forCellReuseIdentifier: "GitHubRepositoryCell")
+        self.tableView.register(R.nib.gitHubRepositoryCell)
         // リポジトリ検索結果の表示
         self.noRepositoryView.isHidden = false
         self.noRepositoryCommentLabel.text = "リポジトリがないよー"
