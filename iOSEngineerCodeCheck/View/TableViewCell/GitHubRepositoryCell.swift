@@ -9,10 +9,9 @@
 import UIKit
 
 class GitHubRepositoryCell: UITableViewCell {
-
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var language: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

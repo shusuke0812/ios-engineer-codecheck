@@ -9,12 +9,11 @@
 import UIKit
 
 class GitHubRepositorySearchBaseView: UIView {
-    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noRepositoryView: UIView!
     @IBOutlet weak var noRepositoryCommentLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initUI()

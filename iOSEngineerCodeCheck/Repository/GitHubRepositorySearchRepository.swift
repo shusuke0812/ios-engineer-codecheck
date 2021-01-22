@@ -18,14 +18,13 @@ class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol
 // MARK: - API Method
 extension GitHubRepositorySearchRepository {
     // GitHubRepositoryを取得する
-    internal func getGitHubRepositorys(urlString: String,
-                                       completion: @escaping (Result<[GitHubRepository.Item], Error>) -> Void) {
+    internal func getGitHubRepositorys(urlString: String, completion: @escaping (Result<[GitHubRepository.Item], Error>) -> Void) {
         guard let url = URL(string: urlString) else {
             completion(.failure(NetworkError.invalidUrl))
             return
         }
         // レスポンスを受け取る
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 completion(.failure(error))
                 return
@@ -41,7 +40,7 @@ extension GitHubRepositorySearchRepository {
             } catch {
                 completion(.failure(NetworkError.invalidResponse))
             }
-        })
+        }
         task.resume()
     }
 }

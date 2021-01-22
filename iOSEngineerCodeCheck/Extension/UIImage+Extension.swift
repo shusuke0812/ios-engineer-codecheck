@@ -17,14 +17,16 @@ extension UIImageView {
             print("画像URLの変換に失敗しました")
             return
         }
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
                 print("画像の読み込みに失敗しました" + "DEBUG: error=\(error)")
                 return
             }
+            guard let data = data else { return }
             DispatchQueue.main.async {
-                self.image = UIImage(data: data!)
+                self.image = UIImage(data: data)
             }
-        }.resume()
+        }
+        .resume()
     }
 }

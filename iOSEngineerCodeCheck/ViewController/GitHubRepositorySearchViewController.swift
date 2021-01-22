@@ -11,10 +11,10 @@ import PKHUD
 
 class GitHubRepositorySearchViewController: UIViewController {
     /// BaseView
-    private var baseView: GitHubRepositorySearchBaseView { self.view as! GitHubRepositorySearchBaseView }
+    private var baseView: GitHubRepositorySearchBaseView { self.view as! GitHubRepositorySearchBaseView } // swiftlint:disable:this force_cast
     /// ViewModel
     private var viewModel: GitHubRepositorySearchViewModel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = GitHubRepositorySearchViewModel(gitHubRepositorySearchRepository: GitHubRepositorySearchRepository())
@@ -32,7 +32,7 @@ extension GitHubRepositorySearchViewController {
     // GitHubRepository詳細ページへ遷移
     private func transitionGitHubRepositoryDetail(indexPath: IndexPath) {
         let s = UIStoryboard(name: "GitHubRepositoryDetailViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! GitHubRepositoryDetailViewController
+        let vc = s.instantiateInitialViewController() as! GitHubRepositoryDetailViewController // swiftlint:disable:this force_cast
         vc.gitHubRepository = self.viewModel.gitHubRepositorys[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -104,8 +104,7 @@ extension GitHubRepositorySearchViewController: GitHubRepositorySearchViewModelD
             // HUD表示（終）
             HUD.hide()
             // 失敗メッセージをアラート表示
-            UIAlertController.showAlert(style: .alert, viewController: self,
-                                        title: "読み込みに失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil)
+            UIAlertController.showAlert(style: .alert, viewController: self, title: "読み込みに失敗しました", message: nil, okButtonTitle: "OK", cancelButtonTitle: nil)
         }
     }
 }

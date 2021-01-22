@@ -10,10 +10,10 @@ import UIKit
 
 class GitHubRepositoryDetailViewController: UIViewController {
     /// BaseView
-    private var baseView: GitHubRepositoryDetailBaseView { self.view as! GitHubRepositoryDetailBaseView}
-    /// GitHubのリポジトリ
+    private var baseView: GitHubRepositoryDetailBaseView { self.view as! GitHubRepositoryDetailBaseView } // swiftlint:disable:this force_cast
+    /// GitHubのリポジトリ（前画面から値が渡されることが保証されているため、後のオプショナル バインディングを省略するために強制アンラップする）
     var gitHubRepository: GitHubRepository.Item!
-        
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigation()

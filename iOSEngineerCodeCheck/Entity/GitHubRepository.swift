@@ -12,11 +12,11 @@ import UIKit
 struct GitHubRepository: Codable {
     /// リポジトリデータ集
     let items: [Item]
-    
+
     enum CodingKeys: String, CodingKey {
         case items
     }
-    
+
     struct Item: Codable {
         /// リポジトリ名
         let name: String?
@@ -32,7 +32,7 @@ struct GitHubRepository: Codable {
         let isueNumber: Int?
         /// オーナー情報
         let owner: Owner?
-        
+
         enum CodingKeys: String, CodingKey {
             case name = "full_name"
             case language = "language"
@@ -42,10 +42,7 @@ struct GitHubRepository: Codable {
             case isueNumber = "open_issues_ccount"
             case owner
         }
-        
-        init(name: String, language: String,
-             starNumber: Int, watchNumber: Int, forkNumber: Int, isueNumber: Int,
-             owner: Owner) {
+        init(name: String, language: String, starNumber: Int, watchNumber: Int, forkNumber: Int, isueNumber: Int, owner: Owner) {
             self.name = name
             self.language = language
             self.starNumber = starNumber
@@ -55,24 +52,21 @@ struct GitHubRepository: Codable {
             self.owner = owner
         }
     }
-    
+
     struct Owner: Codable {
         /// アバター画像URL
         let avatarImage: String?
-        
+
         enum CodingKeys: String, CodingKey {
             case avatarImage = "avatar_url"
         }
-        
         init(avatarImage: String) {
             self.avatarImage = avatarImage
         }
-        
         init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             self.avatarImage = try values.decode(String.self, forKey: .avatarImage)
         }
-        
         func encode(to encoder: Encoder) throws {
             var container = encoder.container(keyedBy: CodingKeys.self)
             try container.encode(avatarImage, forKey: .avatarImage)
