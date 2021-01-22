@@ -26,7 +26,7 @@ class GitHubRepositoryDetailBaseView: UIView {
 extension GitHubRepositoryDetailBaseView {
     private func initUI() {
         let defauletNumber = 0
-        self.avatarImageView.image = UIImage(named: "avattar_default")
+        self.avatarImageView.image = R.image.avatar_default()
         self.titleLabel.text = ""
         self.starNumberLabel.text = "\(defauletNumber)"
         self.watchNumberLabel.text = "\(defauletNumber)"

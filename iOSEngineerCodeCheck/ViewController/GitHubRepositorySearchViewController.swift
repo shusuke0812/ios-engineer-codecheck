@@ -31,8 +31,7 @@ extension GitHubRepositorySearchViewController {
     }
     // GitHubRepository詳細ページへ遷移
     private func transitionGitHubRepositoryDetail(indexPath: IndexPath) {
-        let s = UIStoryboard(name: "GitHubRepositoryDetailViewController", bundle: nil)
-        let vc = s.instantiateInitialViewController() as! GitHubRepositoryDetailViewController // swiftlint:disable:this force_cast
+        guard let vc = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController() else { return }
         vc.gitHubRepository = self.viewModel.gitHubRepositorys[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
