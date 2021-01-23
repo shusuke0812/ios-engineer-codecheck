@@ -9,22 +9,16 @@
 import UIKit
 
 protocol GitHubRepositorySearchRepositoryProtocol {
-    /// GET：GitHubRepositoryを取得する
-    /// - Parameter urlString: APIのURL
-    func getGitHubRepositorys(urlString: String, completion: @escaping (Result<[GitHubRepository.Item], Error>) -> Void)
+    /// GitHubRepositoryを取得する
+    /// - Parameter request: APIのリクエスト
+    func getGitHubRepositorys(request: URLRequest, completion: @escaping (Result<[GitHubRepository.Item], Error>) -> Void)
 }
 class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol {
 }
 // MARK: - API Method
 extension GitHubRepositorySearchRepository {
     // GitHubRepositoryを取得する
-    internal func getGitHubRepositorys(urlString: String, completion: @escaping (Result<[GitHubRepository.Item], Error>) -> Void) {
-        guard let url = URL(string: urlString) else {
-            completion(.failure(NetworkError.invalidUrl))
-            return
-        }
-        // リクエストを生成
-        let request = URLRequest(url: url)
+    internal func getGitHubRepositorys(request: URLRequest, completion: @escaping (Result<[GitHubRepository.Item], Error>) -> Void) {
         // リクエストを送信して、レスポンスを受け取る
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, _, error in

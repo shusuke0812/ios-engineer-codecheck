@@ -46,10 +46,9 @@ extension GitHubRepositorySearchViewController {
     private func getRepositorys(searchText: String) {
         // HUD表示（始）
         HUD.show(.progress)
-        // クエリを組み立ててAPIを呼ぶ
-        let quuery = "?q=\(searchText)"
-        let urlString = Common.ApiPrefix.gitHubRepositorySearch + quuery
-        self.viewModel.getGitHubRepositorys(urlString: urlString)
+        // リクエストを組み立ててAPIを呼ぶ
+        let request = GitHubAPI.SearchRepositories(searchWord: searchText, searchCount: self.viewModel.maxGitHubRepositorySearchCount).buildURLRequest()
+        self.viewModel.getGitHubRepositorys(request: request)
     }
     // リポジトリがない場合の処理
     private func setNoRepository() {

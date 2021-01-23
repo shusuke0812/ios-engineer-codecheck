@@ -10,11 +10,6 @@ import Foundation
 
 /// モジュール内共通のデータ
 struct Common {
-    /// API URLのプレフィックス
-    struct ApiPrefix {
-        /// GET /search/repositories
-        internal static let gitHubRepositorySearch = "https://api.github.com/search/repositories"
-    }
 }
 /// ネットワークエラー
 enum NetworkError: Error {
