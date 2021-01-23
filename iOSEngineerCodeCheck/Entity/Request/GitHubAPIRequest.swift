@@ -9,9 +9,13 @@
 import Foundation
 
 protocol GitHubAPIRequest {
+    associatedtype Response: Decodable
+    
     var baseURL: String { get }
     var path: String { get }
     var method: HTTPMethod { get }
+    var parameters: [URLQueryItem] { get }
+    var body: Encodable? { get }
 }
 // MARK: - Custom Setting
 extension GitHubAPIRequest {
