@@ -51,22 +51,22 @@ Issues を確認した上、本プロジェクトを [**Duplicate** してくだ
 #### バージョン管理
 1. `git flow` コマンドをインストール
 ``` bash
-brew install git-flow
+$ brew install git-flow
 ```
 
 #### プロジェクトファイル
 1. branchを確認して master になっていたら開発用の develop に切り替える
 ``` bash
-git branch
-git checkout develop
+$ git branch
+$ git checkout develop
 ```
 2. Cocoapodsにてライブラリをインストールする
 ``` ruby
-pod install
+$ pod install
 ```
 3. Xcodeでプロジェクトファイルを開く
 ``` bash
-open iOSEngineerCodeCheck.xcworkspace
+$ open iOSEngineerCodeCheck.xcworkspace
 ```
 
 ### バージョン管理
@@ -113,3 +113,9 @@ open iOSEngineerCodeCheck.xcworkspace
 
 ### 参考
 - [GitHub API ドキュメント](https://docs.github.com/ja/rest/reference/search#search-repositories)
+
+### メモ
+- Xcodeの環境変数確認例
+```bash
+$ xcodebuild -showBuildSettings | grep "PROJECT"
+```
