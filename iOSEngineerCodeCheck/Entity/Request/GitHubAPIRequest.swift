@@ -11,6 +11,7 @@ import Foundation
 protocol GitHubAPIRequest {
     var baseURL: String { get }
     var path: String { get }
+    var method: HTTPMethod { get }
 }
 // MARK: - Custom Setting
 extension GitHubAPIRequest {

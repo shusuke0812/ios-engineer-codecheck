@@ -34,3 +34,11 @@ enum ClientError: Error {
     case parseField // パースエラー
     case unknown    // 想定外エラー
 }
+
+/// HTTPメソッド
+enum HTTPMethod: String {
+    case get    = "GET"
+    case post   = "POST"
+    case put    = "PUT"
+    case delete = "DELETE"
+}
