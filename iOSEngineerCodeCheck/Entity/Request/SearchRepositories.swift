@@ -6,6 +6,8 @@
 //  Copyright © 2021 YUMEMI Inc. All rights reserved.
 //
 
+// GitHubAPI ドキュメント（Search Repositories）： https://docs.github.com/ja/rest/reference/search#search-repositories
+
 import Foundation
 
 class GitHubAPI {
