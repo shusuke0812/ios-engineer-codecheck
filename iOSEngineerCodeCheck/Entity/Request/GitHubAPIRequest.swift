@@ -10,7 +10,7 @@ import Foundation
 
 protocol GitHubAPIRequest {
     associatedtype Response: Decodable
-    
+
     var baseURL: String { get }
     var path: String { get }
     var method: HTTPMethod { get }
