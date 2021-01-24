@@ -14,13 +14,24 @@ class GitHubRepositorySearchViewController: UIViewController {
     private var baseView: GitHubRepositorySearchBaseView { self.view as! GitHubRepositorySearchBaseView } // swiftlint:disable:this force_cast
     /// ViewModel
     private var viewModel: GitHubRepositorySearchViewModel!
+    /// キーボード起動フラグ
+    private var onKeyboard: Bool = false
 
+    // MARK: - Lifecycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewModel = GitHubRepositorySearchViewModel(gitHubRepositorySearchRepository: GitHubRepositorySearchRepository())
         self.setDelegateDataSource()
         self.setNavigation()
         setDissmissKeyboard()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 画面起動時にSearchFieldをONにしてキーボードを立ちげる（UI/UX向上）
+        if !onKeyboard {
+            self.baseView.searchBar.becomeFirstResponder()
+            self.onKeyboard = true
+        }
     }
 }
 // MARK: - Private Method
