@@ -99,8 +99,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="descriptionLabel" destination="9CY-VL-FVM" id="U8E-eS-zdW"/>
+                <outlet property="languageIconView" destination="Jck-W4-gr4" id="wTP-g4-Ada"/>
                 <outlet property="languageLabel" destination="Rnr-i2-MzM" id="XDR-6x-MOt"/>
-                <outlet property="languageView" destination="Jck-W4-gr4" id="wTP-g4-Ada"/>
                 <outlet property="starImageView" destination="ID2-pD-NwH" id="doN-6W-JPR"/>
                 <outlet property="starLabel" destination="d9r-CF-ZgF" id="ecB-9v-zYV"/>
                 <outlet property="titleLabel" destination="UKe-Bm-2Fw" id="eL3-7B-3P4"/>
