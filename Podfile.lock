@@ -1,4 +1,5 @@
 PODS:
+  - FontAwesome.swift (1.9.1)
   - LicensePlist (3.0.5)
   - PKHUD (5.3.0)
   - R.swift (5.3.1):
@@ -6,23 +7,26 @@ PODS:
   - R.swift.Library (5.3.0)
 
 DEPENDENCIES:
+  - FontAwesome.swift
   - LicensePlist
   - PKHUD (~> 5.0)
   - R.swift
 
 SPEC REPOS:
   trunk:
+    - FontAwesome.swift
     - LicensePlist
     - PKHUD
     - R.swift
     - R.swift.Library
 
 SPEC CHECKSUMS:
+  FontAwesome.swift: 6b52cb7be66eacd28cbfaa0ca7ffd0de4a186a1d
   LicensePlist: 11c638fa9dc22ddb5771cdf910242ae1ba2684da
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   R.swift: 56ec7e3aef34b9eee47a659e42462db2c1cc5ac3
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
 
-PODFILE CHECKSUM: c9e960997005a4fd821388caed4a5f3b6a3ddb07
+PODFILE CHECKSUM: 14af60796cfa36feccbb4b7f2139c2f71fe2088b
 
 COCOAPODS: 1.9.3

@@ -8,6 +8,7 @@ target 'iOSEngineerCodeCheck' do
   # Pods for iOSEngineerCodeCheck
   # UI
   pod 'PKHUD', '~> 5.0'
+  pod 'FontAwesome.swift'
   
   # Utility
   pod 'R.swift'
