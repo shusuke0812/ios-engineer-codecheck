@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 protocol GitHubRepositoryDetailBaseViewDelegate: AnyObject {
     /// ホームページボタンをタップした時の処理
@@ -80,12 +81,42 @@ extension GitHubRepositoryDetailBaseView {
         self.starButton.layer.borderWidth = 1.0
     }
     private func initBodyUI() {
+        // ラベルの設定
         let defauletNumber = 0
         self.starNumberLabel.text = "\(defauletNumber)"
         self.watchNumberLabel.text = "\(defauletNumber)"
         self.forkNumberLabel.text = "\(defauletNumber)"
         self.issueNumberLabel.text = "\(defauletNumber)"
         self.licenseLabel.text = "NO LICENSE"
+        // アイコンの設定（TODO: うまくまとめられないか？）
+        // MEMO: fontawesomeのstyleを.regularにすると表示されないバグあり（原因不明）
+        let iconSize = CGSize(width: 25, height: 25)
+        let cornerRadius: CGFloat = 5
+        // スター
+        self.starIconImageView.clipsToBounds = true
+        self.starIconImageView.layer.cornerRadius = cornerRadius
+        self.starIconImageView.backgroundColor = .systemBlue
+        self.starIconImageView.image = UIImage.fontAwesomeIcon(name: .star, style: .solid, textColor: .white, size: iconSize)
+        // ウォッチ
+        self.watchIconImageView.clipsToBounds = true
+        self.watchIconImageView.layer.cornerRadius = cornerRadius
+        self.watchIconImageView.backgroundColor = .systemYellow
+        self.watchIconImageView.image = UIImage.fontAwesomeIcon(name: .eye, style: .solid, textColor: .white, size: iconSize)
+        // フォーク
+        self.forkIconImageView.clipsToBounds = true
+        self.forkIconImageView.layer.cornerRadius = cornerRadius
+        self.forkIconImageView.backgroundColor = .systemGreen
+        self.forkIconImageView.image = UIImage.fontAwesomeIcon(name: .codeBranch, style: .solid, textColor: .white, size: iconSize)
+        // イシュー
+        self.issueIconImageView.clipsToBounds = true
+        self.issueIconImageView.layer.cornerRadius = cornerRadius
+        self.issueIconImageView.backgroundColor = .systemOrange
+        self.issueIconImageView.image = UIImage.fontAwesomeIcon(name: .infoCircle, style: .solid, textColor: .white, size: iconSize)
+        // ライセンス
+        self.licenseIconImageView.clipsToBounds = true
+        self.licenseIconImageView.layer.cornerRadius = cornerRadius
+        self.licenseIconImageView.backgroundColor = .systemRed
+        self.licenseIconImageView.image = UIImage.fontAwesomeIcon(name: .balanceScale, style: .solid, textColor: .white, size: iconSize)
     }
 }
 // MARK: - Setting UI Method
