@@ -80,9 +80,9 @@ extension GitHubRepositorySearchViewController {
 extension GitHubRepositorySearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         //　インクリメンタルサーチの定義：0.5秒以内に入力された連続的なデータでリクエスを発行しないようにする
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.searchRepositorys(searchText: searchText)
-        }
+        // DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        //     self.searchRepositorys(searchText: searchText)
+        // }
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText: String = searchBar.text else { return }
