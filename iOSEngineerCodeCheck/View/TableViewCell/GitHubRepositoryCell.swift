@@ -17,6 +17,9 @@ class GitHubRepositoryCell: UITableViewCell {
     @IBOutlet weak var languageView: UIView!
     @IBOutlet weak var updatedDateLabel: UILabel!
 
+    /// セル高さ
+    static let rowHeight: CGFloat = 120
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.initUI()

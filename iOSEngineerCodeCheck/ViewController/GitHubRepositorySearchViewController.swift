@@ -98,6 +98,9 @@ extension GitHubRepositorySearchViewController: UITableViewDelegate {
         // セルの選択状態を解除
         self.baseView.tableView.deselectRow(at: indexPath, animated: true)
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        GitHubRepositoryCell.rowHeight
+    }
 }
 // MARK: - ViewModel Delegate Method
 extension GitHubRepositorySearchViewController: GitHubRepositorySearchViewModelDelegate {
