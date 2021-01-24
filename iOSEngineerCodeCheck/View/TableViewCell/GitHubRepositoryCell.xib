@@ -66,7 +66,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="ID2-pD-NwH" firstAttribute="leading" secondItem="QA1-aM-ez7" secondAttribute="leading" id="2F8-14-Bx2"/>
                                     <constraint firstItem="Jck-W4-gr4" firstAttribute="leading" secondItem="d9r-CF-ZgF" secondAttribute="trailing" constant="10" id="4JR-ao-a1I"/>
@@ -111,9 +110,6 @@
     </objects>
     <resources>
         <image name="star" catalog="system" width="128" height="116"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
