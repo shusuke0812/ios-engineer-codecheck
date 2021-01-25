@@ -37,6 +37,9 @@ extension GitHubRepositoryDetailViewController {
 // MARK: - BaseView Delegate Method
 extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailBaseViewDelegate {
     func didTapHomePageButton() {
+        if let homePageUrlString = self.gitHubRepository.homePage {
+            self.transitionSafariViewController(urlString: homePageUrlString)
+        }
     }
     func didTapStarButton() {
     }
