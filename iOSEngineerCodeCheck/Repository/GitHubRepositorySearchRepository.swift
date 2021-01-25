@@ -32,6 +32,7 @@ extension GitHubRepositorySearchRepository {
                 return
             }
             let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
             do {
                 let gitHubRepository = try decoder.decode(GitHubRepository.self, from: data)
                 completion(.success(gitHubRepository.items))

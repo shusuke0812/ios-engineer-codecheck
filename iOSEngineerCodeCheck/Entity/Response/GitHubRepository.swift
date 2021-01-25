@@ -30,25 +30,37 @@ struct GitHubRepository: Codable {
         let forkNumber: Int?
         /// イシュー数
         let isueNumber: Int?
+        /// 説明文
+        let description: String?
+        /// ホームページ
+        let homePage: String?
+        /// 更新日（MEMO: JSONの日付型がSwiftのJSONDecoderに対応していないのでDateFormatterを拡張している）
+        let updatedAt: Date?
         /// オーナー情報
         let owner: Owner?
 
         enum CodingKeys: String, CodingKey {
-            case name = "full_name"
-            case language = "language"
-            case starNumber = "stargazers_count"
-            case watchNumber = "watchers_count"
-            case forkNumber = "forks_count"
-            case isueNumber = "open_issues_ccount"
+            case name           = "full_name"
+            case language       = "language"
+            case starNumber     = "stargazers_count"
+            case watchNumber    = "watchers_count"
+            case forkNumber     = "forks_count"
+            case isueNumber     = "open_issues_ccount"
+            case description    = "description"
+            case homePage       = "homepage"
+            case updatedAt      = "updated_at"
             case owner
         }
-        init(name: String, language: String, starNumber: Int, watchNumber: Int, forkNumber: Int, isueNumber: Int, owner: Owner) {
+        init(name: String, language: String, starNumber: Int, watchNumber: Int, forkNumber: Int, isueNumber: Int, description: String, homePage: String, updatedAt: Date, owner: Owner) {
             self.name = name
             self.language = language
             self.starNumber = starNumber
             self.watchNumber = watchNumber
             self.forkNumber = forkNumber
             self.isueNumber = isueNumber
+            self.description = description
+            self.homePage = homePage
+            self.updatedAt = updatedAt
             self.owner = owner
         }
     }
