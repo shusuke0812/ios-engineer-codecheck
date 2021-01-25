@@ -38,6 +38,8 @@ struct GitHubRepository: Codable {
         let updatedAt: Date?
         /// オーナー情報
         let owner: Owner?
+        ///　ライセンス情報
+        let license: License?
 
         enum CodingKeys: String, CodingKey {
             case name           = "full_name"
@@ -50,8 +52,9 @@ struct GitHubRepository: Codable {
             case homePage       = "homepage"
             case updatedAt      = "updated_at"
             case owner
+            case license
         }
-        init(name: String, language: String, starNumber: Int, watchNumber: Int, forkNumber: Int, isueNumber: Int, description: String, homePage: String, updatedAt: Date, owner: Owner) {
+        init(name: String, language: String, starNumber: Int, watchNumber: Int, forkNumber: Int, isueNumber: Int, description: String, homePage: String, updatedAt: Date, owner: Owner, license: License) {
             self.name = name
             self.language = language
             self.starNumber = starNumber
@@ -62,6 +65,7 @@ struct GitHubRepository: Codable {
             self.homePage = homePage
             self.updatedAt = updatedAt
             self.owner = owner
+            self.license = license
         }
     }
 
@@ -82,6 +86,26 @@ struct GitHubRepository: Codable {
         func encode(to encoder: Encoder) throws {
             var container = encoder.container(keyedBy: CodingKeys.self)
             try container.encode(avatarImage, forKey: .avatarImage)
+        }
+    }
+
+    struct License: Codable {
+        /// キー
+        let key: String?
+        /// 名前
+        let name: String?
+        /// URL
+        let url: String?
+
+        enum CodingKeys: String, CodingKey {
+            case key    = "key"
+            case name   = "name"
+            case url    = "url"
+        }
+        init(key: String, name: String, url: String) {
+            self.key = key
+            self.name = name
+            self.url = url
         }
     }
 }
