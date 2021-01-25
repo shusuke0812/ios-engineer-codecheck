@@ -41,6 +41,8 @@ class GitHubRepositoryDetailBaseView: UIView {
     @IBOutlet weak var licenseLabel: UILabel!
     /// デリゲート
     internal weak var delegate: GitHubRepositoryDetailBaseViewDelegate?
+    /// テキストHelper
+    private let textHelper = TextHelper()
 
     // MARK: - Lifecycle Method
     override func awakeFromNib() {
@@ -134,10 +136,10 @@ extension GitHubRepositoryDetailBaseView {
     }
     private func setBodyUI(gitHubRepository: GitHubRepository.Item) {
         let defauletNumber = 0
-        self.starNumberLabel.text = "\(gitHubRepository.starNumber ?? defauletNumber)"
-        self.watchNumberLabel.text = "\(gitHubRepository.watchNumber ?? defauletNumber)"
-        self.forkNumberLabel.text = "\(gitHubRepository.forkNumber ?? defauletNumber)"
-        self.issueNumberLabel.text = "\(gitHubRepository.isueNumber ?? defauletNumber)"
+        self.starNumberLabel.text = textHelper.formatToCSV(value: gitHubRepository.starNumber ?? defauletNumber)
+        self.watchNumberLabel.text = textHelper.formatToCSV(value: gitHubRepository.watchNumber ?? defauletNumber)
+        self.forkNumberLabel.text = textHelper.formatToCSV(value: gitHubRepository.forkNumber ?? defauletNumber)
+        self.issueNumberLabel.text = textHelper.formatToCSV(value: gitHubRepository.isueNumber ?? defauletNumber)
         self.licenseLabel.text = gitHubRepository.license?.name
     }
 }

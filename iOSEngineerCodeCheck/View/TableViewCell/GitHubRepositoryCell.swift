@@ -21,6 +21,8 @@ class GitHubRepositoryCell: UITableViewCell {
     static let rowHeight: CGFloat = 120
     /// Dateヘルパー
     private let dateHelper = DateHelper()
+    /// Textヘルパー
+    private let textHelper = TextHelper()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,7 +46,7 @@ extension GitHubRepositoryCell {
     func setUI(gitHubRepository: GitHubRepository.Item) {
         self.titleLabel.text = gitHubRepository.name
         self.descriptionLabel.text = gitHubRepository.description
-        self.starLabel.text = "\(gitHubRepository.starNumber ?? 0)"
+        self.starLabel.text = textHelper.formatToCSV(value: gitHubRepository.starNumber ?? 0)
         self.languageLabel.text = gitHubRepository.language
         self.updatedDateLabel.text = "updated: " + dateHelper.formatToString(date: gitHubRepository.updatedAt)
     }
