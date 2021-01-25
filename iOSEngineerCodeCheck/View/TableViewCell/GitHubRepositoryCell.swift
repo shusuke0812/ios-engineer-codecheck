@@ -48,6 +48,11 @@ extension GitHubRepositoryCell {
         self.descriptionLabel.text = gitHubRepository.description
         self.starLabel.text = textHelper.formatToCSV(value: gitHubRepository.starNumber ?? 0)
         self.languageLabel.text = gitHubRepository.language
+        self.setLanguageIconColor(language: gitHubRepository.language)
         self.updatedDateLabel.text = "updated: " + dateHelper.formatToString(date: gitHubRepository.updatedAt)
+    }
+    private func setLanguageIconColor(language: String?) {
+        guard let language = language else { return }
+        self.languageIconView.backgroundColor = LanguageIcon(language: language).color
     }
 }

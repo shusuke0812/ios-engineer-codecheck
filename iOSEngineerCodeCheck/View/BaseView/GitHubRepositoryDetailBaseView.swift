@@ -135,6 +135,7 @@ extension GitHubRepositoryDetailBaseView {
         self.descriptionLabel.text = gitHubRepository.description
         self.homePageButton.setTitle(gitHubRepository.homePage, for: .normal)
         self.languageLabel.text = gitHubRepository.language
+        self.setLanguageIconColor(language: gitHubRepository.language)
     }
     private func setBodyUI(gitHubRepository: GitHubRepository.Item) {
         let defauletNumber = 0
@@ -143,5 +144,9 @@ extension GitHubRepositoryDetailBaseView {
         self.forkNumberLabel.text = textHelper.formatToCSV(value: gitHubRepository.forkNumber ?? defauletNumber)
         self.issueNumberLabel.text = textHelper.formatToCSV(value: gitHubRepository.isueNumber ?? defauletNumber)
         self.licenseLabel.text = gitHubRepository.license?.name
+    }
+    private func setLanguageIconColor(language: String?) {
+        guard let language = language else { return }
+        self.languageIconView.backgroundColor = LanguageIcon(language: language).color
     }
 }
