@@ -138,5 +138,6 @@ extension GitHubRepositoryDetailBaseView {
         self.watchNumberLabel.text = "\(gitHubRepository.watchNumber ?? defauletNumber)"
         self.forkNumberLabel.text = "\(gitHubRepository.forkNumber ?? defauletNumber)"
         self.issueNumberLabel.text = "\(gitHubRepository.isueNumber ?? defauletNumber)"
+        self.licenseLabel.text = gitHubRepository.license?.name
     }
 }
