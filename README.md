@@ -107,6 +107,11 @@ $ open iOSEngineerCodeCheck.xcworkspace
 - リポジトリの検索結果が空の場合、「リポジトリがないよー」というメッセージを表示するようにした
 - リポジトリ検索中にHUDを表示するようにした
 - リポジトリの読み込み失敗時に「読み込みに失敗しました」というアラートを表示するようにした
+- セル、詳細画面を下記の写真のように変更
+
+| 検索前 | 検索後 | 詳細画面 |
+|:-----:|:-----:|:-----:|
+|![検索前](README_Images/search_screen.png)|![検索後](README_Images/search_result_screen.png)|![詳細画面](README_Images/search_result_detail_screen.png)|
 
 ### 今後の取り組み内容
 - [本リポジトリのProject](https://github.com/shusuke0812/ios-engineer-codecheck/projects/1) にあるToDo及びDoingを予定
