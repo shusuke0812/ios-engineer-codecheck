@@ -122,9 +122,17 @@ extension GitHubRepositoryDetailBaseView {
 // MARK: - Setting UI Method
 extension GitHubRepositoryDetailBaseView {
     func setUI(gitHubRepository: GitHubRepository.Item) {
+        self.setHeaderUI(gitHubRepository: gitHubRepository)
+        self.setBodyUI(gitHubRepository: gitHubRepository)
+    }
+    private func setHeaderUI(gitHubRepository: GitHubRepository.Item) {
         self.avatarImageView.getImage(imageUrlString: gitHubRepository.owner?.avatarImage ?? "")
         self.titleLabel.text = gitHubRepository.name
+        self.descriptionLabel.text = gitHubRepository.description
+        self.homePageButton.setTitle(gitHubRepository.homePage, for: .normal)
         self.languageLabel.text = gitHubRepository.language
+    }
+    private func setBodyUI(gitHubRepository: GitHubRepository.Item) {
         let defauletNumber = 0
         self.starNumberLabel.text = "\(gitHubRepository.starNumber ?? defauletNumber)"
         self.watchNumberLabel.text = "\(gitHubRepository.watchNumber ?? defauletNumber)"

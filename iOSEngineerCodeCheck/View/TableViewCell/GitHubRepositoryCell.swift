@@ -41,6 +41,9 @@ extension GitHubRepositoryCell {
     }
     func setUI(gitHubRepository: GitHubRepository.Item) {
         self.titleLabel.text = gitHubRepository.name
+        self.descriptionLabel.text = gitHubRepository.description
+        self.starLabel.text = "\(gitHubRepository.starNumber ?? 0)"
         self.languageLabel.text = gitHubRepository.language
+        self.updatedDateLabel.text = "\(gitHubRepository.updatedAt)"
     }
 }
