@@ -31,7 +31,7 @@ extension UIViewController {
         }
         // Safariでwebページを開く
         if let url = url {
-            let safariVC: SFSafariViewController = SFSafariViewController(url: url)
+            let safariVC = SFSafariViewController(url: url)
             self.present(safariVC, animated: true, completion: nil)
         }
     }
