@@ -16,6 +16,7 @@ class GitHubRepositoryDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setDelegateDataSource()
         self.setNavigation()
         self.setUI()
     }
@@ -28,5 +29,17 @@ extension GitHubRepositoryDetailViewController {
     }
     private func setUI() {
         self.baseView.setUI(gitHubRepository: self.gitHubRepository)
+    }
+    private func setDelegateDataSource() {
+        self.baseView.delegate = self
+    }
+}
+// MARK: - BaseView Delegate Method
+extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailBaseViewDelegate {
+    func didTapHomePageButton() {
+    }
+    func didTapStarButton() {
+    }
+    func didTapLicenseCell() {
     }
 }
