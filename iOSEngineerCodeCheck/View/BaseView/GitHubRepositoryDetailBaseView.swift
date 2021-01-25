@@ -66,6 +66,8 @@ class GitHubRepositoryDetailBaseView: UIView {
 extension GitHubRepositoryDetailBaseView {
     private func initHeaderUI() {
         // アバターアイコンの設定
+        self.avatarImageView.clipsToBounds = true
+        self.avatarImageView.layer.cornerRadius = 5
         self.avatarImageView.image = R.image.avatar_default()
         // 各種テキストの設定
         self.titleLabel.text = ""
