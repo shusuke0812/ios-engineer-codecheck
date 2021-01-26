@@ -133,7 +133,14 @@ extension GitHubRepositoryDetailBaseView {
         self.avatarImageView.getImage(imageUrlString: gitHubRepository.owner?.avatarImage ?? "")
         self.titleLabel.text = gitHubRepository.name
         self.descriptionLabel.text = gitHubRepository.description
-        self.homePageButton.setTitle(gitHubRepository.homePage, for: .normal)
+        if let homePageUrl = gitHubRepository.homePage {
+            if homePageUrl.isEmpty {
+                self.homePageButton.setTitle("-", for: .normal)
+                self.homePageButton.isEnabled = false
+            } else {
+                self.homePageButton.setTitle(homePageUrl, for: .normal)
+            }
+        }
         self.languageLabel.text = gitHubRepository.language
         self.setLanguageIconColor(language: gitHubRepository.language)
     }
