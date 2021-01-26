@@ -11,7 +11,7 @@
 import Foundation
 
 class GitHubAPI {
-    struct SearchRepositories: GitHubAPIRequest {
+    struct SearchRepositoriesRequest: GitHubAPIRequest {
         /// 検索ワード
         let searchWord: String
         /// 検索結果の最大取得数
