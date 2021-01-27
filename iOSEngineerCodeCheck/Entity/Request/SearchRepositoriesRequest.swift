@@ -10,30 +10,28 @@
 
 import Foundation
 
-class GitHubAPI {
-    struct SearchRepositoriesRequest: GitHubAPIRequest {
-        /// 検索ワード
-        let searchWord: String
-        /// 検索結果の最大取得数
-        let searchCount: Int
+struct SearchRepositoriesRequest: GitHubAPIRequest {
+    /// 検索ワード
+    let searchWord: String
+    /// 検索結果の最大取得数
+    let searchCount: Int
 
-        // GitHubAPIRequestが要求する連想型
-        typealias Response = GitHubRepository
+    // GitHubAPIRequestが要求する連想型
+    typealias Response = GitHubRepository
 
-        var method: HTTPMethod {
-            .get
-        }
-        var path: String {
-            "/search/repositories"
-        }
-        var parameters: [URLQueryItem] {
-            [
-                URLQueryItem(name: "q", value: self.searchWord),
-                URLQueryItem(name: "per_page", value: "\(self.searchCount)")
-            ]
-        }
-        var body: Encodable? {
-            nil
-        }
+    var method: HTTPMethod {
+        .get
+    }
+    var path: String {
+        "/search/repositories"
+    }
+    var parameters: [URLQueryItem]? {
+        [
+            URLQueryItem(name: "q", value: self.searchWord),
+            URLQueryItem(name: "per_page", value: "\(self.searchCount)")
+        ]
+    }
+    var body: Encodable? {
+        nil
     }
 }
