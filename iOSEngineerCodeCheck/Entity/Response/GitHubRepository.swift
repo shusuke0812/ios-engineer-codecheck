@@ -43,12 +43,12 @@ struct GitHubRepository: Codable {
 
         enum CodingKeys: String, CodingKey {
             case name           = "full_name"
-            case language       = "language"
+            case language
             case starNumber     = "stargazers_count"
             case watchNumber    = "watchers_count"
             case forkNumber     = "forks_count"
             case isueNumber     = "open_issues_ccount"
-            case description    = "description"
+            case description
             case homePage       = "homepage"
             case updatedAt      = "updated_at"
             case owner
