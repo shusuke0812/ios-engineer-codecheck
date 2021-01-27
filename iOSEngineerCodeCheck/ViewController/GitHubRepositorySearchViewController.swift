@@ -58,7 +58,7 @@ extension GitHubRepositorySearchViewController {
         // HUD表示（始）
         HUD.show(.progress)
         // リクエストを組み立ててAPIを呼ぶ
-        let request = GitHubAPI.SearchRepositoriesRequest(searchWord: searchText, searchCount: self.viewModel.maxGitHubRepositorySearchCount).buildURLRequest()
+        let request = SearchRepositoriesRequest(searchWord: searchText, searchCount: self.viewModel.maxGitHubRepositorySearchCount).buildURLRequest()
         self.viewModel.getGitHubRepositorys(request: request)
     }
     // リポジトリがない場合の処理
