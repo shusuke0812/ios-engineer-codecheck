@@ -140,6 +140,9 @@ extension GitHubRepositoryDetailBaseView {
             } else {
                 self.homePageButton.setTitle(homePageUrl, for: .normal)
             }
+        } else {
+            self.homePageButton.setTitle("-", for: .normal)
+            self.homePageButton.isEnabled = false
         }
         self.languageLabel.text = gitHubRepository.language
         self.setLanguageIconColor(language: gitHubRepository.language)
