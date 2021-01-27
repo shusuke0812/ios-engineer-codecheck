@@ -14,7 +14,7 @@ class GitHubLicense: Codable {
     let description: String
     /// 文面
     let body: String
-    
+
     enum CodingKeys: String, CodingKey {
         case description
         case body
