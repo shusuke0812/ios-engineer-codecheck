@@ -13,6 +13,9 @@
 		9C67F56425C24A5A0031F233 /* GitHubLicenseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67F56325C24A5A0031F233 /* GitHubLicenseRepository.swift */; };
 		9C67F56925C250A50031F233 /* GitHubLicenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C67F56825C250A50031F233 /* GitHubLicenseViewModel.swift */; };
 		9C7B98B52573583700D2521B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7B98B42573583700D2521B /* UIImage+Extension.swift */; };
+		9C88CFB825C28B4C001D4AB3 /* GitHubLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C88CFB725C28B4C001D4AB3 /* GitHubLicenseViewController.swift */; };
+		9C88CFBD25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C88CFBC25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard */; };
+		9C88CFC225C28BBB001D4AB3 /* GitHubLicenseBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C88CFC125C28BBB001D4AB3 /* GitHubLicenseBaseView.swift */; };
 		9C8AB79625BBBD6C00634F14 /* SwiftLint.sh in Resources */ = {isa = PBXBuildFile; fileRef = 9C8AB79525BBBD6C00634F14 /* SwiftLint.sh */; };
 		9C8C221F25BAA46700A4C5D1 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C221E25BAA46700A4C5D1 /* R.generated.swift */; };
 		9C8C223025BABA0B00A4C5D1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C8C222F25BABA0B00A4C5D1 /* Settings.bundle */; };
@@ -72,6 +75,9 @@
 		9C67F56325C24A5A0031F233 /* GitHubLicenseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLicenseRepository.swift; sourceTree = "<group>"; };
 		9C67F56825C250A50031F233 /* GitHubLicenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLicenseViewModel.swift; sourceTree = "<group>"; };
 		9C7B98B42573583700D2521B /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		9C88CFB725C28B4C001D4AB3 /* GitHubLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLicenseViewController.swift; sourceTree = "<group>"; };
+		9C88CFBC25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GitHubLicenseViewController.storyboard; sourceTree = "<group>"; };
+		9C88CFC125C28BBB001D4AB3 /* GitHubLicenseBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLicenseBaseView.swift; sourceTree = "<group>"; };
 		9C8AB79525BBBD6C00634F14 /* SwiftLint.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SwiftLint.sh; sourceTree = "<group>"; };
 		9C8C221E25BAA46700A4C5D1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		9C8C222F25BABA0B00A4C5D1 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -174,6 +180,7 @@
 			children = (
 				BFD945E2244DC5E80012785A /* GitHubRepositorySearchViewController.swift */,
 				BF0A658C244F2A3B00280FA6 /* GitHubRepositoryDetailViewController.swift */,
+				9C88CFB725C28B4C001D4AB3 /* GitHubLicenseViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -193,6 +200,7 @@
 				BFD945E9244DC5EB0012785A /* LaunchScreen.storyboard */,
 				BFD945E4244DC5E80012785A /* GitHubRepositorySearchViewController.storyboard */,
 				9CD370D52570D5DB001759F8 /* GitHubRepositoryDetailViewController.storyboard */,
+				9C88CFBC25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -258,6 +266,7 @@
 			children = (
 				9CD370E02570D738001759F8 /* GitHubRepositorySearchBaseView.swift */,
 				9CD370E82570D780001759F8 /* GitHubRepositoryDetailBaseView.swift */,
+				9C88CFC125C28BBB001D4AB3 /* GitHubLicenseBaseView.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -468,6 +477,7 @@
 			files = (
 				9C8AB79625BBBD6C00634F14 /* SwiftLint.sh in Resources */,
 				BFD945EB244DC5EB0012785A /* LaunchScreen.storyboard in Resources */,
+				9C88CFBD25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard in Resources */,
 				BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */,
 				BFD945E6244DC5E80012785A /* GitHubRepositorySearchViewController.storyboard in Resources */,
 				9CD3710B2571F74D001759F8 /* GitHubRepositoryCell.xib in Resources */,
@@ -645,6 +655,7 @@
 				9C8D9B4F25BE9C37006AC01F /* TextHelper.swift in Sources */,
 				9CBF52BD25C1407400AD822B /* GitHubLicense.swift in Sources */,
 				9C7B98B52573583700D2521B /* UIImage+Extension.swift in Sources */,
+				9C88CFB825C28B4C001D4AB3 /* GitHubLicenseViewController.swift in Sources */,
 				9CB47B4F257A25DB00BBC5D4 /* UIViewController+Extension.swift in Sources */,
 				9CD370DB2570D6C9001759F8 /* GitHubRepositorySearchViewModel.swift in Sources */,
 				9C67F56925C250A50031F233 /* GitHubLicenseViewModel.swift in Sources */,
@@ -661,6 +672,7 @@
 				9CD371002571E28E001759F8 /* Common.swift in Sources */,
 				9CBF52C225C1482E00AD822B /* LicenseRequest.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
+				9C88CFC225C28BBB001D4AB3 /* GitHubLicenseBaseView.swift in Sources */,
 				9C8E168625BEE5DB005CC118 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
