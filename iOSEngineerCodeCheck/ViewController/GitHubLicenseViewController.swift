@@ -21,10 +21,15 @@ class GitHubLicenseViewController: UIViewController {
         self.viewModel = GitHubLicenseViewModel(gitHubLicenseRepository: GitHubLicenseRepository())
         self.setDelegateDataSource()
         self.getLicense()
+        self.setNavigation()
     }
 }
 // MARK: - Private Method
 extension GitHubLicenseViewController {
+    // ナビゲーションの設定
+    private func setNavigation() {
+        self.navigationItem.title = "ライセンス"
+    }
     // DelegateとDataSourceの登録
     private func setDelegateDataSource() {
         self.viewModel.delegate = self
