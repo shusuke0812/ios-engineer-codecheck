@@ -49,6 +49,8 @@ extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailBaseViewDe
     func didTapStarButton() {
     }
     func didTapLicenseCell() {
-        self.transitionLicensePage()
+        if gitHubRepository.license != nil {
+            self.transitionLicensePage()
+        }
     }
 }
