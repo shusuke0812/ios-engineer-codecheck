@@ -16,7 +16,6 @@
 		9C88CFB825C28B4C001D4AB3 /* GitHubLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C88CFB725C28B4C001D4AB3 /* GitHubLicenseViewController.swift */; };
 		9C88CFBD25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C88CFBC25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard */; };
 		9C88CFC225C28BBB001D4AB3 /* GitHubLicenseBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C88CFC125C28BBB001D4AB3 /* GitHubLicenseBaseView.swift */; };
-		9C8AB79625BBBD6C00634F14 /* SwiftLint.sh in Resources */ = {isa = PBXBuildFile; fileRef = 9C8AB79525BBBD6C00634F14 /* SwiftLint.sh */; };
 		9C8C221F25BAA46700A4C5D1 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C221E25BAA46700A4C5D1 /* R.generated.swift */; };
 		9C8C223025BABA0B00A4C5D1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C8C222F25BABA0B00A4C5D1 /* Settings.bundle */; };
 		9C8D9B4725BE9579006AC01F /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8D9B4625BE9579006AC01F /* DateHelper.swift */; };
@@ -78,7 +77,6 @@
 		9C88CFB725C28B4C001D4AB3 /* GitHubLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLicenseViewController.swift; sourceTree = "<group>"; };
 		9C88CFBC25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GitHubLicenseViewController.storyboard; sourceTree = "<group>"; };
 		9C88CFC125C28BBB001D4AB3 /* GitHubLicenseBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLicenseBaseView.swift; sourceTree = "<group>"; };
-		9C8AB79525BBBD6C00634F14 /* SwiftLint.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SwiftLint.sh; sourceTree = "<group>"; };
 		9C8C221E25BAA46700A4C5D1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		9C8C222F25BABA0B00A4C5D1 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9C8D9B4625BE9579006AC01F /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -244,14 +242,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		9C8AB79425BBBCF400634F14 /* Script */ = {
-			isa = PBXGroup;
-			children = (
-				9C8AB79525BBBD6C00634F14 /* SwiftLint.sh */,
-			);
-			path = Script;
-			sourceTree = "<group>";
-		};
 		9C8D9B4525BE9516006AC01F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,7 +304,6 @@
 		BFD945DD244DC5E80012785A /* iOSEngineerCodeCheck */ = {
 			isa = PBXGroup;
 			children = (
-				9C8AB79425BBBCF400634F14 /* Script */,
 				9C8D9B4525BE9516006AC01F /* Helper */,
 				9C0804A5256D500C00A8CBEF /* Entity */,
 				9C0804A7256D507900A8CBEF /* Repository */,
@@ -475,7 +464,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C8AB79625BBBD6C00634F14 /* SwiftLint.sh in Resources */,
 				BFD945EB244DC5EB0012785A /* LaunchScreen.storyboard in Resources */,
 				9C88CFBD25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard in Resources */,
 				BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */,
@@ -558,7 +546,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = ". ${PROJECT_DIR}/${PROJECT_NAME}/Script/SwiftLint.sh\n";
+			shellScript = ". ${PROJECT_DIR}/Script/SwiftLint.sh\n";
 		};
 		9C8C221225BAA33500A4C5D1 /* R.swift Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
