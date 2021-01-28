@@ -33,6 +33,10 @@ extension GitHubRepositoryDetailViewController {
     private func setDelegateDataSource() {
         self.baseView.delegate = self
     }
+    private func transitionLicensePage() {
+        guard let vc = R.storyboard.gitHubLicenseViewController.instantiateInitialViewController() else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 // MARK: - BaseView Delegate Method
 extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailBaseViewDelegate {
@@ -44,5 +48,6 @@ extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailBaseViewDe
     func didTapStarButton() {
     }
     func didTapLicenseCell() {
+        self.transitionLicensePage()
     }
 }
