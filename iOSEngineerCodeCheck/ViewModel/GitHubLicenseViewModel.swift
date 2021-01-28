@@ -35,8 +35,10 @@ extension GitHubLicenseViewModel {
         self.gitHubLicenseRepository.getGitHubLicense(request: request) { response in
             switch response {
             case .success(let gitHubLicense):
-                self.gitHubLicense = gitHubLicense
-                self.delegate?.didSuccessGetLicense()
+                DispatchQueue.main.async {
+                    self.gitHubLicense = gitHubLicense
+                    self.delegate?.didSuccessGetLicense()
+                }
             case .failure(let error):
                 self.delegate?.didFailedGetLicense(errorMessage: "GitHubリポジトリのライセンスの取得に失敗しました" + "error=\(error.localizedDescription)")
             }
