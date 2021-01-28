@@ -15,13 +15,57 @@
                     <view key="view" contentMode="scaleToFill" id="x7T-v2-6CK" customClass="GitHubLicenseBaseView" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFS-mC-s7a">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pcZ-8q-jMT">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="800"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmA-ga-P4O">
+                                                <rect key="frame" x="16" y="16" width="382" height="768"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="CmA-ga-P4O" secondAttribute="bottom" constant="16" id="Cm1-51-RsM"/>
+                                            <constraint firstItem="CmA-ga-P4O" firstAttribute="leading" secondItem="pcZ-8q-jMT" secondAttribute="leading" constant="16" id="nsg-hz-ogS"/>
+                                            <constraint firstAttribute="trailing" secondItem="CmA-ga-P4O" secondAttribute="trailing" constant="16" id="p9w-4S-2gO"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="800" id="tfr-e1-vqB"/>
+                                            <constraint firstItem="CmA-ga-P4O" firstAttribute="top" secondItem="pcZ-8q-jMT" secondAttribute="top" constant="16" id="xms-Hv-0iG"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="pcZ-8q-jMT" firstAttribute="top" secondItem="Pbi-my-NJe" secondAttribute="top" id="BOY-0R-Coi"/>
+                                    <constraint firstItem="pcZ-8q-jMT" firstAttribute="leading" secondItem="Pbi-my-NJe" secondAttribute="leading" id="Dmp-t2-0af"/>
+                                    <constraint firstItem="pcZ-8q-jMT" firstAttribute="width" secondItem="SkF-Vy-DtE" secondAttribute="width" id="Ut9-pa-bf9"/>
+                                    <constraint firstItem="pcZ-8q-jMT" firstAttribute="bottom" secondItem="Pbi-my-NJe" secondAttribute="bottom" id="jK2-DL-6hc"/>
+                                    <constraint firstItem="pcZ-8q-jMT" firstAttribute="trailing" secondItem="Pbi-my-NJe" secondAttribute="trailing" id="wEE-CU-VPV"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Pbi-my-NJe"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="SkF-Vy-DtE"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vuL-JY-BAw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YFS-mC-s7a" firstAttribute="leading" secondItem="vuL-JY-BAw" secondAttribute="leading" id="0fU-Dc-C1N"/>
+                            <constraint firstItem="YFS-mC-s7a" firstAttribute="trailing" secondItem="vuL-JY-BAw" secondAttribute="trailing" id="1kJ-j0-fV5"/>
+                            <constraint firstItem="YFS-mC-s7a" firstAttribute="bottom" secondItem="vuL-JY-BAw" secondAttribute="bottom" id="8i8-9F-NmZ"/>
+                            <constraint firstItem="YFS-mC-s7a" firstAttribute="top" secondItem="vuL-JY-BAw" secondAttribute="top" id="krv-Pf-aml"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="licenseLabel" destination="CmA-ga-P4O" id="g51-NN-J1e"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l58-Xa-Wqx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="346" y="79"/>
+            <point key="canvasLocation" x="343.47826086956525" y="78.348214285714278"/>
         </scene>
     </scenes>
     <resources>
