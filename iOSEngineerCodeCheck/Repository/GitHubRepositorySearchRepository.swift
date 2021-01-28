@@ -6,7 +6,7 @@
 //  Copyright © 2020 YUMEMI Inc. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol GitHubRepositorySearchRepositoryProtocol {
     /// GitHubRepositoryを取得する
