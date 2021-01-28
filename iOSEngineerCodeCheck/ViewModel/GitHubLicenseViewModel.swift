@@ -22,7 +22,7 @@ class GitHubLicenseViewModel {
     var gitHubLicense: GitHubLicense?
     /// GitHubLicenseViewModelのデリゲート
     internal weak var delegate: GitHubLicenseViewModelDelegate?
-    
+
     init(gitHubLicenseRepository: GitHubLicenseRepositoryProtocol) {
         self.gitHubLicenseRepository = gitHubLicenseRepository
     }

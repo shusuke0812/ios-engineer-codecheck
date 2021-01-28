@@ -35,6 +35,7 @@ extension GitHubRepositoryDetailViewController {
     }
     private func transitionLicensePage() {
         guard let vc = R.storyboard.gitHubLicenseViewController.instantiateInitialViewController() else { return }
+        vc.gitHubLicenseApiKey = self.gitHubRepository.license?.key
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
