@@ -28,7 +28,9 @@ extension GitHubRepositoryDetailViewController {
         self.navigationItem.title = "リポジトリ詳細"
     }
     private func setUI() {
-        self.baseView.setUI(gitHubRepository: self.gitHubRepository)
+        if let gitHubRepository = self.gitHubRepository {
+            self.baseView.setUI(gitHubRepository: gitHubRepository)
+        }
     }
     private func setDelegateDataSource() {
         self.baseView.delegate = self
