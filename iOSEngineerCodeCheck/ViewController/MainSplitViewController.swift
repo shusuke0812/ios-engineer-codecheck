@@ -10,10 +10,26 @@ import UIKit
 
 class MainSplitViewController: UISplitViewController {
     // デバイスの幅によってdetail部を表示させるかどうかのフラグ
-    private var isCollapseSecondary: Bool { self.traitCollection.containsTraits(in: UITraitCollection(horizontalSizeClass: .regular)) }
+    private var isCollapseSecondary: Bool { self.traitCollection.containsTraits(in: UITraitCollection(horizontalSizeClass: .compact)) }
+    /// MainViewController
+    private let mainVC: UIViewController
+    /// DetailViewController
+    private let detailVC: UIViewController
+
+    init(mainVC: UIViewController, detailVC: UIViewController) {
+        self.mainVC = mainVC
+        self.detailVC = detailVC
+        super.init(nibName: nil, bundle: nil)
+        self.preferredDisplayMode = .oneBesideSecondary
+    }
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - Lifecycle Method
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         self.delegate = self
         self.setSplitViewController()
     }
@@ -21,14 +37,10 @@ class MainSplitViewController: UISplitViewController {
 // MARK: - Private Method
 extension MainSplitViewController {
     private func setSplitViewController() {
-        guard let mainVC = R.storyboard.gitHubRepositorySearchViewController.instantiateInitialViewController() else { return }
-        guard let detailVC = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController() else { return }
-        // 画面表示モードを設定
-        self.preferredDisplayMode = .oneBesideSecondary
         // 詳細画面のボタン設定
-        detailVC.navigationItem.leftBarButtonItem = .none
+        self.detailVC.navigationItem.leftBarButtonItem = .none
         // SplitView登録
-        self.viewControllers = [mainVC, detailVC]
+        self.viewControllers = [self.mainVC, self.detailVC]
     }
 }
 // MARK: - UISplitViewController Delegate Method

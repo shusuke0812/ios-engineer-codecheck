@@ -43,8 +43,10 @@ extension AppDelegate {
     private func openTopPage() {
         // 画面設定
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        guard let vc = R.storyboard.mainSplitViewController.instantiateInitialViewController() else { return }
-        self.window?.rootViewController = vc
+        guard let mainVC = R.storyboard.gitHubRepositorySearchViewController.instantiateInitialViewController() else { return }
+        guard let detailVC = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController() else { return }
+        let splitVC = MainSplitViewController(mainVC: mainVC, detailVC: detailVC)
+        self.window?.rootViewController = splitVC
         // 画面表示
         self.window?.makeKeyAndVisible()
     }
