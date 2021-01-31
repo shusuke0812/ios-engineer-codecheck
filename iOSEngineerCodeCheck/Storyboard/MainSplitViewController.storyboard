@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TGb-XI-Qew">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+    </dependencies>
+    <scenes>
+        <!--GitHubRepositoryDetailViewController-->
+        <scene sceneID="NPu-QL-ud0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GitHubRepositoryDetailViewController" id="v4T-d3-J9Y" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="doe-fj-tcD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="46" y="419"/>
+        </scene>
+        <!--Main Split View Controller-->
+        <scene sceneID="Jy9-0O-J2C">
+            <objects>
+                <splitViewController allowDoubleColumnStyle="YES" id="TGb-XI-Qew" customClass="MainSplitViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="5WP-sf-3Qe" kind="relationship" relationship="masterViewController" id="djd-o8-5se"/>
+                        <segue destination="v4T-d3-J9Y" kind="relationship" relationship="detailViewController" id="jMC-mh-1yQ"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Tq-46-Ve7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-735" y="326"/>
+        </scene>
+        <!--GitHubRepositorySearchViewController-->
+        <scene sceneID="NQn-2m-hR8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GitHubRepositorySearchViewController" id="5WP-sf-3Qe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kud-U3-MO7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="42" y="225"/>
+        </scene>
+    </scenes>
+</document>

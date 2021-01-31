@@ -16,6 +16,8 @@ class GitHubRepositorySearchViewController: UIViewController {
     private var viewModel: GitHubRepositorySearchViewModel!
     /// キーボード起動フラグ
     private var onKeyboard: Bool = false
+    /// デバイスタイプ
+    private let deviceType = UIDevice.current.userInterfaceIdiom
 
     // MARK: - Lifecycle Method
     override func viewDidLoad() {
@@ -40,11 +42,17 @@ extension GitHubRepositorySearchViewController {
     private func setNavigation() {
         self.navigationItem.title = "リポジトリ一覧"
     }
-    // GitHubRepository詳細ページへ遷移
+    // GitHubRepository詳細ページへ遷移（iPhone）
     private func transitionGitHubRepositoryDetail(indexPath: IndexPath) {
         guard let vc = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController() else { return }
         vc.gitHubRepository = self.viewModel.gitHubRepositorys[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    // GitHubRepository詳細ページをスプリットで表示
+    private func showGitHubRepositoryDetail(indexPath: IndexPath) {
+        guard let vc = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController() else { return }
+        vc.gitHubRepository = self.viewModel.gitHubRepositorys[indexPath.row]
+        self.splitViewController?.showDetailViewController(vc, sender: nil)
     }
     // DelegateとDataSourceの登録
     private func setDelegateDataSource() {
@@ -94,7 +102,12 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
 // MARK: - UITableVIew Delegate Method
 extension GitHubRepositorySearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.transitionGitHubRepositoryDetail(indexPath: indexPath)
+        // リポジトリ一覧セルをタップして詳細ページを表示させる
+        switch deviceType {
+        case .phone: self.transitionGitHubRepositoryDetail(indexPath: indexPath)
+        case .pad: self.showGitHubRepositoryDetail(indexPath: indexPath)
+        default: return
+        }
         // セルの選択状態を解除
         self.baseView.tableView.deselectRow(at: indexPath, animated: true)
     }

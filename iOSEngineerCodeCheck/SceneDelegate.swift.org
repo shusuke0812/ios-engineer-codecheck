@@ -6,6 +6,8 @@
 //  Copyright © 2020 YUMEMI Inc. All rights reserved.
 //
 
+/* 任意で設定するクラス */
+
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
