@@ -40,6 +40,11 @@ extension GitHubRepositoryDetailViewController {
         vc.gitHubLicenseApiKey = self.gitHubRepository.license?.key
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    private func showLicensePage() {
+        guard let vc = R.storyboard.gitHubLicenseViewController.instantiateInitialViewController() else { return }
+        vc.gitHubLicenseApiKey = self.gitHubRepository.license?.key
+        self.showDetailViewController(vc, sender: nil)
+    }
 }
 // MARK: - BaseView Delegate Method
 extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailBaseViewDelegate {
@@ -52,7 +57,11 @@ extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailBaseViewDe
     }
     func didTapLicenseCell() {
         if gitHubRepository.license != nil {
-            self.transitionLicensePage()
+            switch DeviceJudgeHelper.getType {
+            case .phone: self.transitionLicensePage()
+            case .pad: self.showLicensePage()
+            default: return
+            }
         }
     }
 }
