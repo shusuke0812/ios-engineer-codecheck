@@ -16,8 +16,6 @@ class GitHubRepositorySearchViewController: UIViewController {
     private var viewModel: GitHubRepositorySearchViewModel!
     /// キーボード起動フラグ
     private var onKeyboard: Bool = false
-    /// デバイスタイプ
-    private let deviceType = UIDevice.current.userInterfaceIdiom
 
     // MARK: - Lifecycle Method
     override func viewDidLoad() {
@@ -103,7 +101,7 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
 extension GitHubRepositorySearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // リポジトリ一覧セルをタップして詳細ページを表示させる
-        switch deviceType {
+        switch DeviceJudgeHelper.getType {
         case .phone: self.transitionGitHubRepositoryDetail(indexPath: indexPath)
         case .pad: self.showGitHubRepositoryDetail(indexPath: indexPath)
         default: return

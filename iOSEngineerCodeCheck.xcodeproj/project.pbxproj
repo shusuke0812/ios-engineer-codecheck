@@ -24,6 +24,7 @@
 		9C8E168625BEE5DB005CC118 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8E168525BEE5DB005CC118 /* UIColor+Extension.swift */; };
 		9C950C4C25C37C2D001BC95B /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C950C4B25C37C2D001BC95B /* MainSplitViewController.swift */; };
 		9C9684B8257468B500A5AAEA /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9684B7257468B500A5AAEA /* UIAlertController+Extension.swift */; };
+		9C99BF4025C7A6CC00F3959F /* DeviceJudgeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C99BF3F25C7A6CC00F3959F /* DeviceJudgeHelper.swift */; };
 		9CB47B4F257A25DB00BBC5D4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB47B4E257A25DB00BBC5D4 /* UIViewController+Extension.swift */; };
 		9CBF52BD25C1407400AD822B /* GitHubLicense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF52BC25C1407400AD822B /* GitHubLicense.swift */; };
 		9CBF52C225C1482E00AD822B /* LicenseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBF52C125C1482E00AD822B /* LicenseRequest.swift */; };
@@ -87,6 +88,7 @@
 		9C8E168525BEE5DB005CC118 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9C950C4B25C37C2D001BC95B /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		9C9684B7257468B500A5AAEA /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		9C99BF3F25C7A6CC00F3959F /* DeviceJudgeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceJudgeHelper.swift; sourceTree = "<group>"; };
 		9CB47B4E257A25DB00BBC5D4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		9CBF52BC25C1407400AD822B /* GitHubLicense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLicense.swift; sourceTree = "<group>"; };
 		9CBF52C125C1482E00AD822B /* LicenseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseRequest.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			children = (
 				9C8D9B4625BE9579006AC01F /* DateHelper.swift */,
 				9C8D9B4E25BE9C37006AC01F /* TextHelper.swift */,
+				9C99BF3F25C7A6CC00F3959F /* DeviceJudgeHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD945E3244DC5E80012785A /* GitHubRepositorySearchViewController.swift in Sources */,
+				9C99BF4025C7A6CC00F3959F /* DeviceJudgeHelper.swift in Sources */,
 				9CD3710A2571F74D001759F8 /* GitHubRepositoryCell.swift in Sources */,
 				9C8C221F25BAA46700A4C5D1 /* R.generated.swift in Sources */,
 				9CD370E92570D780001759F8 /* GitHubRepositoryDetailBaseView.swift in Sources */,
