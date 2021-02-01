@@ -113,6 +113,10 @@ $ open iOSEngineerCodeCheck.xcworkspace
 |:-----:|:-----:|:-----:|
 |![検索前](README_Images/search_screen.png)|![検索後](README_Images/search_result_screen.png)|![詳細画面](README_Images/search_result_detail_screen.png)|
 
+| iPad |
+|:----:|
+|![iPad](README_Images/iPad_screen.png)|
+
 ### 今後の取り組み内容
 - [本リポジトリのProject](https://github.com/shusuke0812/ios-engineer-codecheck/projects/1) にあるToDo及びDoingを予定
 
