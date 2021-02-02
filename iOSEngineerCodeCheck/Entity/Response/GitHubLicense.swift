@@ -9,7 +9,7 @@
 import Foundation
 
 /// GitHubのライセンスデータ格納用
-class GitHubLicense: Codable {
+struct GitHubLicense: Codable {
     /// 説明
     let description: String
     /// 文面
