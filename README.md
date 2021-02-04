@@ -135,7 +135,7 @@ $ open iOSEngineerCodeCheck.xcworkspace
 ```bash
 $ xcodebuild -showBuildSettings | grep "PROJECT"
 ```
-- プルリクエスト記載内容の枠組み
+- イシュー内容の枠組み
 - （下記に基づき、テキスト・画像・gifなどを用いて説明する）
   - バグ、新機能の詳細は？
   - テスト実施環境は？
