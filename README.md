@@ -1,6 +1,9 @@
 # 株式会社ゆめみ iOS エンジニアコードチェック課題
 
-#### ※ 下記はDuplicate先の原文
+<details>
+<summary><b>Duplicate先の原文はこちら</b></summary>
+<div>
+
 
 ## 概要
 
@@ -37,6 +40,10 @@ Issues を確認した上、本プロジェクトを [**Duplicate** してくだ
 | 中途／経験者 | 必須 | 必須 | 選択 |
 
 課題が完成したら、リポジトリーのアドレスを教えてください。
+
+</div>
+</details>
+<br />
 
 ---
 #### ※ 下記はDuplicate先の原文に追記したもの
@@ -128,3 +135,11 @@ $ open iOSEngineerCodeCheck.xcworkspace
 ```bash
 $ xcodebuild -showBuildSettings | grep "PROJECT"
 ```
+- プルリクエスト記載内容の枠組み
+- （下記に基づき、テキスト・画像・gifなどを用いて説明する）
+  - バグ、新機能の詳細は？
+  - テスト実施環境は？
+    - iPhoneデバイスの種類（8, 11proなど）
+    - iOSバージョン
+  - 期待する挙動は？
+  - バグ再現手順、新機能確認手順は？
