@@ -46,7 +46,9 @@ extension GitHubLicenseViewController {
 extension GitHubLicenseViewController: GitHubLicenseViewModelDelegate {
     func didSuccessGetLicense() {
         guard let gitHubLicenseText = self.viewModel.gitHubLicense?.body else { return }
-        self.baseView.setUI(gitHubLicenseText: gitHubLicenseText)
+        DispatchQueue.main.async {
+            self.baseView.setUI(gitHubLicenseText: gitHubLicenseText)
+        }
     }
     func didFailedGetLicense(errorMessage: String) {
         print(errorMessage)

@@ -38,10 +38,8 @@ extension GitHubRepositorySearchViewModel {
         self.gitHubRepositorySearchRepository.getGitHubRepositorys(request: request) { response in
             switch response {
             case .success(let gitHubRepositorys):
-                DispatchQueue.main.async { [weak self] in
-                    self?.gitHubRepositorys = gitHubRepositorys
-                    self?.delegate?.didSuccessGetGitHubRepositorys()
-                }
+                self.gitHubRepositorys = gitHubRepositorys
+                self.delegate?.didSuccessGetGitHubRepositorys()
             case .failure(let error):
                 self.delegate?.didFailedGetGitHubRepositorys(errorMessage: "GitHubRepositoryの取得に失敗しました。" + "error=\(error.localizedDescription)")
             }

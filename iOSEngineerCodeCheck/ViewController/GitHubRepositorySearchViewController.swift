@@ -116,10 +116,12 @@ extension GitHubRepositorySearchViewController: UITableViewDelegate {
 // MARK: - ViewModel Delegate Method
 extension GitHubRepositorySearchViewController: GitHubRepositorySearchViewModelDelegate {
     func didSuccessGetGitHubRepositorys() {
-        self.baseView.setNoRepositoryUI(gitHubRepositorys: self.viewModel.gitHubRepositorys)
-        self.baseView.tableView.reloadData()
-        // HUD表示（終）
-        HUD.hide()
+        DispatchQueue.main.async {
+            self.baseView.setNoRepositoryUI(gitHubRepositorys: self.viewModel.gitHubRepositorys)
+            self.baseView.tableView.reloadData()
+            // HUD表示（終）
+            HUD.hide()
+        }
     }
     func didFailedGetGitHubRepositorys(errorMessage: String) {
         print("DEBUG: \(errorMessage)")
