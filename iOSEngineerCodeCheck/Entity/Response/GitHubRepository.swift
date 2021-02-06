@@ -20,6 +20,8 @@ struct GitHubRepository: Codable {
     struct Item: Codable {
         /// リポジトリ名
         let name: String?
+        /// オーナー名+リポジトリ名
+        let fullName: String?
         /// リポジトリ言語
         let language: String?
         /// スター数
@@ -42,7 +44,8 @@ struct GitHubRepository: Codable {
         let license: License?
 
         enum CodingKeys: String, CodingKey {
-            case name           = "full_name"
+            case name
+            case fullName       = "full_name"
             case language
             case starNumber     = "stargazers_count"
             case watchNumber    = "watchers_count"
@@ -54,8 +57,9 @@ struct GitHubRepository: Codable {
             case owner
             case license
         }
-        init(name: String, language: String, starNumber: Int, watchNumber: Int, forkNumber: Int, isueNumber: Int, description: String, homePage: String, updatedAt: Date, owner: Owner, license: License) {
+        init(name: String, fullName: String, language: String, starNumber: Int, watchNumber: Int, forkNumber: Int, isueNumber: Int, description: String, homePage: String, updatedAt: Date, owner: Owner, license: License) {
             self.name = name
+            self.fullName = fullName
             self.language = language
             self.starNumber = starNumber
             self.watchNumber = watchNumber
@@ -70,17 +74,22 @@ struct GitHubRepository: Codable {
     }
 
     struct Owner: Codable {
+        /// 名前
+        let name: String?
         /// アバター画像URL
         let avatarImage: String?
 
         enum CodingKeys: String, CodingKey {
+            case name        = "login"
             case avatarImage = "avatar_url"
         }
-        init(avatarImage: String) {
+        init(name: String, avatarImage: String) {
+            self.name = name
             self.avatarImage = avatarImage
         }
         init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
+            self.name = try values.decode(String.self, forKey: .name)
             self.avatarImage = try values.decode(String.self, forKey: .avatarImage)
         }
         func encode(to encoder: Encoder) throws {
