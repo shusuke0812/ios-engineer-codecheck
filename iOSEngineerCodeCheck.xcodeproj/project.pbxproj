@@ -22,6 +22,8 @@
 		9C8D9B4725BE9579006AC01F /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8D9B4625BE9579006AC01F /* DateHelper.swift */; };
 		9C8D9B4F25BE9C37006AC01F /* TextHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8D9B4E25BE9C37006AC01F /* TextHelper.swift */; };
 		9C8E168625BEE5DB005CC118 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8E168525BEE5DB005CC118 /* UIColor+Extension.swift */; };
+		9C94A95025CE5DF7000BB17A /* GitHubRepositoryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C94A94F25CE5DF7000BB17A /* GitHubRepositoryDetailViewModel.swift */; };
+		9C94A95525CE5E07000BB17A /* GitHubReadmeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C94A95425CE5E07000BB17A /* GitHubReadmeRepository.swift */; };
 		9C950C4C25C37C2D001BC95B /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C950C4B25C37C2D001BC95B /* MainSplitViewController.swift */; };
 		9C9684B8257468B500A5AAEA /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9684B7257468B500A5AAEA /* UIAlertController+Extension.swift */; };
 		9C99BF4025C7A6CC00F3959F /* DeviceJudgeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C99BF3F25C7A6CC00F3959F /* DeviceJudgeHelper.swift */; };
@@ -88,6 +90,8 @@
 		9C8D9B4625BE9579006AC01F /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		9C8D9B4E25BE9C37006AC01F /* TextHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextHelper.swift; sourceTree = "<group>"; };
 		9C8E168525BEE5DB005CC118 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		9C94A94F25CE5DF7000BB17A /* GitHubRepositoryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositoryDetailViewModel.swift; sourceTree = "<group>"; };
+		9C94A95425CE5E07000BB17A /* GitHubReadmeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubReadmeRepository.swift; sourceTree = "<group>"; };
 		9C950C4B25C37C2D001BC95B /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		9C9684B7257468B500A5AAEA /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		9C99BF3F25C7A6CC00F3959F /* DeviceJudgeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceJudgeHelper.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 			children = (
 				9CD370DA2570D6C9001759F8 /* GitHubRepositorySearchViewModel.swift */,
 				9C67F56825C250A50031F233 /* GitHubLicenseViewModel.swift */,
+				9C94A94F25CE5DF7000BB17A /* GitHubRepositoryDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			children = (
 				9CD370F12571C954001759F8 /* GitHubRepositorySearchRepository.swift */,
 				9C67F56325C24A5A0031F233 /* GitHubLicenseRepository.swift */,
+				9C94A95425CE5E07000BB17A /* GitHubReadmeRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -661,6 +667,7 @@
 				9CBF52BD25C1407400AD822B /* GitHubLicense.swift in Sources */,
 				9C7B98B52573583700D2521B /* UIImage+Extension.swift in Sources */,
 				9C9AD52A25C95D820036352A /* GetRepositoryReadmeRequest.swift in Sources */,
+				9C94A95025CE5DF7000BB17A /* GitHubRepositoryDetailViewModel.swift in Sources */,
 				9C88CFB825C28B4C001D4AB3 /* GitHubLicenseViewController.swift in Sources */,
 				9CB47B4F257A25DB00BBC5D4 /* UIViewController+Extension.swift in Sources */,
 				9CD370DB2570D6C9001759F8 /* GitHubRepositorySearchViewModel.swift in Sources */,
@@ -674,6 +681,7 @@
 				BF0A658D244F2A3B00280FA6 /* GitHubRepositoryDetailViewController.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				9C8D9B4725BE9579006AC01F /* DateHelper.swift in Sources */,
+				9C94A95525CE5E07000BB17A /* GitHubReadmeRepository.swift in Sources */,
 				9C67F56425C24A5A0031F233 /* GitHubLicenseRepository.swift in Sources */,
 				9CD371002571E28E001759F8 /* Common.swift in Sources */,
 				9CBF52C225C1482E00AD822B /* LicenseRequest.swift in Sources */,
