@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 import FontAwesome_swift
 
 protocol GitHubRepositoryDetailBaseViewDelegate: AnyObject {
@@ -39,6 +40,8 @@ class GitHubRepositoryDetailBaseView: UIView {
     @IBOutlet weak var issueNumberLabel: UILabel!
     @IBOutlet weak var licenseIconImageView: UIImageView!
     @IBOutlet weak var licenseLabel: UILabel!
+    // フッター部
+    @IBOutlet weak var webView: WKWebView!
     /// デリゲート
     internal weak var delegate: GitHubRepositoryDetailBaseViewDelegate?
     /// テキストHelper
@@ -131,7 +134,7 @@ extension GitHubRepositoryDetailBaseView {
     }
     private func setHeaderUI(gitHubRepository: GitHubRepository.Item) {
         self.avatarImageView.getImage(imageUrlString: gitHubRepository.owner?.avatarImage ?? "")
-        self.titleLabel.text = gitHubRepository.name
+        self.titleLabel.text = gitHubRepository.fullName
         self.descriptionLabel.text = gitHubRepository.description
         if let homePageUrl = gitHubRepository.homePage {
             if homePageUrl.isEmpty {
@@ -158,5 +161,10 @@ extension GitHubRepositoryDetailBaseView {
     private func setLanguageIconColor(language: String?) {
         guard let language = language else { return }
         self.languageIconView.backgroundColor = LanguageIcon(language: language).color
+    }
+    func setReadmeWebView(urlString: String) {
+        if let url = URL(string: urlString) {
+            self.webView.load(URLRequest(url: url))
+        }
     }
 }
