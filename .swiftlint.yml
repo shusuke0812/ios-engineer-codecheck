@@ -162,6 +162,10 @@ line_length:
 - 300 # warning
 - 400 # error
 
+# クロージャー内の行数制限
+closure_body_length:
+  warning: 30
+
 # 変数名の文字数制限
 identifier_name:
   allowed_symbols: "_"
