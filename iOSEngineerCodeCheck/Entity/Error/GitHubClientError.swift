@@ -16,12 +16,15 @@ enum APIClientError: Error {
     case responseParseError(Error)
     /// APIからのエラーレスポンス（サーバーエラー：400~500番台）
     case apiError(GitHubAPIError)
-    
+    /// 不明なエラー
+    case unknown
+
     func description() -> String {
         switch self {
         case .connectionError:      return "通信に失敗"
         case .responseParseError:   return "レスポンスの変換に失敗"
         case .apiError:             return "サーバーエラー"
+        case .unknown:              return "不明なエラー"
         }
     }
 }
