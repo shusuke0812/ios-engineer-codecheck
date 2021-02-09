@@ -7,7 +7,6 @@
 //
 
 // GitHubAPI クライアントエラー ドキュメント：https://docs.github.com/ja/rest/overview/resources-in-the-rest-api#client-errors
-// GitHubAPI
 
 import Foundation
 
