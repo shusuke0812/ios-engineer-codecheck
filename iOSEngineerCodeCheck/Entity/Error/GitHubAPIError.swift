@@ -13,21 +13,21 @@ import Foundation
 struct GitHubAPIError: Codable, Error {
     var message: String
     var errors: [Error]
-    
+
     enum CodingKeys: String, CodingKey {
         case message
         case errors
     }
-    
+
     struct Error: Codable {
         var resorce: String
         var field: String
-        var missing_field: String
-        
+        var missingField: String
+
         enum CodingKeys: String, CodingKey {
             case resorce
             case field
-            case missing_field
+            case missingField = "missing_field"
         }
     }
 }
