@@ -34,11 +34,11 @@ class GitHubRepositorySearchViewModel: NSObject {
 extension GitHubRepositorySearchViewModel {
     /// GitHubRepositoryを取得する
     /// - Parameter request: APIのリクエスト
-    func getGitHubRepositorys(request: URLRequest) {
-        self.gitHubRepositorySearchRepository.getGitHubRepositorys(request: request) { response in
+    func getGitHubRepositorys(searchWord: String) {
+        self.gitHubRepositorySearchRepository.getGitHubRepositorys(searchWord: searchWord, searchCount: self.maxGitHubRepositorySearchCount) { response in
             switch response {
-            case .success(let gitHubRepositorys):
-                self.gitHubRepositorys = gitHubRepositorys
+            case .success(let response):
+                self.gitHubRepositorys = response.items
                 self.delegate?.didSuccessGetGitHubRepositorys()
             case .failure(let error):
                 self.delegate?.didFailedGetGitHubRepositorys(errorMessage: "GitHubRepositoryの取得に失敗しました。" + "error=\(error.localizedDescription)")

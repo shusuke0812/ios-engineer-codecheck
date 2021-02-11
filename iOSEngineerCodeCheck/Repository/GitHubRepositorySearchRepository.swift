@@ -10,45 +10,31 @@ import Foundation
 
 protocol GitHubRepositorySearchRepositoryProtocol {
     /// GitHubRepositoryを取得する
-    /// - Parameter request: APIのリクエスト
-    func getGitHubRepositorys(request: URLRequest, completion: @escaping (Result<[GitHubRepository.Item], APIClientError>) -> Void)
+    /// - Parameters:
+    ///   - searchWord: 検索ワード
+    ///   - searchCount: 検索出力数
+    func getGitHubRepositorys(searchWord: String, searchCount: Int, completion: @escaping (Result<GitHubRepository, APIClientError>) -> Void)
 }
 class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol {
+    private let apiClient: APIClientProtocol
+
+    init(apiClient: APIClientProtocol = APIClient()) {
+        self.apiClient = apiClient
+    }
 }
 // MARK: - API Method
 extension GitHubRepositorySearchRepository {
-    internal func getGitHubRepositorys(request: URLRequest, completion: @escaping (Result<[GitHubRepository.Item], APIClientError>) -> Void) {
-        // リクエストを送信して、レスポンスを受け取る
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
-            if let error = error {
-                completion(.failure(.connectionError(error)))
-                return
-            }
-            guard let data = data, let response = response as? HTTPURLResponse else {
-                completion(.failure(.unknown))
-                return
-            }
-            print("DEBUG: status=\(response.statusCode)\n", response)
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            if (200..<300).contains(response.statusCode) {
-                do {
-                    let gitHubRepository = try decoder.decode(GitHubRepository.self, from: data)
-                    completion(.success(gitHubRepository.items))
-                } catch {
-                    completion(.failure(.responseParseError(error)))
-                }
-            } else {
-                do {
-                    let apiError = try decoder.decode(GitHubAPIError.self, from: data)
-                    completion(.failure(.apiError(apiError)))
-                } catch {
-                    completion(.failure(.responseParseError(error)))
-                }
+    internal func getGitHubRepositorys(searchWord: String, searchCount: Int, completion: @escaping (Result<GitHubRepository, APIClientError>) -> Void) {
+        // リクエストの組み立て
+        let gitHubAPIRequest = SearchRepositoriesRequest(searchWord: searchWord, searchCount: searchCount)
+        // APIコール
+        self.apiClient.sendRequest(gitHubAPIRequest) { result in
+            switch result {
+            case .success(let response):
+                completion(.success(response))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
-        // タスク実行
-        task.resume()
     }
 }
