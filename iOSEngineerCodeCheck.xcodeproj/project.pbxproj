@@ -17,6 +17,7 @@
 		9C88CFB825C28B4C001D4AB3 /* GitHubLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C88CFB725C28B4C001D4AB3 /* GitHubLicenseViewController.swift */; };
 		9C88CFBD25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C88CFBC25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard */; };
 		9C88CFC225C28BBB001D4AB3 /* GitHubLicenseBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C88CFC125C28BBB001D4AB3 /* GitHubLicenseBaseView.swift */; };
+		9C8B3C0025D4DF9B006054EB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B3BFF25D4DF9B006054EB /* APIClient.swift */; };
 		9C8C221F25BAA46700A4C5D1 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C221E25BAA46700A4C5D1 /* R.generated.swift */; };
 		9C8C223025BABA0B00A4C5D1 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C8C222F25BABA0B00A4C5D1 /* Settings.bundle */; };
 		9C8D9B4725BE9579006AC01F /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8D9B4625BE9579006AC01F /* DateHelper.swift */; };
@@ -87,6 +88,7 @@
 		9C88CFB725C28B4C001D4AB3 /* GitHubLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLicenseViewController.swift; sourceTree = "<group>"; };
 		9C88CFBC25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GitHubLicenseViewController.storyboard; sourceTree = "<group>"; };
 		9C88CFC125C28BBB001D4AB3 /* GitHubLicenseBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLicenseBaseView.swift; sourceTree = "<group>"; };
+		9C8B3BFF25D4DF9B006054EB /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		9C8C221E25BAA46700A4C5D1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		9C8C222F25BABA0B00A4C5D1 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		9C8D9B4625BE9579006AC01F /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				9C95475E25D2BC21002EF380 /* Error */,
 				9C632DA425BBE52100142A3D /* Response */,
 				9C632DA325BBE51600142A3D /* Request */,
+				9C8B3BFF25D4DF9B006054EB /* APIClient.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				9C8D9B4F25BE9C37006AC01F /* TextHelper.swift in Sources */,
 				9C95476125D2BF67002EF380 /* GitHubClientError.swift in Sources */,
 				9CBF52BD25C1407400AD822B /* GitHubLicense.swift in Sources */,
+				9C8B3C0025D4DF9B006054EB /* APIClient.swift in Sources */,
 				9C7B98B52573583700D2521B /* UIImage+Extension.swift in Sources */,
 				9C9AD52A25C95D820036352A /* GetRepositoryReadmeRequest.swift in Sources */,
 				9C94A95025CE5DF7000BB17A /* GitHubRepositoryDetailViewModel.swift in Sources */,
