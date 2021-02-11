@@ -13,6 +13,7 @@ protocol GitHubRepositorySearchRepositoryProtocol {
     /// - Parameters:
     ///   - searchWord: 検索ワード
     ///   - searchCount: 検索出力数
+    ///   - completion: リポジトリ取得の成功、失敗ハンドル
     func getGitHubRepositorys(searchWord: String, searchCount: Int, completion: @escaping (Result<GitHubRepository, APIClientError>) -> Void)
 }
 class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol {
