@@ -31,8 +31,8 @@ class GitHubLicenseViewModel {
 extension GitHubLicenseViewModel {
     /// GitHubリポジトリを取得する
     /// - Parameter request: APIリクエスト
-    func getGitHubLicense(request: URLRequest) {
-        self.gitHubLicenseRepository.getGitHubLicense(request: request) { response in
+    func getGitHubLicense(licenseApiKey: String) {
+        self.gitHubLicenseRepository.getGitHubLicense(licenseApiKey: licenseApiKey) { response in
             switch response {
             case .success(let gitHubLicense):
                 self.gitHubLicense = gitHubLicense

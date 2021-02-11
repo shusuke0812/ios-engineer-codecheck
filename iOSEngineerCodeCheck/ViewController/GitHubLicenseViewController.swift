@@ -36,9 +36,8 @@ extension GitHubLicenseViewController {
     }
     // ライセンス取得
     private func getLicense() {
-        if let key = self.gitHubLicenseApiKey {
-            let request = LicenseRequest(key: key).buildURLRequest()
-            self.viewModel.getGitHubLicense(request: request)
+        if let licenseApikey = self.gitHubLicenseApiKey {
+            self.viewModel.getGitHubLicense(licenseApiKey: licenseApikey)
         }
     }
 }
