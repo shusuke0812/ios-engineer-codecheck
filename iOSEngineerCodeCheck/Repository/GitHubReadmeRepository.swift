@@ -10,40 +10,32 @@ import Foundation
 
 protocol GitHubReadmeRepositoryProtocol {
     /// リポジトリのREADMEを取得する
-    func getRepositoryReadme(request: URLRequest, completion: @escaping (Result<GitHubReadme, APIClientError>) -> Void)
+    /// - Parameters:
+    ///   - owner: リポジトリアカウント名
+    ///   - repository: リポジトリ名
+    ///   - completion: README取得の成功、失敗ハンドル
+    func getRepositoryReadme(owner: String, repository: String, completion: @escaping (Result<GitHubReadme, APIClientError>) -> Void)
 }
 class GitHubReadmeRepository: GitHubReadmeRepositoryProtocol {
+    private let apiClient: APIClientProtocol
+    
+    init(apiClient: APIClientProtocol = APIClient()) {
+        self.apiClient = apiClient
+    }
 }
 // MARK: - API Method
 extension GitHubReadmeRepository {
-    func getRepositoryReadme(request: URLRequest, completion: @escaping (Result<GitHubReadme, APIClientError>) -> Void) {
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
-            if let error = error {
-                completion(.failure(.connectionError(error)))
-            }
-            guard let data = data, let response = response as? HTTPURLResponse else {
-                completion(.failure(.unknown))
-                return
-            }
-            print("DEBUG: status=\(response.statusCode)", response)
-            let decoder = JSONDecoder()
-            if (200..<300).contains(response.statusCode) {
-                do {
-                    let gitHubReadme = try decoder.decode(GitHubReadme.self, from: data)
-                    completion(.success(gitHubReadme))
-                } catch {
-                    completion(.failure(.responseParseError(error)))
-                }
-            } else {
-                do {
-                    let apiError = try decoder.decode(GitHubAPIError.self, from: data)
-                    completion(.failure(.apiError(apiError)))
-                } catch {
-                    completion(.failure(.responseParseError(error)))
-                }
+    func getRepositoryReadme(owner: String, repository: String, completion: @escaping (Result<GitHubReadme, APIClientError>) -> Void) {
+        // リクエストの組み立て
+        let gitHubAPIRequest = GetRepositoryReadmeRequest(owner: owner, repository: repository)
+        // APIコール
+        self.apiClient.sendRequest(gitHubAPIRequest) { result in
+            switch result {
+            case .success(let response):
+                completion(.success(response))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
-        task.resume()
     }
 }

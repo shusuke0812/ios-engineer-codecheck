@@ -32,8 +32,8 @@ class GitHubRepositoryDetailViewModel {
 extension GitHubRepositoryDetailViewModel {
     /// GitHubリポジトリのREADMEを取得する
     /// - Parameter request: APIリクエスト
-    func getGitHubReadme(request: URLRequest) {
-        self.gitHubReadmeRepository.getRepositoryReadme(request: request) { response in
+    func getGitHubReadme(owner: String, repository: String) {
+        self.gitHubReadmeRepository.getRepositoryReadme(owner: owner, repository: repository) { response in
             switch response {
             case .success(let gitHubReadme):
                 self.gitHubReadme = gitHubReadme

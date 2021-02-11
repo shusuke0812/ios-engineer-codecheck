@@ -53,9 +53,8 @@ extension GitHubRepositoryDetailViewController {
     private func loadGitHubReadme() {
         // リクエストを組み立て
         guard let ownerName = self.gitHubRepository?.owner?.name, let repositoryName = self.gitHubRepository?.name else { return }
-        let request = GetRepositoryReadmeRequest(owner: ownerName, repository: repositoryName).buildURLRequest()
         // APIコール
-        self.viewModel.getGitHubReadme(request: request)
+        self.viewModel.getGitHubReadme(owner: ownerName, repository: repositoryName)
     }
 }
 // MARK: - BaseView Delegate Method
