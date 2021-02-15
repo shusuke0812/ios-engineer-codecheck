@@ -25,6 +25,8 @@ class GitHubRepositorySearchViewModel: NSObject {
     internal weak var delegate: GitHubRepositorySearchViewModelDelegate?
     /// GitHubリポジトリの検索結果最大取得数
     let maxGitHubRepositorySearchCount = 20
+    /// GitHubリポジトリの検索ページ番号
+    var gitHubRepositorySearchPageNumber = 1
 
     init(gitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol) {
         self.gitHubRepositorySearchRepository = gitHubRepositorySearchRepository
@@ -35,7 +37,7 @@ extension GitHubRepositorySearchViewModel {
     /// GitHubRepositoryを取得する
     /// - Parameter request: APIのリクエスト
     func getGitHubRepositorys(searchWord: String) {
-        self.gitHubRepositorySearchRepository.getGitHubRepositorys(searchWord: searchWord, searchCount: self.maxGitHubRepositorySearchCount) { response in
+        self.gitHubRepositorySearchRepository.getGitHubRepositorys(searchWord: searchWord, searchCount: self.maxGitHubRepositorySearchCount, page: self.gitHubRepositorySearchPageNumber) { response in
             switch response {
             case .success(let response):
                 self.gitHubRepositorys = response.items

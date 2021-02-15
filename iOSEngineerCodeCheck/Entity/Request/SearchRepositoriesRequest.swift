@@ -15,6 +15,8 @@ struct SearchRepositoriesRequest: GitHubAPIRequest {
     let searchWord: String
     /// 検索結果の最大取得数
     let searchCount: Int
+    /// ページ番号
+    let page: Int
 
     // GitHubAPIRequestが要求する連想型
     typealias Response = GitHubRepository
@@ -28,7 +30,8 @@ struct SearchRepositoriesRequest: GitHubAPIRequest {
     var parameters: [URLQueryItem]? {
         [
             URLQueryItem(name: "q", value: self.searchWord),
-            URLQueryItem(name: "per_page", value: "\(self.searchCount)")
+            URLQueryItem(name: "per_page", value: "\(self.searchCount)"),
+            URLQueryItem(name: "page", value: "\(self.page)")
         ]
     }
     var body: Encodable? {

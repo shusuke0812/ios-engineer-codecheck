@@ -13,8 +13,9 @@ protocol GitHubRepositorySearchRepositoryProtocol {
     /// - Parameters:
     ///   - searchWord: 検索ワード
     ///   - searchCount: 検索出力数
+    ///   - page: ページ番号
     ///   - completion: リポジトリ取得の成功、失敗ハンドル
-    func getGitHubRepositorys(searchWord: String, searchCount: Int, completion: @escaping (Result<GitHubRepository, APIClientError>) -> Void)
+    func getGitHubRepositorys(searchWord: String, searchCount: Int, page: Int, completion: @escaping (Result<GitHubRepository, APIClientError>) -> Void)
 }
 class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol {
     private let apiClient: APIClientProtocol
@@ -25,9 +26,9 @@ class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol
 }
 // MARK: - API Method
 extension GitHubRepositorySearchRepository {
-    internal func getGitHubRepositorys(searchWord: String, searchCount: Int, completion: @escaping (Result<GitHubRepository, APIClientError>) -> Void) {
+    internal func getGitHubRepositorys(searchWord: String, searchCount: Int, page: Int, completion: @escaping (Result<GitHubRepository, APIClientError>) -> Void) {
         // リクエストの組み立て
-        let gitHubAPIRequest = SearchRepositoriesRequest(searchWord: searchWord, searchCount: searchCount)
+        let gitHubAPIRequest = SearchRepositoriesRequest(searchWord: searchWord, searchCount: searchCount, page: page)
         // APIコール
         self.apiClient.sendRequest(gitHubAPIRequest) { result in
             switch result {
