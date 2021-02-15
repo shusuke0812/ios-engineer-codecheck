@@ -64,7 +64,9 @@ extension GitHubRepositorySearchViewController {
         // HUD表示（始）
         HUD.show(.progress)
         // APIコール
-        self.viewModel.getGitHubRepositorys(searchWord: searchText)
+        self.viewModel.initAPIParameters()
+        self.viewModel.searchWord = searchText
+        self.viewModel.getGitHubRepositorys()
     }
     // リポジトリがない場合の処理
     private func setNoRepository() {
@@ -110,6 +112,14 @@ extension GitHubRepositorySearchViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         GitHubRepositoryCell.rowHeight
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentOffsetY = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.height
+        let distanceToBottom = maximumOffset - currentOffsetY
+        if distanceToBottom < 0 && self.baseView.tableView.isDragging {
+            self.viewModel.getGitHubRepositorys()
+        }
     }
 }
 // MARK: - ViewModel Delegate Method

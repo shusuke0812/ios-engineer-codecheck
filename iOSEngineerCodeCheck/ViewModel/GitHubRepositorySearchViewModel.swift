@@ -26,7 +26,11 @@ class GitHubRepositorySearchViewModel: NSObject {
     /// GitHubリポジトリの検索結果最大取得数
     let maxGitHubRepositorySearchCount = 20
     /// GitHubリポジトリの検索ページ番号
-    var gitHubRepositorySearchPageNumber = 1
+    var gitHubRepositorySearchPageNumber: Int = 1
+    /// APIの読み込み状況
+    var apiLoadStatus: APILoadingStatus = .initial
+    /// 検索ワード
+    var searchWord: String = ""
 
     init(gitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol) {
         self.gitHubRepositorySearchRepository = gitHubRepositorySearchRepository
@@ -35,17 +39,34 @@ class GitHubRepositorySearchViewModel: NSObject {
 // MARK: - API Method
 extension GitHubRepositorySearchViewModel {
     /// GitHubRepositoryを取得する
-    /// - Parameter request: APIのリクエスト
-    func getGitHubRepositorys(searchWord: String) {
-        self.gitHubRepositorySearchRepository.getGitHubRepositorys(searchWord: searchWord, searchCount: self.maxGitHubRepositorySearchCount, page: self.gitHubRepositorySearchPageNumber) { response in
+    func getGitHubRepositorys() {
+        /// API読み込み状況
+        if self.apiLoadStatus == .fetching || self.apiLoadStatus == .full {
+            return
+        } else {
+            self.apiLoadStatus = .fetching
+        }
+        self.gitHubRepositorySearchRepository.getGitHubRepositorys(searchWord: self.searchWord, searchCount: self.maxGitHubRepositorySearchCount, page: self.gitHubRepositorySearchPageNumber) { response in
             switch response {
             case .success(let response):
-                self.gitHubRepositorys = response.items
+                if response.items.isEmpty {
+                    self.apiLoadStatus = .full
+                }
+                self.apiLoadStatus = .initial
+                self.gitHubRepositorySearchPageNumber += 1
+                self.gitHubRepositorys.append(contentsOf: response.items)
                 self.delegate?.didSuccessGetGitHubRepositorys()
             case .failure(let error):
+                self.initAPIParameters()
                 self.delegate?.didFailedGetGitHubRepositorys(errorMessage: "GitHubRepositoryの取得に失敗しました。" + "error=\(error.localizedDescription)")
             }
         }
+    }
+    /// APIのコールパラメータを初期化する
+    func initAPIParameters() {
+        self.gitHubRepositorySearchPageNumber = 1
+        self.apiLoadStatus = .initial
+        self.gitHubRepositorys = []
     }
 }
 // MARK: - UITableView DataSource Method
