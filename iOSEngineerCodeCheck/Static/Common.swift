@@ -20,6 +20,13 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
+/// APIの読み込み状況
+enum APILoadingStatus {
+    case initial    // 初回
+    case fetching   // 読み込み中
+    case full       // 終わり
+}
+
 /// 言語カラー
 enum LanguageIcon {
     case swift      // 薄いオレンジ色 #ffac45
