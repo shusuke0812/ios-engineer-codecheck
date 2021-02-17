@@ -49,10 +49,11 @@ extension GitHubRepositorySearchViewModel {
         self.gitHubRepositorySearchRepository.getGitHubRepositorys(searchWord: self.searchWord, searchCount: self.maxGitHubRepositorySearchCount, page: self.gitHubRepositorySearchPageNumber) { response in
             switch response {
             case .success(let response):
-                if response.items.isEmpty {
+                if response.items.isEmpty || response.items.count < self.maxGitHubRepositorySearchCount {
                     self.apiLoadStatus = .full
+                } else {
+                    self.apiLoadStatus = .initial
                 }
-                self.apiLoadStatus = .initial
                 self.gitHubRepositorySearchPageNumber += 1
                 self.gitHubRepositorys.append(contentsOf: response.items)
                 self.delegate?.didSuccessGetGitHubRepositorys()

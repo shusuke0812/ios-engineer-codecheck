@@ -63,6 +63,10 @@ extension GitHubRepositorySearchViewController {
     private func getRepositorys(searchText: String) {
         // HUD表示（始）
         HUD.show(.progress)
+        // TableFooterViewにActivtyIindicatorを設定
+        if self.baseView.tableView.tableFooterView == nil {
+            self.baseView.setLodingCellWithStartingAnimation()
+        }
         // APIコール
         self.viewModel.initAPIParameters()
         self.viewModel.searchWord = searchText
@@ -127,6 +131,9 @@ extension GitHubRepositorySearchViewController: GitHubRepositorySearchViewModelD
     func didSuccessGetGitHubRepositorys() {
         DispatchQueue.main.async {
             self.baseView.setNoRepositoryUI(gitHubRepositorys: self.viewModel.gitHubRepositorys)
+            if self.viewModel.apiLoadStatus == .full {
+                self.baseView.cancelTableFooterView()
+            }
             self.baseView.tableView.reloadData()
             // HUD表示（終）
             HUD.hide()

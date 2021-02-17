@@ -28,7 +28,7 @@ extension GitHubRepositorySearchBaseView {
         self.searchBar.placeholder = "GitHubのリポジトリを検索できるよー"
         // TableViewセル登録
         self.tableView.register(R.nib.gitHubRepositoryCell)
-        self.setLodingCell()
+        self.setLodingCellWithStartingAnimation()
         // リポジトリ検索結果の表示
         self.noRepositoryView.isHidden = false
         self.noRepositoryCommentLabel.text = "リポジトリがないよー"
@@ -36,10 +36,15 @@ extension GitHubRepositorySearchBaseView {
     func setNoRepositoryUI(gitHubRepositorys: [GitHubRepository.Item]) {
         gitHubRepositorys.isEmpty ? (self.noRepositoryView.isHidden = false) : (self.noRepositoryView.isHidden = true)
     }
-    private func setLodingCell() {
-        self.tableView.register(R.nib.lodingCell)
-        let footerCell: LodingCell = self.tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.loadingCell.identifier) as! LodingCell // swiftlint:disable:this force_cast
-        footerCell.startAnimation()
-        self.tableView.tableFooterView = footerCell.contentView
+    func setLodingCellWithStartingAnimation() {
+        if self.tableView.tableFooterView == nil {
+            self.tableView.register(R.nib.lodingCell)
+            let footerCell: LodingCell = self.tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.loadingCell.identifier) as! LodingCell // swiftlint:disable:this force_cast
+            footerCell.startAnimation()
+            self.tableView.tableFooterView = footerCell.contentView
+        }
+    }
+    func cancelTableFooterView() {
+        self.tableView.tableFooterView = nil
     }
 }
