@@ -18,7 +18,7 @@ protocol GitHubReadmeRepositoryProtocol {
 }
 class GitHubReadmeRepository: GitHubReadmeRepositoryProtocol {
     private let apiClient: APIClientProtocol
-    
+
     init(apiClient: APIClientProtocol = APIClient()) {
         self.apiClient = apiClient
     }

@@ -9,9 +9,8 @@
 import UIKit
 
 class LodingCell: UITableViewCell {
-
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
