@@ -105,8 +105,9 @@ $ open iOSEngineerCodeCheck.xcworkspace
 - [補足](https://docs.google.com/document/d/17Yw5mwveyvS5llqP7CnE-C9KhJ9JP55ZnwIiUUik4yE/edit?usp=sharing)
 
 ### 機能変化点
-- インクリメンタルサーチができるようにした
+- 【無効】インクリメンタルサーチができるようにした
   - ただし、導入目的は `searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)` メソッドの使い方を勉強するためである。GitHubリポジトリの検索アプリの仕様としては不要かもしれない
+- ページネーションできるようにした
 
 ### UI変化点
 - 画面のタイトルを変更
