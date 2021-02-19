@@ -34,7 +34,10 @@ struct SearchRepositoriesRequest: GitHubAPIRequest {
             URLQueryItem(name: "page", value: "\(self.page)")
         ]
     }
-    var body: Encodable? {
+    var header: [String: String]? {
+        nil
+    }
+    var body: Data? {
         nil
     }
 }

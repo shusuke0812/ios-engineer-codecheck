@@ -28,7 +28,10 @@ struct GetRepositoryReadmeRequest: GitHubAPIRequest {
     var parameters: [URLQueryItem]? {
         nil
     }
-    var body: Encodable? {
+    var header: [String: String]? {
+        nil
+    }
+    var body: Data? {
         nil
     }
 }

@@ -15,7 +15,8 @@ protocol GitHubAPIRequest {
     var path: String { get }
     var method: HTTPMethod { get }
     var parameters: [URLQueryItem]? { get }
-    var body: Encodable? { get }
+    var header: [String: String]? { get }
+    var body: Data? { get }
 }
 // MARK: - Custom Setting
 extension GitHubAPIRequest {
