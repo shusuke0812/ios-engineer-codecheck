@@ -23,10 +23,10 @@ class GitHubRepositorySearchViewController: UIViewController {
         self.viewModel = GitHubRepositorySearchViewModel(gitHubRepositorySearchRepository: GitHubRepositorySearchRepository())
         self.setDelegateDataSource()
         self.setNavigation()
-        setDissmissKeyboard()
+        self.setDissmissKeyboard()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         // 画面起動時にSearchFieldをONにしてキーボードを立ちげる（UI/UX向上）
         if !onKeyboard {
             self.baseView.searchBar.becomeFirstResponder()
@@ -34,23 +34,11 @@ class GitHubRepositorySearchViewController: UIViewController {
         }
     }
 }
-// MARK: - Private Method
+// MARK: - Initialized Method
 extension GitHubRepositorySearchViewController {
     // ナビゲーションの設定
     private func setNavigation() {
         self.navigationItem.title = "リポジトリ一覧"
-    }
-    // GitHubRepository詳細ページへ遷移（iPhone）
-    private func transitionGitHubRepositoryDetail(indexPath: IndexPath) {
-        guard let vc = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController() else { return }
-        vc.gitHubRepository = self.viewModel.gitHubRepositorys[indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    // GitHubRepository詳細ページをスプリットで表示
-    private func showGitHubRepositoryDetail(indexPath: IndexPath) {
-        guard let vc = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController() else { return }
-        vc.gitHubRepository = self.viewModel.gitHubRepositorys[indexPath.row]
-        self.splitViewController?.showDetailViewController(vc, sender: nil)
     }
     // DelegateとDataSourceの登録
     private func setDelegateDataSource() {
@@ -58,6 +46,21 @@ extension GitHubRepositorySearchViewController {
         self.baseView.tableView.delegate = self
         self.baseView.tableView.dataSource = self.viewModel
         self.viewModel.delegate = self
+    }
+}
+// MARK: - Private Method
+extension GitHubRepositorySearchViewController {
+    // GitHubRepository詳細ページへ遷移（iPhone）
+    private func transitionGitHubRepositoryDetail(indexPath: IndexPath) {
+        guard let vc = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController() else { return }
+        vc.gitHubRepository = self.viewModel.gitHubRepositorys[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    // GitHubRepository詳細ページをスプリットで表示（iPad）
+    private func showGitHubRepositoryDetail(indexPath: IndexPath) {
+        guard let vc = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController() else { return }
+        vc.gitHubRepository = self.viewModel.gitHubRepositorys[indexPath.row]
+        self.splitViewController?.showDetailViewController(vc, sender: nil)
     }
     // リポジトリ検索APIを呼ぶ
     private func getRepositorys(searchText: String) {
