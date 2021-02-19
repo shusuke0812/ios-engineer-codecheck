@@ -38,7 +38,8 @@ extension GitHubLicenseViewModel {
                 self.gitHubLicense = gitHubLicense
                 self.delegate?.didSuccessGetLicense()
             case .failure(let error):
-                self.delegate?.didFailedGetLicense(errorMessage: "GitHubリポジトリのライセンスの取得に失敗しました" + "error=\(error.localizedDescription)")
+                print("DEBUG: ", error)
+                self.delegate?.didFailedGetLicense(errorMessage: error.description())
             }
         }
     }

@@ -58,8 +58,9 @@ extension GitHubRepositorySearchViewModel {
                 self.gitHubRepositorys.append(contentsOf: response.items)
                 self.delegate?.didSuccessGetGitHubRepositorys()
             case .failure(let error):
+                print("DEBUG: ", error)
                 self.initAPIParameters()
-                self.delegate?.didFailedGetGitHubRepositorys(errorMessage: "GitHubRepositoryの取得に失敗しました。" + "error=\(error.localizedDescription)")
+                self.delegate?.didFailedGetGitHubRepositorys(errorMessage: error.description())
             }
         }
     }

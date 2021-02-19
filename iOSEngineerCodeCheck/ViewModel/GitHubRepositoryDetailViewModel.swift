@@ -39,7 +39,8 @@ extension GitHubRepositoryDetailViewModel {
                 self.gitHubReadme = gitHubReadme
                 self.delegate?.didSuccessGetReadme()
             case .failure(let error):
-                self.delegate?.didFailedGetReadme(errorMessage: "GitHubリポジトリのREADMEの取得に失敗しました" + "error=\(error.localizedDescription)")
+                print("DEBUG: ", error)
+                self.delegate?.didFailedGetReadme(errorMessage: error.description())
             }
         }
     }
