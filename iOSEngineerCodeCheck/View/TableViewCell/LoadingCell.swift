@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LodingCell: UITableViewCell {
+class LoadingCell: UITableViewCell {
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
 
     override func awakeFromNib() {
@@ -16,7 +16,7 @@ class LodingCell: UITableViewCell {
     }
 }
 // MARK: - Animation Method
-extension LodingCell {
+extension LoadingCell {
     func startAnimation() {
         self.activityIndicatorView.startAnimating()
     }

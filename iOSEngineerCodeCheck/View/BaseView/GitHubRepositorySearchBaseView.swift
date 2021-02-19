@@ -38,8 +38,8 @@ extension GitHubRepositorySearchBaseView {
     }
     func setLodingCellWithStartingAnimation() {
         if self.tableView.tableFooterView == nil {
-            self.tableView.register(R.nib.lodingCell)
-            let footerCell: LodingCell = self.tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.loadingCell.identifier) as! LodingCell // swiftlint:disable:this force_cast
+            self.tableView.register(R.nib.loadingCell)
+            let footerCell: LoadingCell = self.tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.loadingCell.identifier) as! LoadingCell // swiftlint:disable:this force_cast
             footerCell.startAnimation()
             self.tableView.tableFooterView = footerCell.contentView
         }
