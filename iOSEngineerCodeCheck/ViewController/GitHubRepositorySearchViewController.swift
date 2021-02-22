@@ -77,7 +77,7 @@ extension GitHubRepositorySearchViewController {
     }
     // リポジトリがない場合の処理
     private func setNoRepository() {
-        self.viewModel.gitHubRepositorys = []
+        self.viewModel.initAPIParameters()
         self.baseView.setNoRepositoryUI(gitHubRepositorys: self.viewModel.gitHubRepositorys)
     }
     // リポジトリ検索ハンドル
