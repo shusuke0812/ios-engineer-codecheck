@@ -49,7 +49,7 @@ extension GitHubRepositorySearchViewModel {
         self.gitHubRepositorySearchRepository.getGitHubRepositorys(searchWord: self.searchWord, searchCount: self.maxGitHubRepositorySearchCount, page: self.gitHubRepositorySearchPageNumber) { response in
             switch response {
             case .success(let response):
-                if response.items.isEmpty || response.items.count < self.maxGitHubRepositorySearchCount {
+                if response.items.count < self.maxGitHubRepositorySearchCount {
                     self.apiLoadStatus = .full
                 } else {
                     self.apiLoadStatus = .initial
@@ -58,8 +58,6 @@ extension GitHubRepositorySearchViewModel {
                 self.gitHubRepositorys.append(contentsOf: response.items)
                 self.delegate?.didSuccessGetGitHubRepositorys()
             case .failure(let error):
-                print("DEBUG: ", error)
-                self.initAPIParameters()
                 self.delegate?.didFailedGetGitHubRepositorys(errorMessage: error.description())
             }
         }
