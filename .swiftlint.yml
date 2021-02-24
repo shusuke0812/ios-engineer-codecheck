@@ -24,7 +24,6 @@ disabled_rules:
 - nesting                                     # 入れ子になった構造体内のenumをネストしたいため
 - unused_optional_binding                     # SceneDelegateのguard let _ = ...を許容するため
 - redundant_string_enum_value                 # Response型のプロパティ名とJSONのキーが同じでもenumでそれを明示したいため
-- cyclomatic_complexity                       # enumの初期化メソッドで11以上のcaseを定義したいため
 
 # opt-inルールで無効にするもの
 - discouraged_optional_collection             # AppDelegateの引数で警告が出るため

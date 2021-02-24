@@ -46,7 +46,7 @@ enum LanguageIcon {
     case php        // #384d54
     case shell      // 薄い緑色 #89e051
     case other
-
+    // swiftlint:disable cyclomatic_complexity
     init(language: String) {
         switch language {
         case "Swift":       self = .swift
@@ -68,6 +68,7 @@ enum LanguageIcon {
         default:            self = .other
         }
     }
+    // swiftlint:enable cyclomatic_complexity
     /// 言語毎のHEXカラー（色はGitHubのWebページ参考）
     var color: UIColor {
         switch self {
