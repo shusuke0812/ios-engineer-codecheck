@@ -32,6 +32,8 @@ extension GitHubRepositorySearchBaseView {
         // リポジトリ検索結果の表示
         self.noRepositoryView.isHidden = false
         self.noRepositoryCommentLabel.text = "リポジトリがないよー"
+        self.noRepositoryCommentLabel.font = .boldSystemFont(ofSize: 17)
+        self.noRepositoryCommentLabel.textColor = .lightGray
     }
     func setNoRepositoryUI(gitHubRepositorys: [GitHubRepository.Item]) {
         gitHubRepositorys.isEmpty ? (self.noRepositoryView.isHidden = false) : (self.noRepositoryView.isHidden = true)
