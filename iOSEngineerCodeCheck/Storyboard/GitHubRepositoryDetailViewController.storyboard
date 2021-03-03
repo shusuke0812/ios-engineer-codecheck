@@ -341,22 +341,22 @@
                         <connections>
                             <outlet property="avatarImageView" destination="Zxf-qn-w9H" id="fDh-gE-beF"/>
                             <outlet property="descriptionLabel" destination="P2S-1i-6ao" id="NQ2-g3-41W"/>
-                            <outlet property="forkIconImageView" destination="kT8-tv-cZe" id="NJc-is-9qa"/>
-                            <outlet property="forkNumberLabel" destination="W3o-hs-7hE" id="vwE-Np-Ele"/>
                             <outlet property="homePageButton" destination="tkv-m4-YSJ" id="tmN-g9-4qw"/>
-                            <outlet property="issueIconImageView" destination="jFn-VC-eYr" id="lND-VG-DEP"/>
-                            <outlet property="issueNumberLabel" destination="bkE-wX-XFa" id="OHD-Vv-Au2"/>
                             <outlet property="languageIconView" destination="AjZ-VQ-Vy9" id="a4T-Zg-oWt"/>
                             <outlet property="languageLabel" destination="fmO-IS-cTu" id="RAj-F5-mAA"/>
-                            <outlet property="licenseIconImageView" destination="nP4-YC-9Mk" id="sDi-WV-tVC"/>
-                            <outlet property="licenseLabel" destination="E2c-X1-0ol" id="431-YQ-1Ap"/>
                             <outlet property="starButton" destination="JLz-Ap-Wnp" id="4jh-Pw-1tx"/>
-                            <outlet property="starIconImageView" destination="D16-ez-OIz" id="6l0-Vn-z9C"/>
-                            <outlet property="starNumberLabel" destination="yvj-y5-Pla" id="3HQ-ny-13W"/>
                             <outlet property="titleLabel" destination="fjf-NY-jmM" id="FUC-gq-teH"/>
-                            <outlet property="watchIconImageView" destination="kFI-sO-TRe" id="kYk-9e-Pld"/>
-                            <outlet property="watchNumberLabel" destination="OIW-lJ-nwu" id="31e-BE-zAB"/>
                             <outlet property="webView" destination="bO9-dQ-ybB" id="3QG-jV-NBx"/>
+                            <outletCollection property="repositoryInformationIconImageViews" destination="D16-ez-OIz" collectionClass="NSMutableArray" id="nCt-2W-A4W"/>
+                            <outletCollection property="repositoryInformationLabels" destination="yvj-y5-Pla" collectionClass="NSMutableArray" id="z4m-rf-W5O"/>
+                            <outletCollection property="repositoryInformationIconImageViews" destination="kFI-sO-TRe" collectionClass="NSMutableArray" id="G7H-Eh-MuT"/>
+                            <outletCollection property="repositoryInformationLabels" destination="OIW-lJ-nwu" collectionClass="NSMutableArray" id="Bb3-t1-2su"/>
+                            <outletCollection property="repositoryInformationIconImageViews" destination="kT8-tv-cZe" collectionClass="NSMutableArray" id="fHB-jt-ufE"/>
+                            <outletCollection property="repositoryInformationLabels" destination="W3o-hs-7hE" collectionClass="NSMutableArray" id="vpt-UQ-WP0"/>
+                            <outletCollection property="repositoryInformationIconImageViews" destination="jFn-VC-eYr" collectionClass="NSMutableArray" id="kE9-Au-FiM"/>
+                            <outletCollection property="repositoryInformationLabels" destination="bkE-wX-XFa" collectionClass="NSMutableArray" id="BN0-fL-sWB"/>
+                            <outletCollection property="repositoryInformationIconImageViews" destination="nP4-YC-9Mk" collectionClass="NSMutableArray" id="hue-70-kEQ"/>
+                            <outletCollection property="repositoryInformationLabels" destination="E2c-X1-0ol" collectionClass="NSMutableArray" id="Rr7-l1-ndW"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="A3y-W4-xkx"/>

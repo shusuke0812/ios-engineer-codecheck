@@ -30,16 +30,8 @@ class GitHubRepositoryDetailBaseView: UIView {
     // お気に入りボタン
     @IBOutlet weak var starButton: UIButton!
     // ボディー部
-    @IBOutlet weak var starIconImageView: UIImageView!
-    @IBOutlet weak var starNumberLabel: UILabel!
-    @IBOutlet weak var watchIconImageView: UIImageView!
-    @IBOutlet weak var watchNumberLabel: UILabel!
-    @IBOutlet weak var forkIconImageView: UIImageView!
-    @IBOutlet weak var forkNumberLabel: UILabel!
-    @IBOutlet weak var issueIconImageView: UIImageView!
-    @IBOutlet weak var issueNumberLabel: UILabel!
-    @IBOutlet weak var licenseIconImageView: UIImageView!
-    @IBOutlet weak var licenseLabel: UILabel!
+    @IBOutlet var repositoryInformationIconImageViews: [UIImageView]!
+    @IBOutlet var repositoryInformationLabels: [UILabel]!
     // フッター部
     @IBOutlet weak var webView: WKWebView!
     /// デリゲート
@@ -90,40 +82,22 @@ extension GitHubRepositoryDetailBaseView {
     private func initBodyUI() {
         // ラベルの設定
         let defauletNumber = 0
-        self.starNumberLabel.text = "\(defauletNumber)"
-        self.watchNumberLabel.text = "\(defauletNumber)"
-        self.forkNumberLabel.text = "\(defauletNumber)"
-        self.issueNumberLabel.text = "\(defauletNumber)"
-        self.licenseLabel.text = "NO LICENSE"
-        // アイコンの設定（TODO: うまくまとめられないか？）
+        for information in RepositoryDetail.informations {
+            switch information {
+            case .license:
+                self.repositoryInformationLabels[information.rawValue].text = "NO LICENSE"
+            default:
+                self.repositoryInformationLabels[information.rawValue].text = "\(defauletNumber)"
+            }
+        }
         // MEMO: fontawesomeのstyleを.regularにすると表示されないバグあり（原因不明）
-        let iconSize = CGSize(width: 25, height: 25)
         let cornerRadius: CGFloat = 5
-        // スター
-        self.starIconImageView.clipsToBounds = true
-        self.starIconImageView.layer.cornerRadius = cornerRadius
-        self.starIconImageView.backgroundColor = .systemBlue
-        self.starIconImageView.image = UIImage.fontAwesomeIcon(name: .star, style: .solid, textColor: .white, size: iconSize)
-        // ウォッチ
-        self.watchIconImageView.clipsToBounds = true
-        self.watchIconImageView.layer.cornerRadius = cornerRadius
-        self.watchIconImageView.backgroundColor = .systemYellow
-        self.watchIconImageView.image = UIImage.fontAwesomeIcon(name: .eye, style: .solid, textColor: .white, size: iconSize)
-        // フォーク
-        self.forkIconImageView.clipsToBounds = true
-        self.forkIconImageView.layer.cornerRadius = cornerRadius
-        self.forkIconImageView.backgroundColor = .systemGreen
-        self.forkIconImageView.image = UIImage.fontAwesomeIcon(name: .codeBranch, style: .solid, textColor: .white, size: iconSize)
-        // イシュー
-        self.issueIconImageView.clipsToBounds = true
-        self.issueIconImageView.layer.cornerRadius = cornerRadius
-        self.issueIconImageView.backgroundColor = .systemOrange
-        self.issueIconImageView.image = UIImage.fontAwesomeIcon(name: .infoCircle, style: .solid, textColor: .white, size: iconSize)
-        // ライセンス
-        self.licenseIconImageView.clipsToBounds = true
-        self.licenseIconImageView.layer.cornerRadius = cornerRadius
-        self.licenseIconImageView.backgroundColor = .systemRed
-        self.licenseIconImageView.image = UIImage.fontAwesomeIcon(name: .balanceScale, style: .solid, textColor: .white, size: iconSize)
+        for information in RepositoryDetail.informations {
+            self.repositoryInformationIconImageViews[information.rawValue].clipsToBounds = true
+            self.repositoryInformationIconImageViews[information.rawValue].layer.cornerRadius = cornerRadius
+            self.repositoryInformationIconImageViews[information.rawValue].backgroundColor = information.iconColor
+            self.repositoryInformationIconImageViews[information.rawValue].image = information.iconImage
+        }
     }
 }
 // MARK: - Setting UI Method
@@ -152,11 +126,14 @@ extension GitHubRepositoryDetailBaseView {
     }
     private func setBodyUI(gitHubRepository: GitHubRepository.Item) {
         let defauletNumber = 0
-        self.starNumberLabel.text = textHelper.formatToCSV(value: gitHubRepository.starNumber ?? defauletNumber)
-        self.watchNumberLabel.text = textHelper.formatToCSV(value: gitHubRepository.watchNumber ?? defauletNumber)
-        self.forkNumberLabel.text = textHelper.formatToCSV(value: gitHubRepository.forkNumber ?? defauletNumber)
-        self.issueNumberLabel.text = textHelper.formatToCSV(value: gitHubRepository.isueNumber ?? defauletNumber)
-        self.licenseLabel.text = gitHubRepository.license?.name
+        for information in RepositoryDetail.informations {
+            switch information {
+            case .license:
+                self.repositoryInformationLabels[information.rawValue].text = information.text(gitHubRepository: gitHubRepository).name
+            default:
+                self.repositoryInformationLabels[information.rawValue].text = textHelper.formatToCSV(value: information.text(gitHubRepository: gitHubRepository).number[information.rawValue] ?? defauletNumber)
+            }
+        }
     }
     private func setLanguageIconColor(language: String?) {
         guard let language = language else { return }

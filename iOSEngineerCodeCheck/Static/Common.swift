@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 /// モジュール内共通のデータ
 struct Common {
@@ -25,6 +26,46 @@ enum APILoadingStatus {
     case initial    // 初回
     case fetching   // 読み込み中
     case full       // 終わり
+}
+
+/// リポジトリ詳細
+enum RepositoryDetail: Int {
+    case star       = 0
+    case watch      = 1
+    case fork       = 2
+    case issue      = 3
+    case license    = 4
+}
+extension RepositoryDetail {
+    /// リポジトリ詳細画面のボディー部で使うアイコンとラベルの識別子
+    static var informations: [RepositoryDetail] {
+        [.star, .watch, .fork, .issue, .license]
+    }
+    /// アイコン色
+    var iconColor: UIColor {
+        switch self {
+        case .star:     return .systemBlue
+        case .watch:    return .systemYellow
+        case .fork:     return .systemGreen
+        case .issue:    return .systemOrange
+        case .license:  return .systemRed
+        }
+    }
+    /// アイコンイメージ
+    var iconImage: UIImage {
+        let iconSize = CGSize(width: 25, height: 25)
+        switch self {
+        case .star:     return UIImage.fontAwesomeIcon(name: .star, style: .solid, textColor: .white, size: iconSize)
+        case .watch:    return UIImage.fontAwesomeIcon(name: .eye, style: .solid, textColor: .white, size: iconSize)
+        case .fork:     return UIImage.fontAwesomeIcon(name: .codeBranch, style: .solid, textColor: .white, size: iconSize)
+        case .issue:    return UIImage.fontAwesomeIcon(name: .infoCircle, style: .solid, textColor: .white, size: iconSize)
+        case .license:  return UIImage.fontAwesomeIcon(name: .balanceScale, style: .solid, textColor: .white, size: iconSize)
+        }
+    }
+    /// テキスト情報
+    func text(gitHubRepository: GitHubRepository.Item) -> (number: [Int?], name: String?) {
+        ([gitHubRepository.starNumber, gitHubRepository.watchNumber, gitHubRepository.forkNumber, gitHubRepository.isueNumber], gitHubRepository.license?.name)
+    }
 }
 
 /// 言語カラー
