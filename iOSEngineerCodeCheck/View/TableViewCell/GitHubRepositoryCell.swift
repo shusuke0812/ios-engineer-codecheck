@@ -19,8 +19,6 @@ class GitHubRepositoryCell: UITableViewCell {
 
     /// セル高さ
     static let rowHeight: CGFloat = 120
-    /// Dateヘルパー
-    private let dateHelper = DateHelper()
     /// Textヘルパー
     private let textHelper = TextHelper()
 
@@ -49,7 +47,7 @@ extension GitHubRepositoryCell {
         self.starLabel.text = textHelper.formatToCSV(value: gitHubRepository.starNumber ?? 0)
         self.languageLabel.text = gitHubRepository.language
         self.setLanguageIconColor(language: gitHubRepository.language)
-        self.updatedDateLabel.text = "updated: " + dateHelper.formatToString(date: gitHubRepository.updatedAt)
+        self.updatedDateLabel.text = "updated: " + DateHelper.shared.formatToString(date: gitHubRepository.updatedAt)
     }
     private func setLanguageIconColor(language: String?) {
         guard let language = language else { return }
