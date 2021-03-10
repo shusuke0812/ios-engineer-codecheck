@@ -36,8 +36,6 @@ class GitHubRepositoryDetailBaseView: UIView {
     @IBOutlet weak var webView: WKWebView!
     /// デリゲート
     internal weak var delegate: GitHubRepositoryDetailBaseViewDelegate?
-    /// テキストHelper
-    private let textHelper = TextHelper()
 
     // MARK: - Lifecycle Method
     override func awakeFromNib() {
@@ -131,7 +129,7 @@ extension GitHubRepositoryDetailBaseView {
             case .license:
                 self.repositoryInformationLabels[information.rawValue].text = information.text(gitHubRepository: gitHubRepository).name
             default:
-                self.repositoryInformationLabels[information.rawValue].text = textHelper.formatToCSV(value: information.text(gitHubRepository: gitHubRepository).number[information.rawValue] ?? defauletNumber)
+                self.repositoryInformationLabels[information.rawValue].text = TextHelper.shared.formatToCSV(value: information.text(gitHubRepository: gitHubRepository).number[information.rawValue] ?? defauletNumber)
             }
         }
     }
