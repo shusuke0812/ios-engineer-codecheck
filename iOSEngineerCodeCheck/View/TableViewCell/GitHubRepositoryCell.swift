@@ -38,7 +38,7 @@ extension GitHubRepositoryCell {
         self.languageIconView.clipsToBounds = true
         self.languageIconView.layer.cornerRadius = self.languageIconView.frame.width / 2
     }
-    func setUI(gitHubRepository: GitHubRepository.Item) {
+    func setUI(gitHubRepository: GitHubRepository) {
         self.titleLabel.text = gitHubRepository.fullName
         self.descriptionLabel.text = gitHubRepository.description
         self.starLabel.text = TextHelper.shared.formatToCSV(value: gitHubRepository.starNumber ?? 0)

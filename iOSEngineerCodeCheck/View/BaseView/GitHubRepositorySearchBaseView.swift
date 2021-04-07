@@ -35,7 +35,7 @@ extension GitHubRepositorySearchBaseView {
         self.noRepositoryCommentLabel.font = .boldSystemFont(ofSize: 17)
         self.noRepositoryCommentLabel.textColor = .lightGray
     }
-    func setNoRepositoryUI(gitHubRepositorys: [GitHubRepository.Item]) {
+    func setNoRepositoryUI(gitHubRepositorys: [GitHubRepository]) {
         gitHubRepositorys.isEmpty ? (self.noRepositoryView.isHidden = false) : (self.noRepositoryView.isHidden = true)
     }
     func setLodingCellWithStartingAnimation() {

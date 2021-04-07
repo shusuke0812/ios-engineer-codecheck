@@ -19,7 +19,7 @@ struct SearchRepositoriesRequest: GitHubAPIRequest {
     let page: Int
 
     // GitHubAPIRequestが要求する連想型
-    typealias Response = GitHubRepository
+    typealias Response = Items<GitHubRepository>
 
     var method: HTTPMethod {
         .get
