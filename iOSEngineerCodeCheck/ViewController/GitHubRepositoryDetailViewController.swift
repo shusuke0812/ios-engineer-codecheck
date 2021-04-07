@@ -14,7 +14,7 @@ class GitHubRepositoryDetailViewController: UIViewController {
     /// ViewModel
     private var viewModel: GitHubRepositoryDetailViewModel!
     /// GitHubのリポジトリ（前画面から値を受け取るようにしているが、SplitView対応に伴い画面立ち上げ時にnilとなるためオプショナル型で宣言）
-    var gitHubRepository: GitHubRepository.Item?
+    var gitHubRepository: GitHubRepository?
 
     override func viewDidLoad() {
         super.viewDidLoad()

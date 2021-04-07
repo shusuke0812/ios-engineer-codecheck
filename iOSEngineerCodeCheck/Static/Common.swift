@@ -63,7 +63,7 @@ extension RepositoryDetail {
         }
     }
     /// テキスト情報
-    func text(gitHubRepository: GitHubRepository.Item) -> (number: [Int?], name: String?) {
+    func text(gitHubRepository: GitHubRepository) -> (number: [Int?], name: String?) {
         ([gitHubRepository.starNumber, gitHubRepository.watchNumber, gitHubRepository.forkNumber, gitHubRepository.isueNumber], gitHubRepository.license?.name)
     }
 }
