@@ -31,6 +31,7 @@
 		9C95476125D2BF67002EF380 /* APIClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C95476025D2BF67002EF380 /* APIClientError.swift */; };
 		9C95476925D2C17C002EF380 /* GitHubAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C95476825D2C17C002EF380 /* GitHubAPIError.swift */; };
 		9C9684B8257468B500A5AAEA /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9684B7257468B500A5AAEA /* UIAlertController+Extension.swift */; };
+		9C9797E6261DC33A001950C1 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9797E5261DC33A001950C1 /* Items.swift */; };
 		9C99BF4025C7A6CC00F3959F /* DeviceJudgeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C99BF3F25C7A6CC00F3959F /* DeviceJudgeHelper.swift */; };
 		9C9AD52A25C95D820036352A /* GetRepositoryReadmeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9AD52925C95D820036352A /* GetRepositoryReadmeRequest.swift */; };
 		9C9AD53225C961560036352A /* GitHubReadme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9AD53125C961560036352A /* GitHubReadme.swift */; };
@@ -104,6 +105,7 @@
 		9C95476025D2BF67002EF380 /* APIClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientError.swift; sourceTree = "<group>"; };
 		9C95476825D2C17C002EF380 /* GitHubAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIError.swift; sourceTree = "<group>"; };
 		9C9684B7257468B500A5AAEA /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		9C9797E5261DC33A001950C1 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		9C99BF3F25C7A6CC00F3959F /* DeviceJudgeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceJudgeHelper.swift; sourceTree = "<group>"; };
 		9C9AD52925C95D820036352A /* GetRepositoryReadmeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRepositoryReadmeRequest.swift; sourceTree = "<group>"; };
 		9C9AD53125C961560036352A /* GitHubReadme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubReadme.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				9CD370F62571CAE7001759F8 /* GitHubRepository.swift */,
 				9CBF52BC25C1407400AD822B /* GitHubLicense.swift */,
 				9C9AD53125C961560036352A /* GitHubReadme.swift */,
+				9C9797E5261DC33A001950C1 /* Items.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				9CD371002571E28E001759F8 /* Common.swift in Sources */,
 				9CBF52C225C1482E00AD822B /* LicenseRequest.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift.org in Sources */,
+				9C9797E6261DC33A001950C1 /* Items.swift in Sources */,
 				9C9AD53225C961560036352A /* GitHubReadme.swift in Sources */,
 				9C88CFC225C28BBB001D4AB3 /* GitHubLicenseBaseView.swift in Sources */,
 				9C8E168625BEE5DB005CC118 /* UIColor+Extension.swift in Sources */,
