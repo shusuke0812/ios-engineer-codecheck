@@ -16,11 +16,6 @@ protocol GitHubLicenseRepositoryProtocol {
     func getGitHubLicense(licenseApiKey: String, completion: @escaping (Result<GitHubLicense, APIClientError>) -> Void)
 }
 class GitHubLicenseRepository: GitHubLicenseRepositoryProtocol {
-    private let apiClient: APIClientProtocol
-
-    init(apiClient: APIClientProtocol = APIClient()) {
-        self.apiClient = apiClient
-    }
 }
 // MARK: - API Method
 extension GitHubLicenseRepository {
@@ -28,7 +23,7 @@ extension GitHubLicenseRepository {
         // リクエストの組み立て
         let gitHubAPIRequest = LicenseRequest(key: licenseApiKey)
         // APIコール
-        self.apiClient.sendRequest(gitHubAPIRequest) { result in
+        APIClient.shared.sendRequest(gitHubAPIRequest) { result in
             switch result {
             case .success(let response):
                 completion(.success(response))

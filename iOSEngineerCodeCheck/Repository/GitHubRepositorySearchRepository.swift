@@ -18,11 +18,6 @@ protocol GitHubRepositorySearchRepositoryProtocol {
     func getGitHubRepositorys(searchWord: String, searchCount: Int, page: Int, completion: @escaping (Result<Items<GitHubRepository>, APIClientError>) -> Void)
 }
 class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol {
-    private let apiClient: APIClientProtocol
-
-    init(apiClient: APIClientProtocol = APIClient()) {
-        self.apiClient = apiClient
-    }
 }
 // MARK: - API Method
 extension GitHubRepositorySearchRepository {
@@ -30,7 +25,7 @@ extension GitHubRepositorySearchRepository {
         // リクエストの組み立て
         let gitHubAPIRequest = SearchRepositoriesRequest(searchWord: searchWord, searchCount: searchCount, page: page)
         // APIコール
-        self.apiClient.sendRequest(gitHubAPIRequest) { result in
+        APIClient.shared.sendRequest(gitHubAPIRequest) { result in
             switch result {
             case .success(let response):
                 completion(.success(response))

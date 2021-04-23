@@ -17,11 +17,6 @@ protocol GitHubReadmeRepositoryProtocol {
     func getRepositoryReadme(owner: String, repository: String, completion: @escaping (Result<GitHubReadme, APIClientError>) -> Void)
 }
 class GitHubReadmeRepository: GitHubReadmeRepositoryProtocol {
-    private let apiClient: APIClientProtocol
-
-    init(apiClient: APIClientProtocol = APIClient()) {
-        self.apiClient = apiClient
-    }
 }
 // MARK: - API Method
 extension GitHubReadmeRepository {
@@ -29,7 +24,7 @@ extension GitHubReadmeRepository {
         // リクエストの組み立て
         let gitHubAPIRequest = GetRepositoryReadmeRequest(owner: owner, repository: repository)
         // APIコール
-        self.apiClient.sendRequest(gitHubAPIRequest) { result in
+        APIClient.shared.sendRequest(gitHubAPIRequest) { result in
             switch result {
             case .success(let response):
                 completion(.success(response))
