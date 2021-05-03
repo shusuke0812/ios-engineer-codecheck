@@ -22,7 +22,7 @@ class GitHubRepositoryDetailViewModel {
     /// GitHubREADME
     var gitHubReadme: GitHubReadme?
     /// デリゲート
-    internal weak var delegate: GitHubRepositoryDetailViewModelDelegate?
+    weak var delegate: GitHubRepositoryDetailViewModelDelegate?
 
     init(gitHubReadmeRepository: GitHubReadmeRepositoryProtocol) {
         self.gitHubReadmeRepository = gitHubReadmeRepository

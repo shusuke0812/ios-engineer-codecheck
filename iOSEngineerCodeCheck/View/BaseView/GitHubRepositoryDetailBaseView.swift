@@ -35,7 +35,7 @@ class GitHubRepositoryDetailBaseView: UIView {
     // フッター部
     @IBOutlet weak var webView: WKWebView!
     /// デリゲート
-    internal weak var delegate: GitHubRepositoryDetailBaseViewDelegate?
+    weak var delegate: GitHubRepositoryDetailBaseViewDelegate?
 
     // MARK: - Lifecycle Method
     override func awakeFromNib() {
