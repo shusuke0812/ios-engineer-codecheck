@@ -18,6 +18,8 @@ protocol APIClientProtocol {
 class APIClient: APIClientProtocol {
     /// シングルトン
     static let shared = APIClient()
+
+    private init() {}
 }
 // MARK: - API Base Method
 extension APIClient {
