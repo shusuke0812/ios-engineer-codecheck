@@ -14,6 +14,10 @@ target 'iOSEngineerCodeCheck' do
   pod 'R.swift'
   pod 'LicensePlist'
 
+  # DataBinding
+  pod 'RxSwift'
+  pod 'RxCocoa'
+
   target 'iOSEngineerCodeCheckTests' do
     inherit! :search_paths
     # Pods for testing

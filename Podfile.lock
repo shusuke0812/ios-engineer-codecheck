@@ -5,12 +5,20 @@ PODS:
   - R.swift (5.3.1):
     - R.swift.Library (~> 5.3.0)
   - R.swift.Library (5.3.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
 
 DEPENDENCIES:
   - FontAwesome.swift
   - LicensePlist
   - PKHUD (~> 5.0)
   - R.swift
+  - RxCocoa
+  - RxSwift
 
 SPEC REPOS:
   trunk:
@@ -19,6 +27,9 @@ SPEC REPOS:
     - PKHUD
     - R.swift
     - R.swift.Library
+    - RxCocoa
+    - RxRelay
+    - RxSwift
 
 SPEC CHECKSUMS:
   FontAwesome.swift: 6b52cb7be66eacd28cbfaa0ca7ffd0de4a186a1d
@@ -26,7 +37,10 @@ SPEC CHECKSUMS:
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   R.swift: 56ec7e3aef34b9eee47a659e42462db2c1cc5ac3
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: 14af60796cfa36feccbb4b7f2139c2f71fe2088b
+PODFILE CHECKSUM: df6fee24c8f5b8267c1ece62a36b3492b84b9a00
 
 COCOAPODS: 1.9.3
