@@ -14,7 +14,14 @@ class GitHubRepositoryDetailViewController: UIViewController {
     /// ViewModel
     private var viewModel: GitHubRepositoryDetailViewModel!
     /// GitHubのリポジトリ（前画面から値を受け取るようにしているが、SplitView対応に伴い画面立ち上げ時にnilとなるためオプショナル型で宣言）
-    var gitHubRepository: GitHubRepository?
+    private(set) var gitHubRepository: GitHubRepository?
+
+    /// ViewControllerインスタンス生成
+    static func instantiate(gitHubRepository: GitHubRepository) -> GitHubRepositoryDetailViewController {
+        let vc = R.storyboard.gitHubRepositoryDetailViewController().instantiateInitialViewController() as! GitHubRepositoryDetailViewController // swiftlint:disable:this force_cast
+        vc.gitHubRepository = gitHubRepository
+        return vc
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +47,12 @@ extension GitHubRepositoryDetailViewController {
         self.baseView.delegate = self
         self.viewModel.delegate = self
     }
-    private func transitionLicensePage() {
-        guard let vc = R.storyboard.gitHubLicenseViewController.instantiateInitialViewController() else { return }
-        vc.gitHubLicenseApiKey = self.gitHubRepository?.license?.key
+    private func transitionLicensePage(licenseKey: String) {
+        let vc = GitHubLicenseViewController.instantiate(gitHubLicenseApiKey: licenseKey)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    private func showLicensePage() {
-        guard let vc = R.storyboard.gitHubLicenseViewController.instantiateInitialViewController() else { return }
-        vc.gitHubLicenseApiKey = self.gitHubRepository?.license?.key
+    private func showLicensePage(licenseKey: String) {
+        let vc = GitHubLicenseViewController.instantiate(gitHubLicenseApiKey: licenseKey)
         self.showDetailViewController(vc, sender: nil)
     }
     private func loadGitHubReadme() {
@@ -67,12 +72,11 @@ extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailBaseViewDe
     func didTapStarButton() {
     }
     func didTapLicenseCell() {
-        if gitHubRepository?.license != nil {
-            switch DeviceJudgeHelper.getType {
-            case .phone: self.transitionLicensePage()
-            case .pad: self.showLicensePage()
-            default: return
-            }
+        guard let licenseKey = self.gitHubRepository?.license?.key else { return }
+        switch DeviceJudgeHelper.getType {
+        case .phone: self.transitionLicensePage(licenseKey: licenseKey)
+        case .pad: self.showLicensePage(licenseKey: licenseKey)
+        default: return
         }
     }
 }

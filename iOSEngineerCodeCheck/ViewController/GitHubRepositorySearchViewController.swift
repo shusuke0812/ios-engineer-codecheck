@@ -52,14 +52,12 @@ extension GitHubRepositorySearchViewController {
 extension GitHubRepositorySearchViewController {
     // GitHubRepository詳細ページへ遷移（iPhone）
     private func transitionGitHubRepositoryDetail(indexPath: IndexPath) {
-        guard let vc = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController() else { return }
-        vc.gitHubRepository = self.viewModel.gitHubRepositorys[indexPath.row]
+        let vc = GitHubRepositoryDetailViewController.instantiate(gitHubRepository: self.viewModel.gitHubRepositorys[indexPath.row])
         self.navigationController?.pushViewController(vc, animated: true)
     }
     // GitHubRepository詳細ページをスプリットで表示（iPad）
     private func showGitHubRepositoryDetail(indexPath: IndexPath) {
-        guard let vc = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController() else { return }
-        vc.gitHubRepository = self.viewModel.gitHubRepositorys[indexPath.row]
+        let vc = GitHubRepositoryDetailViewController.instantiate(gitHubRepository: self.viewModel.gitHubRepositorys[indexPath.row])
         self.splitViewController?.showDetailViewController(vc, sender: nil)
     }
     // リポジトリ検索APIを呼ぶ
