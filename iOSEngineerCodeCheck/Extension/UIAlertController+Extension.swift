@@ -17,7 +17,7 @@ extension UIAlertController {
     ///   - message: サブタイトル
     ///   - okButtonTitle: OKボタンのタイトル
     ///   - cancelButtonTitle: キャンセルボタンタイトル
-    internal static func showAlert(style: UIAlertController.Style, viewController: UIViewController, title: String?, message: String?, okButtonTitle: String?, cancelButtonTitle: String?) {
+    static func showAlert(style: UIAlertController.Style, viewController: UIViewController, title: String?, message: String?, okButtonTitle: String?, cancelButtonTitle: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         let okAction = UIAlertAction(title: okButtonTitle, style: .default) { _ in
             print("DEBUG: OKボタンが押されました")

@@ -19,7 +19,7 @@ class GitHubLicenseRepository: GitHubLicenseRepositoryProtocol {
 }
 // MARK: - API Method
 extension GitHubLicenseRepository {
-    internal func getGitHubLicense(licenseApiKey: String, completion: @escaping (Result<GitHubLicense, APIClientError>) -> Void) {
+    func getGitHubLicense(licenseApiKey: String, completion: @escaping (Result<GitHubLicense, APIClientError>) -> Void) {
         // リクエストの組み立て
         let gitHubAPIRequest = LicenseRequest(key: licenseApiKey)
         // APIコール

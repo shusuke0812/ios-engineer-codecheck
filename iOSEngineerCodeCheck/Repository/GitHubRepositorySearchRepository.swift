@@ -21,7 +21,7 @@ class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol
 }
 // MARK: - API Method
 extension GitHubRepositorySearchRepository {
-    internal func getGitHubRepositorys(searchWord: String, searchCount: Int, page: Int, completion: @escaping (Result<Items<GitHubRepository>, APIClientError>) -> Void) {
+    func getGitHubRepositorys(searchWord: String, searchCount: Int, page: Int, completion: @escaping (Result<Items<GitHubRepository>, APIClientError>) -> Void) {
         // リクエストの組み立て
         let gitHubAPIRequest = SearchRepositoriesRequest(searchWord: searchWord, searchCount: searchCount, page: page)
         // APIコール

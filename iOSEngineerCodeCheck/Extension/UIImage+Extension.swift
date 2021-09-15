@@ -12,7 +12,7 @@ extension UIImageView {
     /// 文字列型URLをUIImageに変換するメソッド
     /// - Parameters:
     ///   - imageUrlString: 画像URL
-    internal func getImage(imageUrlString: String) {
+    func getImage(imageUrlString: String) {
         guard let url = URL(string: imageUrlString) else {
             print("画像URLの変換に失敗しました")
             return

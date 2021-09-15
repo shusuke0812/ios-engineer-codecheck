@@ -11,7 +11,7 @@ import SafariServices
 
 extension UIViewController {
     /// キーボード以外の画面をタップした時にキーボードを閉じる処理
-    internal func setDissmissKeyboard() {
+    func setDissmissKeyboard() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
         tapGestureRecognizer.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGestureRecognizer)
@@ -21,7 +21,7 @@ extension UIViewController {
     }
     /// Safariで指定したURLのページを開く
     /// - Parameter urlString: URL文字列
-    internal func transitionSafariViewController(urlString: String) {
+    func transitionSafariViewController(urlString: String) {
         let url: URL?
         // 不正なURLであるかを判定する（不正なものはhttpsスキームをつけてブラウザでエラーハンドリングする）
         if urlString.hasPrefix("http://") || urlString.hasPrefix("https://") {

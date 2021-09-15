@@ -20,7 +20,7 @@ class TextHelper {
 extension TextHelper {
     /// 数値をカンマで区切って文字列に変換する
     /// - Parameter value: 数値
-    internal func formatToCSV(value: Int) -> String {
+    func formatToCSV(value: Int) -> String {
         self.formatter.numberStyle = .decimal
         self.formatter.groupingSeparator = ","
         self.formatter.groupingSize = 3

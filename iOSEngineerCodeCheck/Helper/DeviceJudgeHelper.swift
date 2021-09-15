@@ -10,7 +10,7 @@ import UIKit
 
 class DeviceJudgeHelper {
     /// デバイスのタイプ（iPhone, iPad, ...）
-    internal static var getType: UIUserInterfaceIdiom {
+    static var getType: UIUserInterfaceIdiom {
         UIDevice.current.userInterfaceIdiom
     }
 }
