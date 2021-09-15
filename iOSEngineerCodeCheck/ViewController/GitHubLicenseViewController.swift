@@ -18,7 +18,7 @@ class GitHubLicenseViewController: UIViewController {
 
     /// ViewControllerインスタンス生成
     static func instantiate(gitHubLicenseApiKey: String) -> GitHubLicenseViewController {
-        let vc = R.storyboard.gitHubLicenseViewController.instantiateInitialViewController() as! GitHubLicenseViewController // swiftlint:disable:this force_cast
+        let vc = R.storyboard.gitHubLicenseViewController().instantiateInitialViewController() as! GitHubLicenseViewController // swiftlint:disable:this force_cast
         vc.gitHubLicenseApiKey = gitHubLicenseApiKey
         return vc
     }
