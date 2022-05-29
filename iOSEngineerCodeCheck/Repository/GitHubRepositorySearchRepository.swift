@@ -16,6 +16,8 @@ protocol GitHubRepositorySearchRepositoryProtocol {
     ///   - page: ページ番号
     ///   - completion: リポジトリ取得の成功、失敗ハンドル
     func getGitHubRepositorys(searchWord: String, searchCount: Int, page: Int, completion: @escaping (Result<Items<GitHubRepository>, APIClientError>) -> Void)
+    @available(iOS 15.0, *)
+    func async_getGitHubRepositorys(searchWord: String, serchCount: Int, page: Int, completion: @escaping (Result<Items<GitHubRepository>, Error>) -> Void)
 }
 class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol {
 }
@@ -33,5 +35,18 @@ extension GitHubRepositorySearchRepository {
                 completion(.failure(error))
             }
         }
+    }
+    @available(iOS 15.0, *)
+    func async_getGitHubRepositorys(searchWord: String, serchCount: Int, page: Int, completion: @escaping (Result<Items<GitHubRepository>, Error>) -> Void) {
+        Task.detached {
+            do {
+                let gitHubAPIRequest = SearchRepositoriesRequest(searchWord: searchWord, searchCount: serchCount, page: page)
+                let response = try await APIClient.shared.sendRequest(gitHubAPIRequest)
+                completion(.success(response))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        
     }
 }
