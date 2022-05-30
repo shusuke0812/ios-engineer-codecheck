@@ -67,6 +67,7 @@ extension APIClient {
                 throw APIClientError.unknown
             }
             let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
             if (200..<300).contains(response.statusCode) {
                 do {
                     let apiResponse = try decoder.decode(T.Response.self, from: data)
