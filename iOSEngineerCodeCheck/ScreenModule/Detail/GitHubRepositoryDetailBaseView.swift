@@ -11,11 +11,8 @@ import WebKit
 import FontAwesome_swift
 
 protocol GitHubRepositoryDetailBaseViewDelegate: AnyObject {
-    /// ホームページボタンをタップした時の処理
     func didTapHomePageButton()
-    /// お気に入りボタンをタップした時の処理
     func didTapStarButton()
-    /// LICENSEセルをタップした時の処理
     func didTapLicenseCell()
 }
 
@@ -44,7 +41,9 @@ class GitHubRepositoryDetailBaseView: UIView {
         initStarButton()
         initBodyUI()
     }
+
     // MARK: - Action Method
+
     @IBAction private func didTapHomePageButton(_ sender: Any) {
         delegate?.didTapHomePageButton()
     }
@@ -55,7 +54,9 @@ class GitHubRepositoryDetailBaseView: UIView {
         delegate?.didTapLicenseCell()
     }
 }
+
 // MARK: - Initialized Method
+
 extension GitHubRepositoryDetailBaseView {
     private func initHeaderUI() {
         // アバターアイコンの設定
@@ -98,7 +99,9 @@ extension GitHubRepositoryDetailBaseView {
         }
     }
 }
+
 // MARK: - Setting UI Method
+
 extension GitHubRepositoryDetailBaseView {
     func setUI(gitHubRepository: GitHubRepository) {
         setHeaderUI(gitHubRepository: gitHubRepository)

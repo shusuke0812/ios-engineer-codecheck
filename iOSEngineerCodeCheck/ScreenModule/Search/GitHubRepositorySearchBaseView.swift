@@ -19,7 +19,9 @@ class GitHubRepositorySearchBaseView: UIView {
         initUI()
     }
 }
+
 // MARK: - Setting UI Method
+
 extension GitHubRepositorySearchBaseView {
     private func initUI() {
         // 検索バーの入力値を初期化

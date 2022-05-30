@@ -9,14 +9,6 @@
 import UIKit
 
 extension UIAlertController {
-    /// アラート表示
-    /// - Parameters:
-    ///   - style: アラート種類
-    ///   - viewController: アラートを表示させるViewController
-    ///   - title: タイトル
-    ///   - message: サブタイトル
-    ///   - okButtonTitle: OKボタンのタイトル
-    ///   - cancelButtonTitle: キャンセルボタンタイトル
     static func showAlert(style: UIAlertController.Style, viewController: UIViewController, title: String?, message: String?, okButtonTitle: String?, cancelButtonTitle: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         let okAction = UIAlertAction(title: okButtonTitle, style: .default) { _ in

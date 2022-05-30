@@ -16,13 +16,17 @@ class GitHubLicenseBaseView: UIView {
         initUI()
     }
 }
+
 // MARK: - Initialized Method
+
 extension GitHubLicenseBaseView {
     private func initUI() {
         licenseLabel.text = ""
     }
 }
+
 // MARK: - Setting UI Method
+
 extension GitHubLicenseBaseView {
     func setUI(gitHubLicenseText: String) {
         licenseLabel.text = gitHubLicenseText

@@ -19,8 +19,6 @@ extension UIViewController {
     @objc private func dissmissKeyboard() {
         view.endEditing(true)
     }
-    /// Safariで指定したURLのページを開く
-    /// - Parameter urlString: URL文字列
     func transitionSafariViewController(urlString: String) {
         let url: URL?
         // 不正なURLであるかを判定する（不正なものはhttpsスキームをつけてブラウザでエラーハンドリングする）

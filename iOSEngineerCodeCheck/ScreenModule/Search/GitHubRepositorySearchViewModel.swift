@@ -9,10 +9,7 @@
 import UIKit
 
 protocol GitHubRepositorySearchViewModelDelegate: AnyObject {
-    /// GitHubRepositoryの取得に成功した
     func didSuccessGetGitHubRepositorys()
-    /// GitHubRepositoryの取得に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
     func didFailedGetGitHubRepositorys(errorMessage: String)
 }
 

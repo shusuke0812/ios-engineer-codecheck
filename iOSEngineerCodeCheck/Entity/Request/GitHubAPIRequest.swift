@@ -20,11 +20,9 @@ protocol GitHubAPIRequest {
 }
 // MARK: - Custom Setting
 extension GitHubAPIRequest {
-    /// APIプレフィックス
     var baseURL: String {
         "https://api.github.com"
     }
-    /// APIコール用のリクエスト生成
     func buildURLRequest() -> URLRequest {
         // baseURL, pathは各apiクラスで正しく定義されているという前提で強制アンラップさせた
         let url = URL(string: baseURL.appending(path))! // swiftlint:disable:this force_unwrapping

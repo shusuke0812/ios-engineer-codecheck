@@ -16,7 +16,7 @@ class GitHubRepositoryCell: UITableViewCell {
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var languageIconView: UIView!
     @IBOutlet weak var updatedDateLabel: UILabel!
-    /// セル高さ
+
     static let rowHeight: CGFloat = 120
 
     override func awakeFromNib() {
@@ -24,7 +24,9 @@ class GitHubRepositoryCell: UITableViewCell {
         initUI()
     }
 }
+
 // MARK: - Setting UI Method
+
 extension GitHubRepositoryCell {
     private func initUI() {
         // 文字色の設定

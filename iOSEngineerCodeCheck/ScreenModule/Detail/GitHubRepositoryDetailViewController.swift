@@ -9,14 +9,11 @@
 import UIKit
 
 class GitHubRepositoryDetailViewController: UIViewController {
-    /// BaseView
     private var baseView: GitHubRepositoryDetailBaseView { view as! GitHubRepositoryDetailBaseView } // swiftlint:disable:this force_cast
-    /// ViewModel
     private var viewModel: GitHubRepositoryDetailViewModel!
     /// GitHubのリポジトリ（前画面から値を受け取るようにしているが、SplitView対応に伴い画面立ち上げ時にnilとなるためオプショナル型で宣言）
     private(set) var gitHubRepository: GitHubRepository?
 
-    /// ViewControllerインスタンス生成
     static func instantiate(gitHubRepository: GitHubRepository) -> GitHubRepositoryDetailViewController {
         let vc = R.storyboard.gitHubRepositoryDetailViewController().instantiateInitialViewController() as! GitHubRepositoryDetailViewController // swiftlint:disable:this force_cast
         vc.gitHubRepository = gitHubRepository
@@ -32,9 +29,10 @@ class GitHubRepositoryDetailViewController: UIViewController {
         loadGitHubReadme()
     }
 }
+
 // MARK: - Private Method
+
 extension GitHubRepositoryDetailViewController {
-    // ナビゲーションの設定
     private func setNavigation() {
         navigationItem.title = "リポジトリ詳細"
     }
@@ -56,13 +54,13 @@ extension GitHubRepositoryDetailViewController {
         showDetailViewController(vc, sender: nil)
     }
     private func loadGitHubReadme() {
-        // リクエストを組み立て
         guard let ownerName = gitHubRepository?.owner?.name, let repositoryName = gitHubRepository?.name else { return }
-        // APIコール
         viewModel.getGitHubReadme(owner: ownerName, repository: repositoryName)
     }
 }
+
 // MARK: - BaseView Delegate Method
+
 extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailBaseViewDelegate {
     func didTapHomePageButton() {
         if let homePageUrlString = gitHubRepository?.homePage {
@@ -80,12 +78,14 @@ extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailBaseViewDe
         }
     }
 }
+
 // MARK: - ViewModel Delegate Method
+
 extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailViewModelDelegate {
     func didSuccessGetReadme() {
         if let urlString = viewModel.gitHubReadme?.htmlUrl {
             DispatchQueue.main.async {
-                baseView.setReadmeWebView(urlString: urlString)
+                self.baseView.setReadmeWebView(urlString: urlString)
             }
         }
     }

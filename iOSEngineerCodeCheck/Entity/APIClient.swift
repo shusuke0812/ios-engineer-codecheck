@@ -9,10 +9,6 @@
 import Foundation
 
 protocol APIClientProtocol {
-    /// GitHubAPIをコールするメソッド
-    /// - Parameters:
-    ///   - request: APIコール用のリクエスト
-    ///   - completion: APIレスポンス取得の成功、失敗ハンドル
     func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void)
     @available(iOS 15.0, *)
     func sendRequest<T: GitHubAPIRequest>(_ request: T) async throws -> T.Response

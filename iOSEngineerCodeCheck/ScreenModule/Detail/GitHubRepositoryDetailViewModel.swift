@@ -9,19 +9,14 @@
 import Foundation
 
 protocol GitHubRepositoryDetailViewModelDelegate: AnyObject {
-    /// リポジトリのREADMEの取得に成功した
     func didSuccessGetReadme()
-    /// リポジトリのREADMEの取得に失敗した
-    /// - Parameter errorMessage: エラーメッセージ
     func didFailedGetReadme(errorMessage: String)
 }
 
 class GitHubRepositoryDetailViewModel {
-    /// GitHubREADMEのリポジトリクラス
     private let gitHubReadmeRepository: GitHubReadmeRepositoryProtocol
-    /// GitHubREADME
     var gitHubReadme: GitHubReadme?
-    /// デリゲート
+
     weak var delegate: GitHubRepositoryDetailViewModelDelegate?
 
     init(gitHubReadmeRepository: GitHubReadmeRepositoryProtocol) {
@@ -30,8 +25,6 @@ class GitHubRepositoryDetailViewModel {
 }
 // MARK: - API Method
 extension GitHubRepositoryDetailViewModel {
-    /// GitHubリポジトリのREADMEを取得する
-    /// - Parameter request: APIリクエスト
     func getGitHubReadme(owner: String, repository: String) {
         gitHubReadmeRepository.getRepositoryReadme(owner: owner, repository: repository) { [weak self] response in
             guard let self = self else { return }

@@ -8,31 +8,18 @@
 
 import Foundation
 
-/// GitHuのリポジトリデータ格納用
 struct GitHubRepository: Codable {
-    /// リポジトリ名
     let name: String?
-    /// オーナー名+リポジトリ名
     let fullName: String?
-    /// リポジトリ言語
     let language: String?
-    /// スター数
     let starNumber: Int?
-    /// ウォッチ数
     let watchNumber: Int?
-    /// フォーク数
     let forkNumber: Int?
-    /// イシュー数
     let isueNumber: Int?
-    /// 説明文
     let description: String?
-    /// ホームページ
     let homePage: String?
-    /// 更新日（MEMO: JSONの日付型がSwiftのJSONDecoderに対応していないのでDateFormatterを拡張している）
-    let updatedAt: Date?
-    /// オーナー情報
+    let updatedAt: Date? // 更新日（MEMO: JSONの日付型がSwiftのJSONDecoderに対応していないのでDateFormatterを拡張している）
     let owner: Owner?
-    ///　ライセンス情報
     let license: License?
 
     enum CodingKeys: String, CodingKey {
@@ -66,9 +53,7 @@ struct GitHubRepository: Codable {
 }
 
 struct Owner: Codable {
-    /// 名前
     let name: String?
-    /// アバター画像URL
     let avatarImage: String?
 
     enum CodingKeys: String, CodingKey {
@@ -91,11 +76,8 @@ struct Owner: Codable {
 }
 
 struct License: Codable {
-    /// キー
     let key: String?
-    /// 名前
     let name: String?
-    /// URL
     let url: String?
 
     enum CodingKeys: String, CodingKey {
