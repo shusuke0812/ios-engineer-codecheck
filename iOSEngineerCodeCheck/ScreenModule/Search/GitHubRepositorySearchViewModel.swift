@@ -57,6 +57,29 @@ extension GitHubRepositorySearchViewModel {
             }
         }
     }
+    @available(iOS 15.0, *)
+    func async_getGitHubRepositorys() {
+        if self.apiLoadStatus == .fetching || self.apiLoadStatus == .full {
+            return
+        } else {
+            self.apiLoadStatus = .fetching
+        }
+        self.gitHubRepositorySearchRepository.async_getGitHubRepositorys(searchWord: searchWord, serchCount: maxGitHubRepositorySearchCount, page: gitHubRepositorySearchPageNumber) { response in
+            switch response {
+            case .success(let response):
+                if response.items.count < self.maxGitHubRepositorySearchCount {
+                    self.apiLoadStatus = .full
+                } else {
+                    self.apiLoadStatus = .initial
+                }
+                self.gitHubRepositorySearchPageNumber += 1
+                self.gitHubRepositorys.append(contentsOf: response.items)
+                self.delegate?.didSuccessGetGitHubRepositorys()
+            case .failure(let error):
+                self.delegate?.didFailedGetGitHubRepositorys(errorMessage: error.localizedDescription)
+            }
+        }
+    }
     func initAPIParameters() {
         self.gitHubRepositorySearchPageNumber = 1
         self.apiLoadStatus = .initial
