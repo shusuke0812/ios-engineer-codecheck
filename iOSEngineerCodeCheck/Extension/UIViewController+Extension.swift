@@ -14,10 +14,10 @@ extension UIViewController {
     func setDissmissKeyboard() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
         tapGestureRecognizer.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tapGestureRecognizer)
+        view.addGestureRecognizer(tapGestureRecognizer)
     }
     @objc private func dissmissKeyboard() {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
     /// Safariで指定したURLのページを開く
     /// - Parameter urlString: URL文字列
@@ -32,7 +32,7 @@ extension UIViewController {
         // Safariでwebページを開く
         if let url = url {
             let safariVC = SFSafariViewController(url: url)
-            self.present(safariVC, animated: true, completion: nil)
+            present(safariVC, animated: true, completion: nil)
         }
     }
 }

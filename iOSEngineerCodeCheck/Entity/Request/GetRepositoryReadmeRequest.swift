@@ -23,7 +23,7 @@ struct GetRepositoryReadmeRequest: GitHubAPIRequest {
         .get
     }
     var path: String {
-        "/repos/\(self.owner)/\(self.repository)/readme"
+        "/repos/\(owner)/\(repository)/readme"
     }
     var parameters: [URLQueryItem]? {
         nil

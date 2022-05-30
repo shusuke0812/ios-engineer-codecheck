@@ -36,12 +36,13 @@ class GitHubRepositorySearchViewModel: NSObject {
 
 extension GitHubRepositorySearchViewModel {
     func getGitHubRepositorys() {
-        if self.apiLoadStatus == .fetching || self.apiLoadStatus == .full {
+        if apiLoadStatus == .fetching || apiLoadStatus == .full {
             return
         } else {
-            self.apiLoadStatus = .fetching
+            apiLoadStatus = .fetching
         }
-        self.gitHubRepositorySearchRepository.getGitHubRepositorys(searchWord: self.searchWord, searchCount: self.maxGitHubRepositorySearchCount, page: self.gitHubRepositorySearchPageNumber) { response in
+        gitHubRepositorySearchRepository.getGitHubRepositorys(searchWord: searchWord, searchCount: maxGitHubRepositorySearchCount, page: gitHubRepositorySearchPageNumber) { [weak self] response in
+            guard let self = self else { return }
             switch response {
             case .success(let response):
                 if response.items.count < self.maxGitHubRepositorySearchCount {
@@ -59,12 +60,13 @@ extension GitHubRepositorySearchViewModel {
     }
     @available(iOS 15.0, *)
     func async_getGitHubRepositorys() {
-        if self.apiLoadStatus == .fetching || self.apiLoadStatus == .full {
+        if apiLoadStatus == .fetching || apiLoadStatus == .full {
             return
         } else {
             self.apiLoadStatus = .fetching
         }
-        self.gitHubRepositorySearchRepository.async_getGitHubRepositorys(searchWord: searchWord, serchCount: maxGitHubRepositorySearchCount, page: gitHubRepositorySearchPageNumber) { response in
+        gitHubRepositorySearchRepository.async_getGitHubRepositorys(searchWord: searchWord, serchCount: maxGitHubRepositorySearchCount, page: gitHubRepositorySearchPageNumber) { [weak self] response in
+            guard let self = self else { return }
             switch response {
             case .success(let response):
                 if response.items.count < self.maxGitHubRepositorySearchCount {
@@ -81,9 +83,9 @@ extension GitHubRepositorySearchViewModel {
         }
     }
     func initAPIParameters() {
-        self.gitHubRepositorySearchPageNumber = 1
-        self.apiLoadStatus = .initial
-        self.gitHubRepositorys = []
+        gitHubRepositorySearchPageNumber = 1
+        apiLoadStatus = .initial
+        gitHubRepositorys = []
     }
 }
 
@@ -91,12 +93,12 @@ extension GitHubRepositorySearchViewModel {
 
 extension GitHubRepositorySearchViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.gitHubRepositorys.count
+        gitHubRepositorys.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.gitHubRepositoryCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
-        if !self.gitHubRepositorys.isEmpty {
-            cell.setUI(gitHubRepository: self.gitHubRepositorys[indexPath.row])
+        if !gitHubRepositorys.isEmpty {
+            cell.setUI(gitHubRepository: gitHubRepositorys[indexPath.row])
         }
         return cell
     }

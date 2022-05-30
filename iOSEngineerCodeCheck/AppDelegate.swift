@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         print("--- アプリ起動 ---")
-        self.openTopPage()
+        openTopPage()
         return true
     }
 
@@ -42,12 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     private func openTopPage() {
         // 画面設定
-        self.window = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
         guard let mainVC = R.storyboard.gitHubRepositorySearchViewController.instantiateInitialViewController() else { return }
         guard let detailVC = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController() else { return }
         let splitVC = MainSplitViewController(mainVC: mainVC, detailVC: detailVC)
-        self.window?.rootViewController = splitVC
+        window?.rootViewController = splitVC
         // 画面表示
-        self.window?.makeKeyAndVisible()
+        window?.makeKeyAndVisible()
     }
 }

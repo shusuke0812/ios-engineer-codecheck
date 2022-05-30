@@ -10,7 +10,7 @@ import UIKit
 
 class MainSplitViewController: UISplitViewController {
     // デバイスの幅によってdetail部を表示させるかどうかのフラグ
-    private var isCollapseSecondary: Bool { self.traitCollection.containsTraits(in: UITraitCollection(horizontalSizeClass: .compact)) }
+    private var isCollapseSecondary: Bool { traitCollection.containsTraits(in: UITraitCollection(horizontalSizeClass: .compact)) }
     /// MainViewController
     private let mainVC: UIViewController
     /// DetailViewController
@@ -30,22 +30,22 @@ class MainSplitViewController: UISplitViewController {
     // MARK: - Lifecycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
-        self.setSplitViewController()
+        delegate = self
+        setSplitViewController()
     }
 }
 // MARK: - Private Method
 extension MainSplitViewController {
     private func setSplitViewController() {
         // 詳細画面のボタン設定
-        self.detailVC.navigationItem.leftBarButtonItem = .none
+        detailVC.navigationItem.leftBarButtonItem = .none
         // SplitView登録
-        self.viewControllers = [self.mainVC, self.detailVC]
+        viewControllers = [mainVC, detailVC]
     }
 }
 // MARK: - UISplitViewController Delegate Method
 extension MainSplitViewController: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
-        self.isCollapseSecondary
+        isCollapseSecondary
     }
 }

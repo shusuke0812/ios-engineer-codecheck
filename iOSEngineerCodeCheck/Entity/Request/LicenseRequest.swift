@@ -19,7 +19,7 @@ struct LicenseRequest: GitHubAPIRequest {
         .get
     }
     var path: String {
-        "/licenses/\(self.key)"
+        "/licenses/\(key)"
     }
     var parameters: [URLQueryItem]? {
         nil

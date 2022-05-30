@@ -18,6 +18,6 @@ class LoadingCell: UITableViewCell {
 // MARK: - Animation Method
 extension LoadingCell {
     func startAnimation() {
-        self.activityIndicatorView.startAnimating()
+        activityIndicatorView.startAnimating()
     }
 }

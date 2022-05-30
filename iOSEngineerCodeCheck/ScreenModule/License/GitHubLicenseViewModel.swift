@@ -32,7 +32,8 @@ extension GitHubLicenseViewModel {
     /// GitHubリポジトリを取得する
     /// - Parameter request: APIリクエスト
     func getGitHubLicense(licenseApiKey: String) {
-        self.gitHubLicenseRepository.getGitHubLicense(licenseApiKey: licenseApiKey) { response in
+        gitHubLicenseRepository.getGitHubLicense(licenseApiKey: licenseApiKey) { [weak self] response in
+            guard let self = self else { return }
             switch response {
             case .success(let gitHubLicense):
                 self.gitHubLicense = gitHubLicense

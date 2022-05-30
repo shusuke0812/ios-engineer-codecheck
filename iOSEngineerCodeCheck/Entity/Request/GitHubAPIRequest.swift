@@ -27,18 +27,18 @@ extension GitHubAPIRequest {
     /// APIコール用のリクエスト生成
     func buildURLRequest() -> URLRequest {
         // baseURL, pathは各apiクラスで正しく定義されているという前提で強制アンラップさせた
-        let url = URL(string: self.baseURL.appending(self.path))! // swiftlint:disable:this force_unwrapping
+        let url = URL(string: baseURL.appending(path))! // swiftlint:disable:this force_unwrapping
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
-        switch self.method {
+        switch method {
         case .get:
-            components?.queryItems = self.parameters
+            components?.queryItems = parameters
         default:
-            fatalError("Unsupported method \(self.method)")
+            fatalError("Unsupported method \(method)")
         }
 
         var urlRequest = URLRequest(url: url)
         urlRequest.url = components?.url
-        urlRequest.httpMethod = self.method.rawValue
+        urlRequest.httpMethod = method.rawValue
 
         return urlRequest
     }
