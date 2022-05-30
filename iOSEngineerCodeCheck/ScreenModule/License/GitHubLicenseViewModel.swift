@@ -9,30 +9,27 @@
 import Foundation
 
 protocol GitHubLicenseViewModelDelegate: AnyObject {
-    /// GitHubのライセンスの取得に成功した
     func didSuccessGetLicense()
-    /// GitHubのライセンスの取得に失敗した
     func didFailedGetLicense(errorMessage: String)
 }
 
 class GitHubLicenseViewModel {
-    /// GitHubライセンスのリポジトリクラス
     private let gitHubLicenseRepository: GitHubLicenseRepositoryProtocol
-    /// GitHubリポジトリのライセンス
     var gitHubLicense: GitHubLicense?
-    /// GitHubLicenseViewModelのデリゲート
+
     weak var delegate: GitHubLicenseViewModelDelegate?
 
     init(gitHubLicenseRepository: GitHubLicenseRepositoryProtocol) {
         self.gitHubLicenseRepository = gitHubLicenseRepository
     }
 }
+
 // MARK: - API Method
+
 extension GitHubLicenseViewModel {
-    /// GitHubリポジトリを取得する
-    /// - Parameter request: APIリクエスト
     func getGitHubLicense(licenseApiKey: String) {
-        self.gitHubLicenseRepository.getGitHubLicense(licenseApiKey: licenseApiKey) { response in
+        gitHubLicenseRepository.getGitHubLicense(licenseApiKey: licenseApiKey) { [weak self] response in
+            guard let self = self else { return }
             switch response {
             case .success(let gitHubLicense):
                 self.gitHubLicense = gitHubLicense

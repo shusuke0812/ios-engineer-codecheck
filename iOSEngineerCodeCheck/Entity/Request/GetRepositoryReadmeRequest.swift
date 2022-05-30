@@ -11,19 +11,16 @@
 import Foundation
 
 struct GetRepositoryReadmeRequest: GitHubAPIRequest {
-    /// ユーザー名
     let owner: String
-    /// リポジトリ名
     let repository: String
 
-    // GitHubAPIRequestが要求する連想型
     typealias Response = GitHubReadme
 
     var method: HTTPMethod {
         .get
     }
     var path: String {
-        "/repos/\(self.owner)/\(self.repository)/readme"
+        "/repos/\(owner)/\(repository)/readme"
     }
     var parameters: [URLQueryItem]? {
         nil

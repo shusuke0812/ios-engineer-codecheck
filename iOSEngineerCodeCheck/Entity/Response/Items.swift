@@ -15,11 +15,8 @@
 import Foundation
 
 struct Items<Item: Codable>: Codable {
-    /// 検索数
     let totalCount: Int
-    /// 検索タイムアウトフラグ
     let incompleteResults: Bool
-    /// 検索対象
     let items: [Item]
 
     enum CodingKeys: String, CodingKey {

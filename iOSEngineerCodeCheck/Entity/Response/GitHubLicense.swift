@@ -8,11 +8,8 @@
 
 import Foundation
 
-/// GitHubのライセンスデータ格納用
 struct GitHubLicense: Codable {
-    /// 説明
     let description: String
-    /// 文面
     let body: String
 
     enum CodingKeys: String, CodingKey {

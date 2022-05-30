@@ -9,17 +9,15 @@
 import Foundation
 
 struct LicenseRequest: GitHubAPIRequest {
-    /// ライセンスキー
     let key: String
 
-    // GitHubAPIRequestが要求する連装型
     typealias Response = GitHubLicense
 
     var method: HTTPMethod {
         .get
     }
     var path: String {
-        "/licenses/\(self.key)"
+        "/licenses/\(key)"
     }
     var parameters: [URLQueryItem]? {
         nil

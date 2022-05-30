@@ -9,11 +9,6 @@
 import Foundation
 
 protocol GitHubReadmeRepositoryProtocol {
-    /// リポジトリのREADMEを取得する
-    /// - Parameters:
-    ///   - owner: リポジトリアカウント名
-    ///   - repository: リポジトリ名
-    ///   - completion: README取得の成功、失敗ハンドル
     func getRepositoryReadme(owner: String, repository: String, completion: @escaping (Result<GitHubReadme, APIClientError>) -> Void)
 }
 class GitHubReadmeRepository: GitHubReadmeRepositoryProtocol {
@@ -21,9 +16,7 @@ class GitHubReadmeRepository: GitHubReadmeRepositoryProtocol {
 // MARK: - API Method
 extension GitHubReadmeRepository {
     func getRepositoryReadme(owner: String, repository: String, completion: @escaping (Result<GitHubReadme, APIClientError>) -> Void) {
-        // リクエストの組み立て
         let gitHubAPIRequest = GetRepositoryReadmeRequest(owner: owner, repository: repository)
-        // APIコール
         APIClient.shared.sendRequest(gitHubAPIRequest) { result in
             switch result {
             case .success(let response):
