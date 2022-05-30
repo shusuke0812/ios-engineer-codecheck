@@ -14,11 +14,11 @@ protocol APIClientProtocol {
     ///   - request: APIコール用のリクエスト
     ///   - completion: APIレスポンス取得の成功、失敗ハンドル
     func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void)
+    @available(iOS 15.0, *)
+    func sendRequest<T: GitHubAPIRequest>(_ request: T) async throws -> T.Response
 }
 class APIClient: APIClientProtocol {
-    /// シングルトン
     static let shared = APIClient()
-
     private init() {}
 }
 // MARK: - API Base Method
@@ -56,5 +56,35 @@ extension APIClient {
             }
         }
         task.resume()
+    }
+    
+    @available(iOS 15.0, *)
+    func sendRequest<T: GitHubAPIRequest>(_ request: T) async throws -> T.Response {
+        let session = URLSession.shared
+        do {
+            let (data, response) = try await session.data(for: request.buildURLRequest(), delegate: nil)
+            guard let response = response as? HTTPURLResponse else {
+                throw APIClientError.unknown
+            }
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            if (200..<300).contains(response.statusCode) {
+                do {
+                    let apiResponse = try decoder.decode(T.Response.self, from: data)
+                    return apiResponse
+                } catch {
+                    throw APIClientError.responseParseError(error)
+                }
+            } else {
+                do {
+                    let apiError = try decoder.decode(GitHubAPIError.self, from: data)
+                    throw apiError
+                } catch {
+                    throw APIClientError.responseParseError(error)
+                }
+            }
+        } catch {
+            throw APIClientError.unknown
+        }
     }
 }

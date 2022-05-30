@@ -71,7 +71,11 @@ extension GitHubRepositorySearchViewController {
         // APIコール
         self.viewModel.initAPIParameters()
         self.viewModel.searchWord = searchText
-        self.viewModel.getGitHubRepositorys()
+        if #available(iOS 15.0, *) {
+            self.viewModel.async_getGitHubRepositorys()
+        } else {
+            self.viewModel.getGitHubRepositorys()
+        }
     }
     // リポジトリがない場合の処理
     private func setNoRepository() {
