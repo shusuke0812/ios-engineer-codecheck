@@ -11,14 +11,10 @@
 import Foundation
 
 struct SearchRepositoriesRequest: GitHubAPIRequest {
-    /// 検索ワード
     let searchWord: String
-    /// 検索結果の最大取得数
     let searchCount: Int
-    /// ページ番号
     let page: Int
 
-    // GitHubAPIRequestが要求する連想型
     typealias Response = Items<GitHubRepository>
 
     var method: HTTPMethod {
