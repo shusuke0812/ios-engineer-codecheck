@@ -15,6 +15,7 @@ struct GetRepositoryReadmeRequest: GitHubAPIRequest {
     let repository: String
 
     typealias Response = GitHubReadme
+    typealias ErrorResponse = GitHubAPIError
 
     var method: HTTPMethod {
         .get

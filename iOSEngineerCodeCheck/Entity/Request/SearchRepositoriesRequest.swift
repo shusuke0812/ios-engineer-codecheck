@@ -16,6 +16,7 @@ struct SearchRepositoriesRequest: GitHubAPIRequest {
     let page: Int
 
     typealias Response = Items<GitHubRepository>
+    typealias ErrorResponse = GitHubAPIError
 
     var method: HTTPMethod {
         .get
