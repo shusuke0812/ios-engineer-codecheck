@@ -12,6 +12,7 @@ struct LicenseRequest: GitHubAPIRequest {
     let key: String
 
     typealias Response = GitHubLicense
+    typealias ErrorResponse = GitHubAPIError
 
     var method: HTTPMethod {
         .get

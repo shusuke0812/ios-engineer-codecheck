@@ -187,7 +187,6 @@
 				9C95475E25D2BC21002EF380 /* Error */,
 				9C632DA425BBE52100142A3D /* Response */,
 				9C632DA325BBE51600142A3D /* Request */,
-				9C8B3BFF25D4DF9B006054EB /* APIClient.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -195,6 +194,7 @@
 		9C0804A7256D507900A8CBEF /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				9C8B3BFF25D4DF9B006054EB /* APIClient.swift */,
 				9CD370F12571C954001759F8 /* GitHubRepositorySearchRepository.swift */,
 				9C67F56325C24A5A0031F233 /* GitHubLicenseRepository.swift */,
 				9C94A95425CE5E07000BB17A /* GitHubReadmeRepository.swift */,

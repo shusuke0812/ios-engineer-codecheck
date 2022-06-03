@@ -43,8 +43,7 @@ extension APIClient {
                 }
             } else {
                 do {
-                    // TODO: 他のAPIError型でも使えるように汎用化する
-                    let apiError = try decoder.decode(GitHubAPIError.self, from: data)
+                    let apiError = try decoder.decode(T.ErrorResponse.self, from: data)
                     completion(.failure(.apiError(apiError)))
                 } catch {
                     completion(.failure(.responseParseError(error)))
@@ -73,7 +72,7 @@ extension APIClient {
                 }
             } else {
                 do {
-                    let apiError = try decoder.decode(GitHubAPIError.self, from: data)
+                    let apiError = try decoder.decode(T.ErrorResponse.self, from: data)
                     throw apiError
                 } catch {
                     throw APIClientError.responseParseError(error)

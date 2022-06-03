@@ -10,6 +10,7 @@ import Foundation
 
 protocol GitHubAPIRequest {
     associatedtype Response: Decodable
+    associatedtype ErrorResponse: Decodable, Error
 
     var baseURL: String { get }
     var path: String { get }
