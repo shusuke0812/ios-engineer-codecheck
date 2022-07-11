@@ -10,4 +10,6 @@ import Foundation
 
 func appReducer(_ state: AppState, _ action: ActionProtocol) -> AppState {
     var state = state
+    state.repositoryState = repositoryReducer(state.repositoryState, action: action)
+    return state
 }
