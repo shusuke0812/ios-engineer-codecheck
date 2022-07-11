@@ -10,13 +10,13 @@ import Foundation
 
 func repositoryReducer(_ state: RepositoryState, action: ActionProtocol) -> RepositoryState {
     var state = state
-    
+
     switch action {
     case let action as SetRepositories:
         state.list = action.repositories
     default:
         break
     }
-    
+
     return state
 }

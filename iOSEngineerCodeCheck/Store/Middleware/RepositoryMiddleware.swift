@@ -9,7 +9,7 @@
 import Foundation
 
 func repositoryMiddleware() -> Middleware<AppState> {
-    return { state, action, dispatch in
+    { _, action, dispatch in
         switch action {
         case _ as FetchRepositories:
             let searchWord = "swift"
