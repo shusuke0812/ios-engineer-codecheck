@@ -27,5 +27,20 @@ struct RepositoryState: StateProtocol {
 // MARK: - Store
 
 class Store<StoreState: StateProtocol>: NSObject {
+    var reducer: Reducer<StoreState>
+    var state: StoreState
+    var middleware: [Middleware<StoreState>]
     
+    init(reducer: @escaping Reducer<StoreState>, state: StoreState, middleware: [Middleware<StoreState>] = []) {
+        self.reducer = reducer
+        self.state = state
+        self.middleware = middleware
+    }
+    
+    func dispatch(action: ActionProtocol) {
+        self.state = self.reducer(self.state, action)
+        middleware.forEach { middleware in
+            middleware(state, action, dispatch)
+        }
+    }
 }
