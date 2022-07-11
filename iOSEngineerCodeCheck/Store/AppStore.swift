@@ -14,14 +14,18 @@ typealias Middleware<StoreState: StateProtocol> = (StoreState, ActionProtocol, @
 
 // MARK: - State
 
-protocol StateProtocol {}
+protocol StateProtocol {
+    var error: Error? { get set }
+}
 
 struct AppState: StateProtocol {
     var repositoryState = RepositoryState()
+    var error: Error?
 }
 
 struct RepositoryState: StateProtocol {
     var list = [GitHubRepository]()
+    var error: Error?
 }
 
 // MARK: - Store
