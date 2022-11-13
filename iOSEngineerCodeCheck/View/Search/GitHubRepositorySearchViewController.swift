@@ -20,7 +20,6 @@ class GitHubRepositorySearchViewController: UIViewController {
     }
 
     // MARK: Redux
-    // TODO: 他VCからでも同じStateを参照できるように、StoreはApplication層に定義する
     private var store: AppStore<AppState> {
         let delegate = UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
         return delegate.store
