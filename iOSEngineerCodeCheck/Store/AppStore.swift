@@ -22,6 +22,7 @@ protocol StateProtocol {
 struct AppState: StateProtocol {
     var repositoryState = RepositoryState()
     var repositoryReadmeState = RepositoryReadmeState()
+    var repositoryLicenseState = RepositoryLicenseState()
     var error: Error?
 }
 
@@ -32,6 +33,11 @@ struct RepositoryState: StateProtocol {
 
 struct RepositoryReadmeState: StateProtocol {
     var readme = GitHubReadme(htmlUrl: "")
+    var error: Error?
+}
+
+struct RepositoryLicenseState: StateProtocol {
+    var license = GitHubLicense(description: "", body: "")
     var error: Error?
 }
 

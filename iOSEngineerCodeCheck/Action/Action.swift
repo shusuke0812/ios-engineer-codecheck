@@ -29,3 +29,13 @@ struct FetchRepositoryReadme: ActionProtocol {
 struct SetRepositoryReadme: ActionProtocol {
     let readme: GitHubReadme
 }
+
+// MARK: - Fetch repository LICENSE
+
+struct FetchRepositoryLicense: ActionProtocol {
+    let request: LicenseRequest
+}
+
+struct SetRepositoryLicense: ActionProtocol {
+    let license: GitHubLicense
+}

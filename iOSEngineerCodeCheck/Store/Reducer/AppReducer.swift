@@ -12,5 +12,6 @@ func appReducer(_ state: AppState, _ action: ActionProtocol) -> AppState {
     var state = state
     state.repositoryState = repositoryReducer(state.repositoryState, action: action)
     state.repositoryReadmeState = repositoryReadmeReducer(state.repositoryReadmeState, action: action)
+    state.repositoryLicenseState = repositoryLicenseReducer(state.repositoryLicenseState, action: action)
     return state
 }

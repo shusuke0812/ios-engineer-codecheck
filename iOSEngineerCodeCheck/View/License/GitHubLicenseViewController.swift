@@ -7,56 +7,74 @@
 //
 
 import UIKit
+import RxSwift
 
 class GitHubLicenseViewController: UIViewController {
-    /// BaseView
     private var baseView: GitHubLicenseBaseView { self.view as! GitHubLicenseBaseView } // swiftlint:disable:this force_cast
-    /// ViewModel
-    private var viewModel: GitHubLicenseViewModel!
-    /// ライセンスAPIのキー
-    var gitHubLicenseApiKey: String?
+    private let disposeBag = RxSwift.DisposeBag()
 
-    /// ViewControllerインスタンス生成
+    private var gitHubLicenseApiKey: String?
+
     static func instantiate(gitHubLicenseApiKey: String) -> GitHubLicenseViewController {
         let vc = R.storyboard.gitHubLicenseViewController().instantiateInitialViewController() as! GitHubLicenseViewController // swiftlint:disable:this force_cast
         vc.gitHubLicenseApiKey = gitHubLicenseApiKey
         return vc
     }
 
+    // MARK: Redux
+    private var store: AppStore<AppState> {
+        let delegate = UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+        return delegate.store
+    }
+
+    private struct Props {
+        let license: GitHubLicense
+        let fetchRepositoryLicense: () -> Void
+    }
+
+    private func map(state: RepositoryLicenseState, request: LicenseRequest) -> Props {
+        Props(license: state.license) { [weak self] in
+            self?.store.dispatch(action: FetchRepositoryLicense(request: request))
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = GitHubLicenseViewModel(gitHubLicenseRepository: GitHubLicenseRepository())
-        self.setDelegateDataSource()
-        self.getLicense()
-        self.setNavigation()
+        setNavigation()
+        setObserver()
+
+        getLicense()
     }
 }
-// MARK: - Private Method
+
+// MARK: - Initialized
+
 extension GitHubLicenseViewController {
-    // ナビゲーションの設定
     private func setNavigation() {
         self.navigationItem.title = "ライセンス"
     }
-    // DelegateとDataSourceの登録
-    private func setDelegateDataSource() {
-        self.viewModel.delegate = self
-    }
-    // ライセンス取得
-    private func getLicense() {
-        if let licenseApikey = self.gitHubLicenseApiKey {
-            self.viewModel.getGitHubLicense(licenseApiKey: licenseApikey)
-        }
+    private func setObserver() {
+        store.nextState.subscribe(
+            onNext: { [weak self] _state in
+                DispatchQueue.main.async {
+                    self?.baseView.setUI(gitHubLicenseText: _state.repositoryLicenseState.license.body)
+                }
+            },
+            onError: nil,
+            onCompleted: nil
+        )
+        .disposed(by: disposeBag)
     }
 }
-// MARK: - ViewModel Delegate Method
-extension GitHubLicenseViewController: GitHubLicenseViewModelDelegate {
-    func didSuccessGetLicense() {
-        guard let gitHubLicenseText = self.viewModel.gitHubLicense?.body else { return }
-        DispatchQueue.main.async {
-            self.baseView.setUI(gitHubLicenseText: gitHubLicenseText)
-        }
-    }
-    func didFailedGetLicense(errorMessage: String) {
-        print(errorMessage)
+
+// MARK: - FetchAction
+
+extension GitHubLicenseViewController {
+    private func getLicense() {
+        guard let licenseApikey = self.gitHubLicenseApiKey else { return }
+
+        let request = LicenseRequest(key: licenseApikey)
+        let props = map(state: store.state.repositoryLicenseState, request: request)
+        props.fetchRepositoryLicense()
     }
 }

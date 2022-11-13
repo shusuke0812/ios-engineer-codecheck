@@ -29,6 +29,15 @@ func repositoryMiddleware() -> Middleware<AppState> {
                     print(error.description())
                 }
             }
+        case let fetchAction as FetchRepositoryLicense:
+            GitHubLicenseRepository().getGitHubLicense(request: fetchAction.request) { result in
+                switch result {
+                case .success(let license):
+                    dispatch(SetRepositoryLicense(license: license))
+                case .failure(let error):
+                    print(error.description())
+                }
+            }
         default:
             break
         }

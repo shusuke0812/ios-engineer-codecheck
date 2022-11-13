@@ -9,17 +9,17 @@
 import Foundation
 
 protocol GitHubLicenseRepositoryProtocol {
-    func getGitHubLicense(licenseApiKey: String, completion: @escaping (Result<GitHubLicense, APIClientError>) -> Void)
+    func getGitHubLicense(request: LicenseRequest, completion: @escaping (Result<GitHubLicense, APIClientError>) -> Void)
 }
+
 class GitHubLicenseRepository: GitHubLicenseRepositoryProtocol {
 }
+
 // MARK: - API Method
+
 extension GitHubLicenseRepository {
-    func getGitHubLicense(licenseApiKey: String, completion: @escaping (Result<GitHubLicense, APIClientError>) -> Void) {
-        // リクエストの組み立て
-        let gitHubAPIRequest = LicenseRequest(key: licenseApiKey)
-        // APIコール
-        APIClient.shared.sendRequest(gitHubAPIRequest) { result in
+    func getGitHubLicense(request: LicenseRequest, completion: @escaping (Result<GitHubLicense, APIClientError>) -> Void) {
+        APIClient.shared.sendRequest(request) { result in
             switch result {
             case .success(let response):
                 completion(.success(response))
