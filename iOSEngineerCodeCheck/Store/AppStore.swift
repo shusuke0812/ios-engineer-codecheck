@@ -21,11 +21,17 @@ protocol StateProtocol {
 
 struct AppState: StateProtocol {
     var repositoryState = RepositoryState()
+    var repositoryReadmeState = RepositoryReadmeState()
     var error: Error?
 }
 
 struct RepositoryState: StateProtocol {
     var list = [GitHubRepository]()
+    var error: Error?
+}
+
+struct RepositoryReadmeState: StateProtocol {
+    var readme = GitHubReadme(htmlUrl: "")
     var error: Error?
 }
 

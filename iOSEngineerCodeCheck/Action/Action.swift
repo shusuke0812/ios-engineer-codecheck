@@ -10,10 +10,22 @@ import Foundation
 
 protocol ActionProtocol {}
 
+// MARK: - Fetch repository
+
 struct FetchRepositories: ActionProtocol {
     let request: SearchRepositoriesRequest
 }
 
 struct SetRepositories: ActionProtocol {
     let repositories: [GitHubRepository]
+}
+
+// MARK: - Fetch repository README
+
+struct FetchRepositoryReadme: ActionProtocol {
+    let request: GetRepositoryReadmeRequest
+}
+
+struct SetRepositoryReadme: ActionProtocol {
+    let readme: GitHubReadme
 }

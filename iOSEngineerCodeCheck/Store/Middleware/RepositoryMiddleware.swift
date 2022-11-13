@@ -20,6 +20,15 @@ func repositoryMiddleware() -> Middleware<AppState> {
                     print(error.description())
                 }
             }
+        case let fetchAction as FetchRepositoryReadme:
+            GitHubReadmeRepository().getRepositoryReadme(request: fetchAction.request) { result in
+                switch result {
+                case .success(let readme):
+                    dispatch(SetRepositoryReadme(readme: readme))
+                case .failure(let error):
+                    print(error.description())
+                }
+            }
         default:
             break
         }

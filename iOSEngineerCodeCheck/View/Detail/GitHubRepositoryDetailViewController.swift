@@ -7,62 +7,103 @@
 //
 
 import UIKit
+import RxSwift
 
 class GitHubRepositoryDetailViewController: UIViewController {
-    /// BaseView
     private var baseView: GitHubRepositoryDetailBaseView { self.view as! GitHubRepositoryDetailBaseView } // swiftlint:disable:this force_cast
-    /// ViewModel
-    private var viewModel: GitHubRepositoryDetailViewModel!
-    /// GitHubのリポジトリ（前画面から値を受け取るようにしているが、SplitView対応に伴い画面立ち上げ時にnilとなるためオプショナル型で宣言）
-    private(set) var gitHubRepository: GitHubRepository?
+    private let disposeBag = RxSwift.DisposeBag()
 
-    /// ViewControllerインスタンス生成
+    private(set) var gitHubRepository: GitHubRepository? // 前画面から値を受け取るようにしているが、SplitView対応に伴い画面立ち上げ時にnilとなるためオプショナル型で宣言
+
     static func instantiate(gitHubRepository: GitHubRepository) -> GitHubRepositoryDetailViewController {
         let vc = R.storyboard.gitHubRepositoryDetailViewController().instantiateInitialViewController() as! GitHubRepositoryDetailViewController // swiftlint:disable:this force_cast
         vc.gitHubRepository = gitHubRepository
         return vc
     }
 
+    // MARK: Redux
+    private var store: AppStore<AppState> {
+        let delegate = UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+        return delegate.store
+    }
+
+    private struct Props {
+        let readme: GitHubReadme
+        let fetchReadmeRepository: () -> Void
+    }
+
+    private func map(state: RepositoryReadmeState, request: GetRepositoryReadmeRequest) -> Props {
+        Props(readme: state.readme) { [weak self] in
+            self?.store.dispatch(action: FetchRepositoryReadme(request: request))
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = GitHubRepositoryDetailViewModel(gitHubReadmeRepository: GitHubReadmeRepository())
-        self.setDelegateDataSource()
-        self.setNavigation()
-        self.setUI()
-        self.loadGitHubReadme()
+        setDelegateDataSource()
+        setNavigation()
+        setUI()
+        setObservers()
+
+        getReadme()
     }
 }
-// MARK: - Private Method
+
+// MARK: - Initialized
+
 extension GitHubRepositoryDetailViewController {
-    // ナビゲーションの設定
     private func setNavigation() {
-        self.navigationItem.title = "リポジトリ詳細"
+        navigationItem.title = "リポジトリ詳細"
     }
     private func setUI() {
-        if let gitHubRepository = self.gitHubRepository {
-            self.baseView.setUI(gitHubRepository: gitHubRepository)
+        if let gitHubRepository = gitHubRepository {
+            baseView.setUI(gitHubRepository: gitHubRepository)
         }
     }
     private func setDelegateDataSource() {
-        self.baseView.delegate = self
-        self.viewModel.delegate = self
+        baseView.delegate = self
     }
+    private func setObservers() {
+        store.nextState.subscribe(
+            onNext: { [weak self] _state in
+                DispatchQueue.main.async {
+                    self?.baseView.setReadmeWebView(urlString: _state.repositoryReadmeState.readme.htmlUrl)
+                }
+            },
+            onError: nil,
+            onCompleted: nil
+        )
+        .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Transition
+
+extension GitHubRepositoryDetailViewController {
     private func transitionLicensePage(licenseKey: String) {
         let vc = GitHubLicenseViewController.instantiate(gitHubLicenseApiKey: licenseKey)
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     private func showLicensePage(licenseKey: String) {
         let vc = GitHubLicenseViewController.instantiate(gitHubLicenseApiKey: licenseKey)
-        self.showDetailViewController(vc, sender: nil)
-    }
-    private func loadGitHubReadme() {
-        // リクエストを組み立て
-        guard let ownerName = self.gitHubRepository?.owner?.name, let repositoryName = self.gitHubRepository?.name else { return }
-        // APIコール
-        self.viewModel.getGitHubReadme(owner: ownerName, repository: repositoryName)
+        showDetailViewController(vc, sender: nil)
     }
 }
-// MARK: - BaseView Delegate Method
+
+// MARK: - FetchAction
+
+extension GitHubRepositoryDetailViewController {
+    private func getReadme() {
+        guard let owner = gitHubRepository?.owner?.name, let repository = gitHubRepository?.name else { return }
+
+        let request = GetRepositoryReadmeRequest(owner: owner, repository: repository)
+        let props = map(state: store.state.repositoryReadmeState, request: request)
+        props.fetchReadmeRepository()
+    }
+}
+
+// MARK: - BaseViewDelegate
+
 extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailBaseViewDelegate {
     func didTapHomePageButton() {
         if let homePageUrlString = self.gitHubRepository?.homePage {
@@ -78,18 +119,5 @@ extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailBaseViewDe
         case .pad: self.showLicensePage(licenseKey: licenseKey)
         default: return
         }
-    }
-}
-// MARK: - ViewModel Delegate Method
-extension GitHubRepositoryDetailViewController: GitHubRepositoryDetailViewModelDelegate {
-    func didSuccessGetReadme() {
-        if let urlString = self.viewModel.gitHubReadme?.htmlUrl {
-            DispatchQueue.main.async {
-                self.baseView.setReadmeWebView(urlString: urlString)
-            }
-        }
-    }
-    func didFailedGetReadme(errorMessage: String) {
-        print(errorMessage)
     }
 }
