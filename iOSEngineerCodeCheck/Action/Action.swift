@@ -10,7 +10,9 @@ import Foundation
 
 protocol ActionProtocol {}
 
-struct FetchRepositories: ActionProtocol {}
+struct FetchRepositories: ActionProtocol {
+    let request: SearchRepositoriesRequest
+}
 
 struct SetRepositories: ActionProtocol {
     let repositories: [GitHubRepository]

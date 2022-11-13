@@ -27,9 +27,9 @@ class GitHubRepositorySearchViewController: UIViewController {
         let repositories: [GitHubRepository]
         let fetchRepositories: () -> Void
     }
-    private func map(state: RepositoryState) -> Props {
+    private func map(state: RepositoryState, request: SearchRepositoriesRequest) -> Props {
         Props(repositories: state.list) { [weak self] in
-            self?.store.dispatch(action: FetchRepositories())
+            self?.store.dispatch(action: FetchRepositories(request: request))
         }
     }
 
@@ -95,13 +95,14 @@ extension GitHubRepositorySearchViewController {
         splitViewController?.showDetailViewController(vc, sender: nil)
     }
     // リポジトリ検索APIを呼ぶ
-    private func getRepositorys(searchText: String) {
+    private func getRepositorys(searchWord: String) {
         // TableFooterViewにActivtyIindicatorを設定
         if baseView.tableView.tableFooterView == nil {
             baseView.setLodingCellWithStartingAnimation()
         }
 
-        let props = map(state: store.state.repositoryState)
+        let request = SearchRepositoriesRequest(searchWord: searchWord, searchCount: 20, page: 1)
+        let props = map(state: store.state.repositoryState, request: request)
         props.fetchRepositories()
         // TODO: API fetch前後でHUDを表示させるようにする
     }
@@ -115,7 +116,7 @@ extension GitHubRepositorySearchViewController {
         if searchText.isEmpty {
             setNoRepository()
         } else {
-            getRepositorys(searchText: searchText)
+            getRepositorys(searchWord: searchText)
         }
     }
 }

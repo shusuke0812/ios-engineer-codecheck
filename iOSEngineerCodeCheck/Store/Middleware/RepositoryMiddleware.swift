@@ -11,11 +11,8 @@ import Foundation
 func repositoryMiddleware() -> Middleware<AppState> {
     { _, action, dispatch in
         switch action {
-        case _ as FetchRepositories:
-            let searchWord = "swift"
-            let searchCount = 10
-            let page = 1
-            GitHubRepositorySearchRepository().getGitHubRepositorys(searchWord: searchWord, searchCount: searchCount, page: page) { result in
+        case let fetchAction as FetchRepositories:
+            GitHubRepositorySearchRepository().getGitHubRepositorys(request: fetchAction.request) { result in
                 switch result {
                 case .success(let repository):
                     dispatch(SetRepositories(repositories: repository.items))
