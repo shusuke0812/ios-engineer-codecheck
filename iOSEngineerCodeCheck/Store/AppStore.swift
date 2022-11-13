@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 typealias Dispather = (ActionProtocol) -> Void
 typealias Reducer<State: StateProtocol> = (_ state: State, _ action: ActionProtocol) -> State
@@ -33,9 +34,13 @@ struct RepositoryState: StateProtocol {
 /// アプリケーション全体の状態を管理する
 /// - Reducer, State, Middlewareを保持し、アプリ全体でただ一つ存在するもの。そのため、どのViewからもアクセスできるようにAppRootControllerで保持するように実装されている。
 class AppStore<StoreState: StateProtocol>: NSObject {
-    var reducer: Reducer<StoreState>
-    var state: StoreState
-    var middleware: [Middleware<StoreState>]
+    private var reducer: Reducer<StoreState>
+    private(set) var state: StoreState
+    private var middleware: [Middleware<StoreState>]
+
+    private let subject = PublishSubject<StoreState>()
+    private let dispoaseBag = RxSwift.DisposeBag()
+    var nextState: Observable<StoreState> { subject.asObservable() }
 
     init(reducer: @escaping Reducer<StoreState>, state: StoreState, middleware: [Middleware<StoreState>] = []) {
         self.reducer = reducer
@@ -44,7 +49,9 @@ class AppStore<StoreState: StateProtocol>: NSObject {
     }
 
     func dispatch(action: ActionProtocol) {
-        self.state = self.reducer(self.state, action)
+        state = reducer(state, action)
+        subject.onNext(state)
+
         middleware.forEach { middleware in
             middleware(state, action, dispatch)
         }
