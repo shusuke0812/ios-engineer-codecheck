@@ -11,12 +11,9 @@
 import Foundation
 
 struct GetRepositoryReadmeRequest: GitHubAPIRequest {
-    /// ユーザー名
     let owner: String
-    /// リポジトリ名
     let repository: String
 
-    // GitHubAPIRequestが要求する連想型
     typealias Response = GitHubReadme
 
     var method: HTTPMethod {

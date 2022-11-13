@@ -44,7 +44,6 @@ class GitHubRepositorySearchViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // 画面起動時にSearchFieldをONにしてキーボードを立ちげる（UI/UX向上）
         if !onKeyboard {
             baseView.searchBar.becomeFirstResponder()
             onKeyboard = true
@@ -81,22 +80,23 @@ extension GitHubRepositorySearchViewController {
     }
 }
 
-// MARK: - Private
+// MARK: - Transition
 
 extension GitHubRepositorySearchViewController {
-    // GitHubRepository詳細ページへ遷移（iPhone）
     private func transitionGitHubRepositoryDetail(indexPath: IndexPath) {
         let vc = GitHubRepositoryDetailViewController.instantiate(gitHubRepository: repositories[indexPath.row])
         navigationController?.pushViewController(vc, animated: true)
     }
-    // GitHubRepository詳細ページをスプリットで表示（iPad）
     private func showGitHubRepositoryDetail(indexPath: IndexPath) {
         let vc = GitHubRepositoryDetailViewController.instantiate(gitHubRepository: repositories[indexPath.row])
         splitViewController?.showDetailViewController(vc, sender: nil)
     }
-    // リポジトリ検索APIを呼ぶ
+}
+
+// MARK: - FetchAction
+
+extension GitHubRepositorySearchViewController {
     private func getRepositorys(searchWord: String) {
-        // TableFooterViewにActivtyIindicatorを設定
         if baseView.tableView.tableFooterView == nil {
             baseView.setLodingCellWithStartingAnimation()
         }
@@ -106,11 +106,9 @@ extension GitHubRepositorySearchViewController {
         props.fetchRepositories()
         // TODO: API fetch前後でHUDを表示させるようにする
     }
-    // リポジトリがない場合の処理
     private func setNoRepository() {
         baseView.setNoRepositoryUI(gitHubRepositorys: repositories)
     }
-    // リポジトリ検索ハンドル
     private func searchRepositorys(searchText: String) {
         // 空文字""だと検索エラーになるのでAPIは発行しない
         if searchText.isEmpty {
@@ -133,7 +131,6 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText: String = searchBar.text else { return }
         searchRepositorys(searchText: searchText)
-        // キーボードを閉じる
         baseView.searchBar.endEditing(true)
     }
 }
@@ -142,13 +139,11 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
 
 extension GitHubRepositorySearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // リポジトリ一覧セルをタップして詳細ページを表示させる
         switch DeviceJudgeHelper.getType {
         case .phone: transitionGitHubRepositoryDetail(indexPath: indexPath)
         case .pad: showGitHubRepositoryDetail(indexPath: indexPath)
         default: return
         }
-        // セルの選択状態を解除
         baseView.tableView.deselectRow(at: indexPath, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

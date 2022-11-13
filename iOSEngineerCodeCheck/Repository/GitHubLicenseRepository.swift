@@ -9,10 +9,6 @@
 import Foundation
 
 protocol GitHubLicenseRepositoryProtocol {
-    /// GiHubリポジトリのライセンス情報を取得する
-    /// - Parameters:
-    ///   - licenseApiKey: LICENSEのキー
-    ///   - completion: ライセンス取得の成功、失敗ハンドル
     func getGitHubLicense(licenseApiKey: String, completion: @escaping (Result<GitHubLicense, APIClientError>) -> Void)
 }
 class GitHubLicenseRepository: GitHubLicenseRepositoryProtocol {

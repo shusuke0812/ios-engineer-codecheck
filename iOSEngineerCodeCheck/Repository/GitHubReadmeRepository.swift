@@ -9,11 +9,6 @@
 import Foundation
 
 protocol GitHubReadmeRepositoryProtocol {
-    /// リポジトリのREADMEを取得する
-    /// - Parameters:
-    ///   - owner: リポジトリアカウント名
-    ///   - repository: リポジトリ名
-    ///   - completion: README取得の成功、失敗ハンドル
     func getRepositoryReadme(owner: String, repository: String, completion: @escaping (Result<GitHubReadme, APIClientError>) -> Void)
 }
 class GitHubReadmeRepository: GitHubReadmeRepositoryProtocol {

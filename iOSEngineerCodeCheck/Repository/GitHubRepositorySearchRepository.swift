@@ -9,7 +9,6 @@
 import Foundation
 
 protocol GitHubRepositorySearchRepositoryProtocol {
-    /// GitHubRepositoryを取得する
     func getGitHubRepositorys(request: SearchRepositoriesRequest, completion: @escaping (Result<Items<GitHubRepository>, APIClientError>) -> Void)
 }
 class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol {

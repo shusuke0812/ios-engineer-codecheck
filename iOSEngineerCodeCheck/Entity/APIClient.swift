@@ -16,9 +16,7 @@ protocol APIClientProtocol {
     func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void)
 }
 class APIClient: APIClientProtocol {
-    /// シングルトン
     static let shared = APIClient()
-
     private init() {}
 }
 // MARK: - API Base Method

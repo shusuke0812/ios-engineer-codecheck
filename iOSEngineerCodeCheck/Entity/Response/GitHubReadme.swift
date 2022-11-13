@@ -9,7 +9,6 @@
 import Foundation
 
 struct GitHubReadme: Codable {
-    /// URL（HTML）
     let htmlUrl: String
 
     enum CodingKeys: String, CodingKey {
