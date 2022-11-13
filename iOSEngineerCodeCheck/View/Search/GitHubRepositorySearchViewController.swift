@@ -103,6 +103,7 @@ extension GitHubRepositorySearchViewController {
 
         let props = map(state: store.state.repositoryState)
         props.fetchRepositories()
+        // TODO: API fetch前後でHUDを表示させるようにする
     }
     // リポジトリがない場合の処理
     private func setNoRepository() {
