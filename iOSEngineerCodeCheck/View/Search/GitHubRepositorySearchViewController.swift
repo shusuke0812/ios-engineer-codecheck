@@ -8,15 +8,19 @@
 
 import UIKit
 import PKHUD
+import RxSwift
 
 class GitHubRepositorySearchViewController: UIViewController {
     private var baseView: GitHubRepositorySearchBaseView { self.view as! GitHubRepositorySearchBaseView } // swiftlint:disable:this force_cast
-    private var viewModel: GitHubRepositorySearchViewModel!
+    private let disposeBag = RxSwift.DisposeBag()
 
     private var onKeyboard = false
+    private var repositories: [GitHubRepository] {
+        store.state.repositoryState.list
+    }
 
     // MARK: - Redux
-
+    // TODO: 他VCからでも同じStateを参照できるように、StoreはApplication層に定義する
     private var store = AppStore(reducer: appReducer, state: AppState(), middleware: [repositoryMiddleware()])
 
     private struct Props {
@@ -32,10 +36,10 @@ class GitHubRepositorySearchViewController: UIViewController {
     // MARK: - Lifecycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel = GitHubRepositorySearchViewModel(gitHubRepositorySearchRepository: GitHubRepositorySearchRepository())
         self.setDelegateDataSource()
         self.setNavigation()
         self.setDissmissKeyboard()
+        setObservers()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -46,53 +50,62 @@ class GitHubRepositorySearchViewController: UIViewController {
         }
     }
 }
+
 // MARK: - Initialized Method
+
 extension GitHubRepositorySearchViewController {
-    // ナビゲーションの設定
     private func setNavigation() {
         self.navigationItem.title = "リポジトリ一覧"
     }
-    // DelegateとDataSourceの登録
+
     private func setDelegateDataSource() {
         self.baseView.searchBar.delegate = self
         self.baseView.tableView.delegate = self
-        self.baseView.tableView.dataSource = self.viewModel
-        self.viewModel.delegate = self
+        self.baseView.tableView.dataSource = self
+    }
+
+    private func setObservers() {
+        store.nextState.subscribe(
+            onNext: { [weak self] _state in
+                guard let _self = self else { return }
+                DispatchQueue.main.async {
+                    _self.baseView.setNoRepositoryUI(gitHubRepositorys: _state.repositoryState.list)
+                    _self.baseView.tableView.reloadData()
+                }
+            },
+            onError: nil,
+            onCompleted: nil
+        )
+        .disposed(by: disposeBag)
     }
 }
+
 // MARK: - Private Method
+
 extension GitHubRepositorySearchViewController {
     // GitHubRepository詳細ページへ遷移（iPhone）
     private func transitionGitHubRepositoryDetail(indexPath: IndexPath) {
-        let vc = GitHubRepositoryDetailViewController.instantiate(gitHubRepository: self.viewModel.gitHubRepositorys[indexPath.row])
+        let vc = GitHubRepositoryDetailViewController.instantiate(gitHubRepository: repositories[indexPath.row])
         self.navigationController?.pushViewController(vc, animated: true)
     }
     // GitHubRepository詳細ページをスプリットで表示（iPad）
     private func showGitHubRepositoryDetail(indexPath: IndexPath) {
-        let vc = GitHubRepositoryDetailViewController.instantiate(gitHubRepository: self.viewModel.gitHubRepositorys[indexPath.row])
+        let vc = GitHubRepositoryDetailViewController.instantiate(gitHubRepository: repositories[indexPath.row])
         self.splitViewController?.showDetailViewController(vc, sender: nil)
     }
     // リポジトリ検索APIを呼ぶ
     private func getRepositorys(searchText: String) {
-        // HUD表示（始）
-        HUD.show(.progress)
         // TableFooterViewにActivtyIindicatorを設定
         if self.baseView.tableView.tableFooterView == nil {
             self.baseView.setLodingCellWithStartingAnimation()
         }
-        // APIコール
-        /*
-        self.viewModel.initAPIParameters()
-        self.viewModel.searchWord = searchText
-        self.viewModel.getGitHubRepositorys()
-        */
+
         let props = map(state: store.state.repositoryState)
         props.fetchRepositories()
     }
     // リポジトリがない場合の処理
     private func setNoRepository() {
-        self.viewModel.initAPIParameters()
-        self.baseView.setNoRepositoryUI(gitHubRepositorys: self.viewModel.gitHubRepositorys)
+        self.baseView.setNoRepositoryUI(gitHubRepositorys: repositories)
     }
     // リポジトリ検索ハンドル
     private func searchRepositorys(searchText: String) {
@@ -119,7 +132,9 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
         self.baseView.searchBar.endEditing(true)
     }
 }
+
 // MARK: - UITableVIew Delegate Method
+
 extension GitHubRepositorySearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // リポジトリ一覧セルをタップして詳細ページを表示させる
@@ -139,30 +154,22 @@ extension GitHubRepositorySearchViewController: UITableViewDelegate {
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.height
         let distanceToBottom = maximumOffset - currentOffsetY
         if distanceToBottom < 0 && self.baseView.tableView.isDragging {
-            self.viewModel.getGitHubRepositorys()
+            // TODO: fetch処理追加
         }
     }
 }
-// MARK: - ViewModel Delegate Method
-extension GitHubRepositorySearchViewController: GitHubRepositorySearchViewModelDelegate {
-    func didSuccessGetGitHubRepositorys() {
-        DispatchQueue.main.async {
-            self.baseView.setNoRepositoryUI(gitHubRepositorys: self.viewModel.gitHubRepositorys)
-            if self.viewModel.apiLoadStatus == .full {
-                self.baseView.cancelTableFooterView()
-            }
-            self.baseView.tableView.reloadData()
-            // HUD表示（終）
-            HUD.hide()
-        }
+
+// MARK: - UITableViewDataSource
+
+extension GitHubRepositorySearchViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        repositories.count
     }
-    func didFailedGetGitHubRepositorys(errorMessage: String) {
-        print("DEBUG: \(errorMessage)")
-        DispatchQueue.main.async {
-            // HUD表示（終）
-            HUD.hide()
-            // 失敗メッセージをアラート表示
-            UIAlertController.showAlert(style: .alert, viewController: self, title: errorMessage, message: nil, okButtonTitle: "OK", cancelButtonTitle: nil)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.gitHubRepositoryCell, for: indexPath)! // swiftlint:disable:this force_unwrapping
+        if !store.state.repositoryState.list.isEmpty {
+            cell.setUI(gitHubRepository: repositories[indexPath.row])
         }
+        return cell
     }
 }
