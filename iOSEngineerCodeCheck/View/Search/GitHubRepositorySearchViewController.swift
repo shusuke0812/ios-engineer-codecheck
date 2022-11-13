@@ -10,12 +10,24 @@ import UIKit
 import PKHUD
 
 class GitHubRepositorySearchViewController: UIViewController {
-    /// BaseView
     private var baseView: GitHubRepositorySearchBaseView { self.view as! GitHubRepositorySearchBaseView } // swiftlint:disable:this force_cast
-    /// ViewModel
     private var viewModel: GitHubRepositorySearchViewModel!
-    /// キーボード起動フラグ
-    private var onKeyboard: Bool = false
+
+    private var onKeyboard = false
+
+    // MARK: - Redux
+
+    private var store = AppStore(reducer: appReducer, state: AppState(), middleware: [repositoryMiddleware()])
+
+    private struct Props {
+        let repositories: [GitHubRepository]
+        let fetchRepositories: () -> Void
+    }
+    private func map(state: RepositoryState) -> Props {
+        Props(repositories: state.list) { [weak self] in
+            self?.store.dispatch(action: FetchRepositories())
+        }
+    }
 
     // MARK: - Lifecycle Method
     override func viewDidLoad() {
@@ -69,9 +81,13 @@ extension GitHubRepositorySearchViewController {
             self.baseView.setLodingCellWithStartingAnimation()
         }
         // APIコール
+        /*
         self.viewModel.initAPIParameters()
         self.viewModel.searchWord = searchText
         self.viewModel.getGitHubRepositorys()
+        */
+        let props = map(state: store.state.repositoryState)
+        props.fetchRepositories()
     }
     // リポジトリがない場合の処理
     private func setNoRepository() {

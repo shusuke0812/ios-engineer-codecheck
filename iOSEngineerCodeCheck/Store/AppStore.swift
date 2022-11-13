@@ -32,7 +32,7 @@ struct RepositoryState: StateProtocol {
 
 /// アプリケーション全体の状態を管理する
 /// - Reducer, State, Middlewareを保持し、アプリ全体でただ一つ存在するもの。そのため、どのViewからもアクセスできるようにAppRootControllerで保持するように実装されている。
-class Store<StoreState: StateProtocol>: NSObject {
+class AppStore<StoreState: StateProtocol>: NSObject {
     var reducer: Reducer<StoreState>
     var state: StoreState
     var middleware: [Middleware<StoreState>]
