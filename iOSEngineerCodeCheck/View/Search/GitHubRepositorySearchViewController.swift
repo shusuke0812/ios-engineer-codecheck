@@ -11,7 +11,7 @@ import PKHUD
 import RxSwift
 
 class GitHubRepositorySearchViewController: UIViewController {
-    private var baseView: GitHubRepositorySearchBaseView { self.view as! GitHubRepositorySearchBaseView } // swiftlint:disable:this force_cast
+    private var baseView: GitHubRepositorySearchBaseView { view as! GitHubRepositorySearchBaseView } // swiftlint:disable:this force_cast
     private let disposeBag = RxSwift.DisposeBag()
 
     private var onKeyboard = false
@@ -19,7 +19,7 @@ class GitHubRepositorySearchViewController: UIViewController {
         store.state.repositoryState.list
     }
 
-    // MARK: - Redux
+    // MARK: Redux
     // TODO: 他VCからでも同じStateを参照できるように、StoreはApplication層に定義する
     private var store = AppStore(reducer: appReducer, state: AppState(), middleware: [repositoryMiddleware()])
 
@@ -33,35 +33,36 @@ class GitHubRepositorySearchViewController: UIViewController {
         }
     }
 
-    // MARK: - Lifecycle Method
+    // MARK: Lifecycle Method
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setDelegateDataSource()
-        self.setNavigation()
-        self.setDissmissKeyboard()
+        setDelegateDataSource()
+        setNavigation()
+        setDissmissKeyboard()
         setObservers()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // 画面起動時にSearchFieldをONにしてキーボードを立ちげる（UI/UX向上）
         if !onKeyboard {
-            self.baseView.searchBar.becomeFirstResponder()
-            self.onKeyboard = true
+            baseView.searchBar.becomeFirstResponder()
+            onKeyboard = true
         }
     }
 }
 
-// MARK: - Initialized Method
+// MARK: - Initialized
 
 extension GitHubRepositorySearchViewController {
     private func setNavigation() {
-        self.navigationItem.title = "リポジトリ一覧"
+        navigationItem.title = "リポジトリ一覧"
     }
 
     private func setDelegateDataSource() {
-        self.baseView.searchBar.delegate = self
-        self.baseView.tableView.delegate = self
-        self.baseView.tableView.dataSource = self
+        baseView.searchBar.delegate = self
+        baseView.tableView.delegate = self
+        baseView.tableView.dataSource = self
     }
 
     private func setObservers() {
@@ -80,24 +81,24 @@ extension GitHubRepositorySearchViewController {
     }
 }
 
-// MARK: - Private Method
+// MARK: - Private
 
 extension GitHubRepositorySearchViewController {
     // GitHubRepository詳細ページへ遷移（iPhone）
     private func transitionGitHubRepositoryDetail(indexPath: IndexPath) {
         let vc = GitHubRepositoryDetailViewController.instantiate(gitHubRepository: repositories[indexPath.row])
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     // GitHubRepository詳細ページをスプリットで表示（iPad）
     private func showGitHubRepositoryDetail(indexPath: IndexPath) {
         let vc = GitHubRepositoryDetailViewController.instantiate(gitHubRepository: repositories[indexPath.row])
-        self.splitViewController?.showDetailViewController(vc, sender: nil)
+        splitViewController?.showDetailViewController(vc, sender: nil)
     }
     // リポジトリ検索APIを呼ぶ
     private func getRepositorys(searchText: String) {
         // TableFooterViewにActivtyIindicatorを設定
-        if self.baseView.tableView.tableFooterView == nil {
-            self.baseView.setLodingCellWithStartingAnimation()
+        if baseView.tableView.tableFooterView == nil {
+            baseView.setLodingCellWithStartingAnimation()
         }
 
         let props = map(state: store.state.repositoryState)
@@ -105,19 +106,21 @@ extension GitHubRepositorySearchViewController {
     }
     // リポジトリがない場合の処理
     private func setNoRepository() {
-        self.baseView.setNoRepositoryUI(gitHubRepositorys: repositories)
+        baseView.setNoRepositoryUI(gitHubRepositorys: repositories)
     }
     // リポジトリ検索ハンドル
     private func searchRepositorys(searchText: String) {
         // 空文字""だと検索エラーになるのでAPIは発行しない
         if searchText.isEmpty {
-            self.setNoRepository()
+            setNoRepository()
         } else {
-            self.getRepositorys(searchText: searchText)
+            getRepositorys(searchText: searchText)
         }
     }
 }
-// MARK: - UISearchBar Delegate Method
+
+// MARK: - UISearchBarDelegate
+
 extension GitHubRepositorySearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         //　インクリメンタルサーチの定義：0.5秒以内に入力された連続的なデータでリクエスを発行しないようにする
@@ -127,24 +130,24 @@ extension GitHubRepositorySearchViewController: UISearchBarDelegate {
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText: String = searchBar.text else { return }
-        self.searchRepositorys(searchText: searchText)
+        searchRepositorys(searchText: searchText)
         // キーボードを閉じる
-        self.baseView.searchBar.endEditing(true)
+        baseView.searchBar.endEditing(true)
     }
 }
 
-// MARK: - UITableVIew Delegate Method
+// MARK: - UITableVIewDelegate
 
 extension GitHubRepositorySearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // リポジトリ一覧セルをタップして詳細ページを表示させる
         switch DeviceJudgeHelper.getType {
-        case .phone: self.transitionGitHubRepositoryDetail(indexPath: indexPath)
-        case .pad: self.showGitHubRepositoryDetail(indexPath: indexPath)
+        case .phone: transitionGitHubRepositoryDetail(indexPath: indexPath)
+        case .pad: showGitHubRepositoryDetail(indexPath: indexPath)
         default: return
         }
         // セルの選択状態を解除
-        self.baseView.tableView.deselectRow(at: indexPath, animated: true)
+        baseView.tableView.deselectRow(at: indexPath, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         GitHubRepositoryCell.rowHeight
@@ -153,7 +156,7 @@ extension GitHubRepositorySearchViewController: UITableViewDelegate {
         let currentOffsetY = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.height
         let distanceToBottom = maximumOffset - currentOffsetY
-        if distanceToBottom < 0 && self.baseView.tableView.isDragging {
+        if distanceToBottom < 0 && baseView.tableView.isDragging {
             // TODO: fetch処理追加
         }
     }
