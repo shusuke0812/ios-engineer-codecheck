@@ -85,10 +85,7 @@ $ open iOSEngineerCodeCheck.xcworkspace
 - １画面 = 1 ViewController + 1 Stroyboard を基本構成とする
 - Reduxアーキテクチャを使用
   - 各ファイルの基本的な役割は、
-    - BaseView.swift： 画面表示
-    - ViewController.swift： 画面遷移、インタラクション表示、BaseViewとViewModelの接続
-    - 
-    - Repository： 外部・内部ストレージのデータを操作する
+    <img width=600 src="https://user-images.githubusercontent.com/33107697/201707316-d31bfb98-9f7b-4fd7-89ed-839844090e38.png">
   - ファイルの命名規則は、
     - 画面名 + クラス名.swift
 - コードを読む量を減らすため`self`キーワードは省略する
