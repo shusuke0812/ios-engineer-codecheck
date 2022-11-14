@@ -51,7 +51,6 @@ class AppStore<StoreState: StateProtocol>: NSObject {
     private var middleware: [Middleware<StoreState>]
 
     private let subject = PublishSubject<StoreState>()
-    private let dispoaseBag = RxSwift.DisposeBag()
     var nextState: Observable<StoreState> { subject.asObservable() }
 
     init(reducer: @escaping Reducer<StoreState>, state: StoreState, middleware: [Middleware<StoreState>] = []) {
