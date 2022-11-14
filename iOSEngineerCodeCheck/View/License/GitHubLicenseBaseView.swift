@@ -13,22 +13,18 @@ class GitHubLicenseBaseView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        initUI()
+        self.initUI()
     }
 }
-
 // MARK: - Initialized Method
-
 extension GitHubLicenseBaseView {
     private func initUI() {
-        licenseLabel.text = ""
+        self.licenseLabel.text = ""
     }
 }
-
 // MARK: - Setting UI Method
-
 extension GitHubLicenseBaseView {
     func setUI(gitHubLicenseText: String) {
-        licenseLabel.text = gitHubLicenseText
+        self.licenseLabel.text = gitHubLicenseText
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 struct GitHubRepository: Codable {
     let name: String?
-    let fullName: String?
+    let fullName: String? // オーナー名+リポジトリ名
     let language: String?
     let starNumber: Int?
     let watchNumber: Int?
@@ -18,7 +18,7 @@ struct GitHubRepository: Codable {
     let isueNumber: Int?
     let description: String?
     let homePage: String?
-    let updatedAt: Date? // 更新日（MEMO: JSONの日付型がSwiftのJSONDecoderに対応していないのでDateFormatterを拡張している）
+    let updatedAt: Date? // JSONの日付型がSwiftのJSONDecoderに対応していないのでDateFormatterを拡張している）
     let owner: Owner?
     let license: License?
 

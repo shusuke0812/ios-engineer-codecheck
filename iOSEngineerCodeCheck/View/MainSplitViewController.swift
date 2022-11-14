@@ -9,8 +9,11 @@
 import UIKit
 
 class MainSplitViewController: UISplitViewController {
-    private var isCollapseSecondary: Bool { traitCollection.containsTraits(in: UITraitCollection(horizontalSizeClass: .compact)) }
+    // デバイスの幅によってdetail部を表示させるかどうかのフラグ
+    private var isCollapseSecondary: Bool { self.traitCollection.containsTraits(in: UITraitCollection(horizontalSizeClass: .compact)) }
+    /// MainViewController
     private let mainVC: UIViewController
+    /// DetailViewController
     private let detailVC: UIViewController
 
     init(mainVC: UIViewController, detailVC: UIViewController) {
@@ -25,25 +28,24 @@ class MainSplitViewController: UISplitViewController {
     }
 
     // MARK: - Lifecycle Method
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
-        setSplitViewController()
+        self.delegate = self
+        self.setSplitViewController()
     }
 }
-
 // MARK: - Private Method
-
 extension MainSplitViewController {
     private func setSplitViewController() {
-        detailVC.navigationItem.leftBarButtonItem = .none
-        viewControllers = [mainVC, detailVC] // split view
+        // 詳細画面のボタン設定
+        self.detailVC.navigationItem.leftBarButtonItem = .none
+        // SplitView登録
+        self.viewControllers = [self.mainVC, self.detailVC]
     }
 }
 // MARK: - UISplitViewController Delegate Method
 extension MainSplitViewController: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
-        isCollapseSecondary
+        self.isCollapseSecondary
     }
 }

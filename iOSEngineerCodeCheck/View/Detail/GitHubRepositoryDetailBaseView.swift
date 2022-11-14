@@ -11,8 +11,11 @@ import WebKit
 import FontAwesome_swift
 
 protocol GitHubRepositoryDetailBaseViewDelegate: AnyObject {
+    /// ホームページボタンをタップした時の処理
     func didTapHomePageButton()
+    /// お気に入りボタンをタップした時の処理
     func didTapStarButton()
+    /// LICENSEセルをタップした時の処理
     func didTapLicenseCell()
 }
 
@@ -37,46 +40,42 @@ class GitHubRepositoryDetailBaseView: UIView {
     // MARK: - Lifecycle Method
     override func awakeFromNib() {
         super.awakeFromNib()
-        initHeaderUI()
-        initStarButton()
-        initBodyUI()
+        self.initHeaderUI()
+        self.initStarButton()
+        self.initBodyUI()
     }
-
     // MARK: - Action Method
-
     @IBAction private func didTapHomePageButton(_ sender: Any) {
-        delegate?.didTapHomePageButton()
+        self.delegate?.didTapHomePageButton()
     }
     @IBAction private func didTapStarButton(_ sender: Any) {
-        delegate?.didTapStarButton()
+        self.delegate?.didTapStarButton()
     }
     @IBAction private func didTapLicenseCell(_ sender: Any) {
-        delegate?.didTapLicenseCell()
+        self.delegate?.didTapLicenseCell()
     }
 }
-
 // MARK: - Initialized Method
-
 extension GitHubRepositoryDetailBaseView {
     private func initHeaderUI() {
         // アバターアイコンの設定
-        avatarImageView.clipsToBounds = true
-        avatarImageView.layer.cornerRadius = 5
-        avatarImageView.image = R.image.avatar_default()
+        self.avatarImageView.clipsToBounds = true
+        self.avatarImageView.layer.cornerRadius = 5
+        self.avatarImageView.image = R.image.avatar_default()
         // 各種テキストの設定
-        titleLabel.text = ""
-        descriptionLabel.text = ""
-        homePageButton.setTitle("", for: .normal)
-        languageLabel.text = ""
+        self.titleLabel.text = ""
+        self.descriptionLabel.text = ""
+        self.homePageButton.setTitle("", for: .normal)
+        self.languageLabel.text = ""
         // 言語アイコンの体裁設定
-        languageIconView.clipsToBounds = true
-        languageIconView.layer.cornerRadius = languageIconView.frame.width / 2
+        self.languageIconView.clipsToBounds = true
+        self.languageIconView.layer.cornerRadius = self.languageIconView.frame.width / 2
     }
     private func initStarButton() {
-        starButton.clipsToBounds = true
-        starButton.layer.cornerRadius = 5
-        starButton.layer.borderColor = UIColor.lightGray.cgColor
-        starButton.layer.borderWidth = 1.0
+        self.starButton.clipsToBounds = true
+        self.starButton.layer.cornerRadius = 5
+        self.starButton.layer.borderColor = UIColor.lightGray.cgColor
+        self.starButton.layer.borderWidth = 1.0
     }
     private func initBodyUI() {
         // ラベルの設定
@@ -84,65 +83,63 @@ extension GitHubRepositoryDetailBaseView {
         for information in RepositoryDetail.informations {
             switch information {
             case .license:
-                repositoryInformationLabels[information.rawValue].text = "NO LICENSE"
+                self.repositoryInformationLabels[information.rawValue].text = "NO LICENSE"
             default:
-                repositoryInformationLabels[information.rawValue].text = "\(defauletNumber)"
+                self.repositoryInformationLabels[information.rawValue].text = "\(defauletNumber)"
             }
         }
         // MEMO: fontawesomeのstyleを.regularにすると表示されないバグあり（原因不明）
         let cornerRadius: CGFloat = 5
         for information in RepositoryDetail.informations {
-            repositoryInformationIconImageViews[information.rawValue].clipsToBounds = true
-            repositoryInformationIconImageViews[information.rawValue].layer.cornerRadius = cornerRadius
-            repositoryInformationIconImageViews[information.rawValue].backgroundColor = information.iconColor
-            repositoryInformationIconImageViews[information.rawValue].image = information.iconImage
+            self.repositoryInformationIconImageViews[information.rawValue].clipsToBounds = true
+            self.repositoryInformationIconImageViews[information.rawValue].layer.cornerRadius = cornerRadius
+            self.repositoryInformationIconImageViews[information.rawValue].backgroundColor = information.iconColor
+            self.repositoryInformationIconImageViews[information.rawValue].image = information.iconImage
         }
     }
 }
-
 // MARK: - Setting UI Method
-
 extension GitHubRepositoryDetailBaseView {
     func setUI(gitHubRepository: GitHubRepository) {
-        setHeaderUI(gitHubRepository: gitHubRepository)
-        setBodyUI(gitHubRepository: gitHubRepository)
+        self.setHeaderUI(gitHubRepository: gitHubRepository)
+        self.setBodyUI(gitHubRepository: gitHubRepository)
     }
     private func setHeaderUI(gitHubRepository: GitHubRepository) {
-        avatarImageView.getImage(imageUrlString: gitHubRepository.owner?.avatarImage ?? "")
-        titleLabel.text = gitHubRepository.fullName
-        descriptionLabel.text = gitHubRepository.description
+        self.avatarImageView.getImage(imageUrlString: gitHubRepository.owner?.avatarImage ?? "")
+        self.titleLabel.text = gitHubRepository.fullName
+        self.descriptionLabel.text = gitHubRepository.description
         if let homePageUrl = gitHubRepository.homePage {
             if homePageUrl.isEmpty {
-                homePageButton.setTitle("-", for: .normal)
-                homePageButton.isEnabled = false
+                self.homePageButton.setTitle("-", for: .normal)
+                self.homePageButton.isEnabled = false
             } else {
-                homePageButton.setTitle(homePageUrl, for: .normal)
+                self.homePageButton.setTitle(homePageUrl, for: .normal)
             }
         } else {
-            homePageButton.setTitle("-", for: .normal)
-            homePageButton.isEnabled = false
+            self.homePageButton.setTitle("-", for: .normal)
+            self.homePageButton.isEnabled = false
         }
-        languageLabel.text = gitHubRepository.language
-        setLanguageIconColor(language: gitHubRepository.language)
+        self.languageLabel.text = gitHubRepository.language
+        self.setLanguageIconColor(language: gitHubRepository.language)
     }
     private func setBodyUI(gitHubRepository: GitHubRepository) {
         let defauletNumber = 0
         for information in RepositoryDetail.informations {
             switch information {
             case .license:
-                repositoryInformationLabels[information.rawValue].text = information.text(gitHubRepository: gitHubRepository).name
+                self.repositoryInformationLabels[information.rawValue].text = information.text(gitHubRepository: gitHubRepository).name
             default:
-                repositoryInformationLabels[information.rawValue].text = TextHelper.shared.formatToCSV(value: information.text(gitHubRepository: gitHubRepository).number[information.rawValue] ?? defauletNumber)
+                self.repositoryInformationLabels[information.rawValue].text = TextHelper.shared.formatToCSV(value: information.text(gitHubRepository: gitHubRepository).number[information.rawValue] ?? defauletNumber)
             }
         }
     }
     private func setLanguageIconColor(language: String?) {
         guard let language = language else { return }
-        languageIconView.backgroundColor = LanguageIcon(language: language).color
+        self.languageIconView.backgroundColor = LanguageIcon(language: language).color
     }
     func setReadmeWebView(urlString: String) {
         if let url = URL(string: urlString) {
-            webView.load(URLRequest(url: url))
+            self.webView.load(URLRequest(url: url))
         }
     }
 }

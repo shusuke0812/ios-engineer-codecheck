@@ -13,14 +13,11 @@ target 'iOSEngineerCodeCheck' do
   # Utility
   pod 'R.swift'
   pod 'LicensePlist'
+  pod 'RxSwift', '6.5.0'
+end
 
-  target 'iOSEngineerCodeCheckTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+target 'iOSEngineerCodeCheckTests' do
+end
 
-  target 'iOSEngineerCodeCheckUITests' do
-    # Pods for testing
-  end
-
+target 'iOSEngineerCodeCheckUITests' do
 end

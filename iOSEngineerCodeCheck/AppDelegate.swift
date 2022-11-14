@@ -6,13 +6,12 @@
 //  Copyright © 2020 YUMEMI Inc. All rights reserved.
 //
 
-/* 必須のクラス */
-
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    let store = AppStore(reducer: appReducer, state: AppState(), middleware: [repositoryMiddleware()])
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
