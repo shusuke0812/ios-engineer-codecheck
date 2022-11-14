@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9147F7B654CCBB26CAEF5ED0 /* libPods-iOSEngineerCodeCheckUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 069BC90FF56FCC621F6EE6FE /* libPods-iOSEngineerCodeCheckUITests.a */; };
 		9C0F7D0E25C38AF7009EB961 /* MainSplitViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C0F7D0D25C38AF7009EB961 /* MainSplitViewController.storyboard */; };
+		9C57F9F129228CB000B375A6 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C57F9F029228CB000B375A6 /* APIClient.swift */; };
 		9C632DA625BBE53D00142A3D /* GitHubAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C632DA525BBE53D00142A3D /* GitHubAPIRequest.swift */; };
 		9C632DAE25BBEF3D00142A3D /* SearchRepositoriesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C632DAD25BBEF3D00142A3D /* SearchRepositoriesRequest.swift */; };
 		9C636E31287B29D70076B279 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C636E30287B29D70076B279 /* AppStore.swift */; };
@@ -21,7 +22,6 @@
 		9C88CFB825C28B4C001D4AB3 /* GitHubLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C88CFB725C28B4C001D4AB3 /* GitHubLicenseViewController.swift */; };
 		9C88CFBD25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C88CFBC25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard */; };
 		9C88CFC225C28BBB001D4AB3 /* GitHubLicenseBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C88CFC125C28BBB001D4AB3 /* GitHubLicenseBaseView.swift */; };
-		9C8B3C0025D4DF9B006054EB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8B3BFF25D4DF9B006054EB /* APIClient.swift */; };
 		9C8BD90725DA373200584E95 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8BD90525DA373200584E95 /* LoadingCell.swift */; };
 		9C8BD90825DA373200584E95 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C8BD90625DA373200584E95 /* LoadingCell.xib */; };
 		9C8C221F25BAA46700A4C5D1 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8C221E25BAA46700A4C5D1 /* R.generated.swift */; };
@@ -89,6 +89,7 @@
 		5B2C933EE51FFD7417374754 /* Pods-iOSEngineerCodeCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSEngineerCodeCheck.release.xcconfig"; path = "Target Support Files/Pods-iOSEngineerCodeCheck/Pods-iOSEngineerCodeCheck.release.xcconfig"; sourceTree = "<group>"; };
 		5F5143B5832E3B2B61CB07E4 /* libPods-iOSEngineerCodeCheckTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOSEngineerCodeCheckTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0F7D0D25C38AF7009EB961 /* MainSplitViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainSplitViewController.storyboard; sourceTree = "<group>"; };
+		9C57F9F029228CB000B375A6 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		9C632DA525BBE53D00142A3D /* GitHubAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIRequest.swift; sourceTree = "<group>"; };
 		9C632DAD25BBEF3D00142A3D /* SearchRepositoriesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesRequest.swift; sourceTree = "<group>"; };
 		9C636E30287B29D70076B279 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
@@ -101,7 +102,6 @@
 		9C88CFB725C28B4C001D4AB3 /* GitHubLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLicenseViewController.swift; sourceTree = "<group>"; };
 		9C88CFBC25C28B67001D4AB3 /* GitHubLicenseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GitHubLicenseViewController.storyboard; sourceTree = "<group>"; };
 		9C88CFC125C28BBB001D4AB3 /* GitHubLicenseBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubLicenseBaseView.swift; sourceTree = "<group>"; };
-		9C8B3BFF25D4DF9B006054EB /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		9C8BD90525DA373200584E95 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		9C8BD90625DA373200584E95 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		9C8C221E25BAA46700A4C5D1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 				9C95475E25D2BC21002EF380 /* Error */,
 				9C632DA425BBE52100142A3D /* Response */,
 				9C632DA325BBE51600142A3D /* Request */,
-				9C8B3BFF25D4DF9B006054EB /* APIClient.swift */,
+				9C57F9F029228CB000B375A6 /* APIClient.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -727,7 +727,6 @@
 				9C8D9B4F25BE9C37006AC01F /* TextHelper.swift in Sources */,
 				9C95476125D2BF67002EF380 /* APIClientError.swift in Sources */,
 				9CBF52BD25C1407400AD822B /* GitHubLicense.swift in Sources */,
-				9C8B3C0025D4DF9B006054EB /* APIClient.swift in Sources */,
 				9C7B98B52573583700D2521B /* UIImage+Extension.swift in Sources */,
 				9C9AD52A25C95D820036352A /* GetRepositoryReadmeRequest.swift in Sources */,
 				9C88CFB825C28B4C001D4AB3 /* GitHubLicenseViewController.swift in Sources */,
@@ -756,6 +755,7 @@
 				9C88CFC225C28BBB001D4AB3 /* GitHubLicenseBaseView.swift in Sources */,
 				9C8E168625BEE5DB005CC118 /* UIColor+Extension.swift in Sources */,
 				9C950C4C25C37C2D001BC95B /* MainSplitViewController.swift in Sources */,
+				9C57F9F129228CB000B375A6 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

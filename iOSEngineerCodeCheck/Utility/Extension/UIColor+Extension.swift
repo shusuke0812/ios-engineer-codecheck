@@ -9,10 +9,6 @@
 import UIKit
 
 extension UIColor {
-    /// HEX（16進数）で色を設定する
-    /// - Parameters:
-    ///   - hex: 色コード（例：#F18E33）
-    ///   - alpha: 透明度（何も指定しないとデフォルトの1.0となる）
     convenience init(hex: String, alpha: CGFloat = 1.0) {
         let value = Int("000000" + hex, radix: 16) ?? 0
         let r = CGFloat(value / Int(powf(256, 2)) % 256) / 255

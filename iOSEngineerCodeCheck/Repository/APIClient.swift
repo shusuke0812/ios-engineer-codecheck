@@ -5,6 +5,7 @@
 //  Created by Shusuke Ota on 2021/2/11.
 //  Copyright © 2021 YUMEMI Inc. All rights reserved.
 //
+
 import Foundation
 
 protocol APIClientProtocol {
@@ -42,8 +43,7 @@ extension APIClient {
                 }
             } else {
                 do {
-                    // TODO: 他のAPIError型でも使えるように汎用化する
-                    let apiError = try decoder.decode(GitHubAPIError.self, from: data)
+                    let apiError = try decoder.decode(T.ErrorResponse.self, from: data)
                     completion(.failure(.apiError(apiError)))
                 } catch {
                     completion(.failure(.responseParseError(error)))
@@ -52,7 +52,7 @@ extension APIClient {
         }
         task.resume()
     }
-
+    
     @available(iOS 15.0, *)
     func sendRequest<T: GitHubAPIRequest>(_ request: T) async throws -> T.Response {
         let session = URLSession.shared

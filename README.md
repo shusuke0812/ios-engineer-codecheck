@@ -50,9 +50,9 @@ Issues を確認した上、本プロジェクトを [**Duplicate** してくだ
 
 ## 課題取り組み内容
 ### 開発環境
-- Xcode version 12.0
-- pod version 1.9.3
-- 開発ターゲット iOS 14.0
+- Xcode version 13.2.1(13C100)
+- pod version 1.11.3
+- 開発ターゲット iOS 13.0
 
 ### セットアップ
 #### バージョン管理

@@ -18,12 +18,10 @@ class TextHelper {
     }
 }
 extension TextHelper {
-    /// 数値をカンマで区切って文字列に変換する
-    /// - Parameter value: 数値
     func formatToCSV(value: Int) -> String {
-        self.formatter.numberStyle = .decimal
-        self.formatter.groupingSeparator = ","
-        self.formatter.groupingSize = 3
-        return self.formatter.string(from: NSNumber(value: value)) ?? "\(value)"
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = ","
+        formatter.groupingSize = 3
+        return formatter.string(from: NSNumber(value: value)) ?? "\(value)"
     }
 }

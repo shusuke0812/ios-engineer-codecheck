@@ -13,7 +13,6 @@ import FontAwesome_swift
 struct Common {
 }
 
-/// HTTPメソッド
 enum HTTPMethod: String {
     case get    = "GET"
     case post   = "POST"
@@ -21,14 +20,12 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
-/// APIの読み込み状況
 enum APILoadingStatus {
     case initial    // 初回
     case fetching   // 読み込み中
     case full       // 終わり
 }
 
-/// リポジトリ詳細
 enum RepositoryDetail: Int {
     case star       = 0
     case watch      = 1
@@ -41,7 +38,6 @@ extension RepositoryDetail {
     static var informations: [RepositoryDetail] {
         [.star, .watch, .fork, .issue, .license]
     }
-    /// アイコン色
     var iconColor: UIColor {
         switch self {
         case .star:     return .systemBlue
@@ -51,7 +47,6 @@ extension RepositoryDetail {
         case .license:  return .systemRed
         }
     }
-    /// アイコンイメージ
     var iconImage: UIImage {
         let iconSize = CGSize(width: 25, height: 25)
         switch self {
@@ -62,13 +57,11 @@ extension RepositoryDetail {
         case .license:  return UIImage.fontAwesomeIcon(name: .balanceScale, style: .solid, textColor: .white, size: iconSize)
         }
     }
-    /// テキスト情報
     func text(gitHubRepository: GitHubRepository) -> (number: [Int?], name: String?) {
         ([gitHubRepository.starNumber, gitHubRepository.watchNumber, gitHubRepository.forkNumber, gitHubRepository.isueNumber], gitHubRepository.license?.name)
     }
 }
 
-/// 言語カラー
 enum LanguageIcon {
     case swift      // 薄いオレンジ色 #ffac45
     case cpp        // 濃いピンク色 #f34b7d

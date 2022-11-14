@@ -8,7 +8,6 @@
 
 import Foundation
 
-/// GitHuのリポジトリデータ格納用
 struct GitHubRepository: Codable {
     let name: String?
     let fullName: String? // オーナー名+リポジトリ名

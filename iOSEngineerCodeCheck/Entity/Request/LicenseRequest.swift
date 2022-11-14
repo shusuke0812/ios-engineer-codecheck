@@ -12,12 +12,13 @@ struct LicenseRequest: GitHubAPIRequest {
     let key: String
 
     typealias Response = GitHubLicense
+    typealias ErrorResponse = GitHubAPIError
 
     var method: HTTPMethod {
         .get
     }
     var path: String {
-        "/licenses/\(self.key)"
+        "/licenses/\(key)"
     }
     var parameters: [URLQueryItem]? {
         nil

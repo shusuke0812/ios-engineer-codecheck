@@ -16,6 +16,7 @@ struct SearchRepositoriesRequest: GitHubAPIRequest {
     let page: Int
 
     typealias Response = Items<GitHubRepository>
+    typealias ErrorResponse = GitHubAPIError
 
     var method: HTTPMethod {
         .get
@@ -25,9 +26,9 @@ struct SearchRepositoriesRequest: GitHubAPIRequest {
     }
     var parameters: [URLQueryItem]? {
         [
-            URLQueryItem(name: "q", value: self.searchWord),
-            URLQueryItem(name: "per_page", value: "\(self.searchCount)"),
-            URLQueryItem(name: "page", value: "\(self.page)")
+            URLQueryItem(name: "q", value: searchWord),
+            URLQueryItem(name: "per_page", value: "\(searchCount)"),
+            URLQueryItem(name: "page", value: "\(page)")
         ]
     }
     var header: [String: String]? {
