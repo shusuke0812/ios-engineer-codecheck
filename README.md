@@ -45,9 +45,6 @@ Issues を確認した上、本プロジェクトを [**Duplicate** してくだ
 </details>
 <br />
 
----
-#### ※ 下記はDuplicate先の原文に追記したもの
-
 ## 課題取り組み内容
 ### 開発環境
 - Xcode version 13.2.1(13C100)
@@ -78,44 +75,29 @@ $ open iOSEngineerCodeCheck.xcworkspace
 
 ### バージョン管理
 - [GitFlow](https://danielkummer.github.io/git-flow-cheatsheet/index.ja_JP.html) を採用
-- 開発者２人以上になることを想定して `git flow init` コマンドにてGitFlowのbranchを作成
-- ただし、現在は開発者１人でのコード修正なので feature branch を切らずに develop を直接修正
+- 開発者２人以上になることを想定して `$ git flow init` コマンドにてGitFlowのbranchを作成
 - feature branch を切る場合は次のステップでローカル開発を行う
-  - `git flow feature start {branch name A}` で branch を作成し編集する
-  - `git flow feature finish {branch name A}` で作業を終了すると develop にマージされる
-  - なお、feature branch は必要に応じて push する
+  - `$ git flow feature start {branch name A}` で branch を作成し編集する
+  - 作業完了後に `$ git push {branch name A}` を実行し、プルリクエストを`develop`に向けて作成
+  - レビュー完了後、GitHub上にて`develop`へマージし、ローカルも更新する
 
 ### 設計の考え方
-- １画面 = 1 ViewController + 1 Stroyboard を基本構成としてディレクトリ構造を整理
-- MVVMアーキテクチャを使用
+- １画面 = 1 ViewController + 1 Stroyboard を基本構成とする
+- Reduxアーキテクチャを使用
   - 各ファイルの基本的な役割は、
     - BaseView.swift： 画面表示
     - ViewController.swift： 画面遷移、インタラクション表示、BaseViewとViewModelの接続
-    - ViewModel： View表示に必要な値の保持、セルの更新
-    - Repository（Model）： サーバーへのリクエスト処理
+    - 
+    - Repository： 外部・内部ストレージのデータを操作する
   - ファイルの命名規則は、
-    - BaseView： 画面内容+BaseView.swift、
-    - ViewController: 画面内容+ViewController.swift、画面内容+ViewController.storyboard
-    - ViewModel: 画面内容+ViewModel.swift
-    - Repository（Model）: 画面内容+Repository.swift
-- クラス内でのみ使用するメンバ、メソッドを明示するために `self` キーワード及び `private` キーワードを使用
-- 各ファイルで使用するメソッドは、役割毎に `extension` を使用して分けることで可読性、メンテナンス性の向上を図った
-- 静的解析ツールはswiftlintを使用した（詳細なルールは[.swift.yml](https://github.com/shusuke0812/ios-engineer-codecheck/blob/develop/.swiftlint.yml)を参照）
+    - 画面名 + クラス名.swift
+- コードを読む量を減らすため`self`キーワードは省略する
+- 各ファイルで使用するメソッドは、役割毎に `extension` を使用してグルーピングすることで可読性、メンテナンス性の向上を図る
+- 静的解析ツールSwiftlintを使用し、コードルールを強制する（詳細なルールは[.swift.yml](https://github.com/shusuke0812/ios-engineer-codecheck/blob/develop/.swiftlint.yml)を参照）
 - UIImage, Storyboard, ViewController, Nib, DequeueReusableCellの生成はハードコードを防ぐためにR.Swiftを使用
 - [補足](https://docs.google.com/document/d/17Yw5mwveyvS5llqP7CnE-C9KhJ9JP55ZnwIiUUik4yE/edit?usp=sharing)
 
-### 機能変化点
-- 【無効】インクリメンタルサーチができるようにした
-  - ただし、導入目的は `searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)` メソッドの使い方を勉強するためである。GitHubリポジトリの検索アプリの仕様としては不要かもしれない
-- ページネーションできるようにした
-
-### UI変化点
-- 画面のタイトルを変更
-- BaseViewで画面表示を管理するために、TableViewをView配下に設置
-- リポジトリの検索結果が空の場合、「リポジトリがないよー」というメッセージを表示するようにした
-- リポジトリ検索中にHUDを表示するようにした
-- リポジトリの読み込み失敗時に「読み込みに失敗しました」というアラートを表示するようにした
-- セル、詳細画面を下記の写真のように変更
+### UI概要
 
 | 検索前 | 検索後 | 詳細画面 |
 |:-----:|:-----:|:-----:|
