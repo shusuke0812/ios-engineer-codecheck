@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class GitHubRepositoryDetailViewController: UIViewController {
+class GitHubRepositoryDetailViewController: UIViewController, AppStoreAccessible {
     private var baseView: GitHubRepositoryDetailBaseView { self.view as! GitHubRepositoryDetailBaseView } // swiftlint:disable:this force_cast
     private let disposeBag = RxSwift.DisposeBag()
 
@@ -22,11 +22,6 @@ class GitHubRepositoryDetailViewController: UIViewController {
     }
 
     // MARK: Redux
-    private var store: AppStore<AppState> {
-        let delegate = UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
-        return delegate.store
-    }
-
     private struct Props {
         let readme: GitHubReadme
         let fetchReadmeRepository: () -> Void

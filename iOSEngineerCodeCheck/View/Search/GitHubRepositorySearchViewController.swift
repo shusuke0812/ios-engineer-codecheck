@@ -10,7 +10,7 @@ import UIKit
 import PKHUD
 import RxSwift
 
-class GitHubRepositorySearchViewController: UIViewController {
+class GitHubRepositorySearchViewController: UIViewController, AppStoreAccessible {
     private var baseView: GitHubRepositorySearchBaseView { view as! GitHubRepositorySearchBaseView } // swiftlint:disable:this force_cast
     private let disposeBag = RxSwift.DisposeBag()
 
@@ -20,11 +20,6 @@ class GitHubRepositorySearchViewController: UIViewController {
     }
 
     // MARK: Redux
-    private var store: AppStore<AppState> {
-        let delegate = UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
-        return delegate.store
-    }
-
     private struct Props {
         let repositories: [GitHubRepository]
         let fetchRepositories: () -> Void
