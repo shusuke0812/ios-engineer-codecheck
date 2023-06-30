@@ -29,7 +29,7 @@ struct GitHubRepository: Codable {
         case starNumber     = "stargazers_count"
         case watchNumber    = "watchers_count"
         case forkNumber     = "forks_count"
-        case isueNumber     = "open_issues_ccount"
+        case isueNumber     = "open_issues_count"
         case description
         case homePage       = "homepage"
         case updatedAt      = "updated_at"
