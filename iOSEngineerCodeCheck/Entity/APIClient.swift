@@ -29,7 +29,8 @@ extension APIClient {
                 completion(.failure(.unknown))
                 return
             }
-            print("DEBUG: status=\(response.statusCode)\n", response)
+            debugPrint("DEBUG: status=\(response.statusCode)\n", response)
+            debugPrint("DEBUG: data=\(String(data: data, encoding: .utf8))")
             let decoder = JSONDecoder()
             // TODO: dateのフォーマット型はレスポンスによるのでデコーダー処理を別に定義した方が良さそう（ex. APIRequest型に実装する）
             decoder.dateDecodingStrategy = .iso8601

@@ -15,7 +15,7 @@ struct GitHubRepository: Codable {
     let starNumber: Int?
     let watchNumber: Int?
     let forkNumber: Int?
-    let isueNumber: Int?
+    let issueNumber: Int?
     let description: String?
     let homePage: String?
     let updatedAt: Date? // JSONの日付型がSwiftのJSONDecoderに対応していないのでDateFormatterを拡張している）
@@ -29,21 +29,21 @@ struct GitHubRepository: Codable {
         case starNumber     = "stargazers_count"
         case watchNumber    = "watchers_count"
         case forkNumber     = "forks_count"
-        case isueNumber     = "open_issues_ccount"
+        case issueNumber    = "open_issues_count"
         case description
         case homePage       = "homepage"
         case updatedAt      = "updated_at"
         case owner
         case license
     }
-    init(name: String, fullName: String, language: String, starNumber: Int, watchNumber: Int, forkNumber: Int, isueNumber: Int, description: String, homePage: String, updatedAt: Date, owner: Owner, license: License) {
+    init(name: String, fullName: String, language: String, starNumber: Int, watchNumber: Int, forkNumber: Int, issueNumber: Int, description: String, homePage: String, updatedAt: Date, owner: Owner, license: License) {
         self.name = name
         self.fullName = fullName
         self.language = language
         self.starNumber = starNumber
         self.watchNumber = watchNumber
         self.forkNumber = forkNumber
-        self.isueNumber = isueNumber
+        self.issueNumber = issueNumber
         self.description = description
         self.homePage = homePage
         self.updatedAt = updatedAt
