@@ -58,7 +58,7 @@ extension RepositoryDetail {
         }
     }
     func text(gitHubRepository: GitHubRepository) -> (number: [Int?], name: String?) {
-        ([gitHubRepository.starNumber, gitHubRepository.watchNumber, gitHubRepository.forkNumber, gitHubRepository.isueNumber], gitHubRepository.license?.name)
+        ([gitHubRepository.starNumber, gitHubRepository.watchNumber, gitHubRepository.forkNumber, gitHubRepository.issueNumber], gitHubRepository.license?.name)
     }
 }
 
