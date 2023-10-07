@@ -1,0 +1,29 @@
+{
+  "schemaNamespace" : "GitHubGraphQL",
+  "input" : {
+    "operationSearchPaths" : [
+      "**/*.graphql"
+    ],
+    "schemaSearchPaths" : [
+      "./schema.json"
+    ]
+  },
+  "output" : {
+    "testMocks" : {
+      "none" : {
+      }
+    },
+    "schemaTypes" : {
+      "path" : "./GitHubGraphQL",
+      "moduleType" : {
+        "embeddedInTarget" : {
+          "name" : "iOSEngineerCodeCheck"
+        }
+      }
+    },
+    "operations" : {
+      "inSchemaModule" : {
+      }
+    }
+  }
+}
