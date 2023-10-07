@@ -12,7 +12,7 @@ func repositoryMiddleware() -> Middleware<AppState> {
     { _, action, dispatch in
         switch action {
         case let fetchAction as FetchRepositories:
-            GitHubRepositorySearchRepository().getGitHubRepositorys(request: fetchAction.request) { result in
+            GitHubRepositorySearchRepository().getGitHubRepositories(request: fetchAction.request) { result in
                 switch result {
                 case .success(let repository):
                     dispatch(SetRepositories(repositories: repository.items))

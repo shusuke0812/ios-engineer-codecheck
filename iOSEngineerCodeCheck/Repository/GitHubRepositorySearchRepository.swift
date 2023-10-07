@@ -9,8 +9,8 @@
 import Foundation
 
 protocol GitHubRepositorySearchRepositoryProtocol {
-    func getGitHubRepositorys(request: SearchRepositoriesRequest, completion: @escaping (Result<Items<GitHubRepository>, APIClientError>) -> Void)
-    func getGitHubRepositorys(request: GraphQLSearchRequest, completion: @escaping (GitHubReposQuery))
+    func getGitHubRepositories(request: SearchRepositoriesRequest, completion: @escaping (Result<Items<GitHubRepository>, APIClientError>) -> Void)
+    func getGitHubRepositories(request: GraphQLSearchRequest, completion: @escaping (GitHubReposQuery))
     @available(iOS 15.0, *)
     func async_getGitHubRepositorys(searchWord: String, serchCount: Int, page: Int, completion: @escaping (Result<Items<GitHubRepository>, Error>) -> Void)
 }
@@ -18,7 +18,7 @@ class GitHubRepositorySearchRepository: GitHubRepositorySearchRepositoryProtocol
 }
 // MARK: - API Method
 extension GitHubRepositorySearchRepository {
-    func getGitHubRepositorys(request: SearchRepositoriesRequest, completion: @escaping (Result<Items<GitHubRepository>, APIClientError>) -> Void) {
+    func getGitHubRepositories(request: SearchRepositoriesRequest, completion: @escaping (Result<Items<GitHubRepository>, APIClientError>) -> Void) {
         APIClient.shared.sendRequest(request) { result in
             switch result {
             case .success(let response):
@@ -28,7 +28,7 @@ extension GitHubRepositorySearchRepository {
             }
         }
     }
-    func getGitHubRepositorys(request: GraphQLSearchRequest, completion: @escaping (GitHubReposQuery)) {
+    func getGitHubRepositories(request: GraphQLSearchRequest, completion: @escaping (GitHubReposQuery)) {
         GraphQLClient.shared.sendRequest(request) { result in
             completion(result)
         }
