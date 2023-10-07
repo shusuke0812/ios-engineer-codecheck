@@ -229,6 +229,7 @@
 		9CE200AF2AD197D200932AE3 /* Lockable.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE2FF872AD197D200932AE3 /* Lockable.graphql.swift */; };
 		9CE200B02AD197D200932AE3 /* ProfileOwner.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE2FF882AD197D200932AE3 /* ProfileOwner.graphql.swift */; };
 		9CE200B12AD197D200932AE3 /* GitHubGraphQL.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE2FF892AD197D200932AE3 /* GitHubGraphQL.graphql.swift */; };
+		9CE200B62AD199E500932AE3 /* GraphQLRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE200B52AD199E500932AE3 /* GraphQLRequestProtocol.swift */; };
 		9CE2FF8A2AD197D200932AE3 /* GitHubReposQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE2FE5C2AD197D200932AE3 /* GitHubReposQuery.graphql.swift */; };
 		9CE2FF8B2AD197D200932AE3 /* SearchResultItem.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE2FE5F2AD197D200932AE3 /* SearchResultItem.graphql.swift */; };
 		9CE2FF8C2AD197D200932AE3 /* URI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE2FE612AD197D200932AE3 /* URI.swift */; };
@@ -427,6 +428,7 @@
 		9CD370FF2571E28E001759F8 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		9CD371082571F74D001759F8 /* GitHubRepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositoryCell.swift; sourceTree = "<group>"; };
 		9CD371092571F74D001759F8 /* GitHubRepositoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GitHubRepositoryCell.xib; sourceTree = "<group>"; };
+		9CE200B52AD199E500932AE3 /* GraphQLRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLRequestProtocol.swift; sourceTree = "<group>"; };
 		9CE2FD2B2AD1978F00932AE3 /* GitHubReposQuery.graphql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubReposQuery.graphql.swift; sourceTree = "<group>"; };
 		9CE2FD2E2AD1978F00932AE3 /* SearchResultItem.graphql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultItem.graphql.swift; sourceTree = "<group>"; };
 		9CE2FD302AD1978F00932AE3 /* URI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URI.swift; sourceTree = "<group>"; };
@@ -1263,6 +1265,14 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		9CE200B22AD1995700932AE3 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				9CE200B52AD199E500932AE3 /* GraphQLRequestProtocol.swift */,
+			);
+			path = GraphQL;
+			sourceTree = "<group>";
+		};
 		9CE2FD282AD1978F00932AE3 /* GitHubGraphQL */ = {
 			isa = PBXGroup;
 			children = (
@@ -2029,6 +2039,7 @@
 				9C0E527327CBD89000A9F575 /* Store */,
 				9C0804A5256D500C00A8CBEF /* Entity */,
 				9C0804A7256D507900A8CBEF /* Repository */,
+				9CE200B22AD1995700932AE3 /* GraphQL */,
 				9CE2FE592AD197D200932AE3 /* GitHubGraphQL */,
 				BFD945E7244DC5EB0012785A /* Assets.xcassets */,
 				BFD945EC244DC5EB0012785A /* Info.plist */,
@@ -2526,6 +2537,7 @@
 				9CE200A72AD197D200932AE3 /* Updatable.graphql.swift in Sources */,
 				9CE2FFA82AD197D200932AE3 /* ConnectedEvent.graphql.swift in Sources */,
 				9C632DAE25BBEF3D00142A3D /* SearchRepositoriesRequest.swift in Sources */,
+				9CE200B62AD199E500932AE3 /* GraphQLRequestProtocol.swift in Sources */,
 				9CE200A42AD197D200932AE3 /* RepositoryInfo.graphql.swift in Sources */,
 				9CE200872AD197D200932AE3 /* RequirableByPullRequest.graphql.swift in Sources */,
 				9CE2009A2AD197D200932AE3 /* PackageOwner.graphql.swift in Sources */,
