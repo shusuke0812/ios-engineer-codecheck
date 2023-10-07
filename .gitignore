@@ -94,3 +94,5 @@ fastlane/test_output
 *.generated.swift
 
 iOSInjectionProject/
+
+github-access-token.json
