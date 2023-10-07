@@ -10,6 +10,7 @@ import Foundation
 
 protocol GitHubRepositorySearchRepositoryProtocol {
     func getGitHubRepositorys(request: SearchRepositoriesRequest, completion: @escaping (Result<Items<GitHubRepository>, APIClientError>) -> Void)
+    func getGitHubRepositorys(request: GraphQLSearchRequest, completion: @escaping (GitHubReposQuery))
     @available(iOS 15.0, *)
     func async_getGitHubRepositorys(searchWord: String, serchCount: Int, page: Int, completion: @escaping (Result<Items<GitHubRepository>, Error>) -> Void)
 }
@@ -25,6 +26,11 @@ extension GitHubRepositorySearchRepository {
             case .failure(let error):
                 completion(.failure(error))
             }
+        }
+    }
+    func getGitHubRepositorys(request: GraphQLSearchRequest, completion: @escaping (GitHubReposQuery)) {
+        GraphQLClient.shared.sendRequest(request) { result in
+            completion(result)
         }
     }
     @available(iOS 15.0, *)
