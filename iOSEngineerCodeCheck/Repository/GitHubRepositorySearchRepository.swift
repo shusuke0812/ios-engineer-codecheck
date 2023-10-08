@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import GitHubGrapQL
 
 protocol GitHubRepositorySearchRepositoryProtocol {
     func getGitHubRepositories(request: SearchRepositoriesRequest, completion: @escaping (Result<Items<GitHubRepository>, APIClientError>) -> Void)
-    func getGitHubRepositories(request: GraphQLSearchRequest, completion: @escaping (GitHubReposQuery))
+    func getGitHubRepositories(request: GraphQLSearchRequest, completion: @escaping (Result<GitHubReposQuery.Data?, Error>) -> Void)
     @available(iOS 15.0, *)
     func async_getGitHubRepositorys(searchWord: String, serchCount: Int, page: Int, completion: @escaping (Result<Items<GitHubRepository>, Error>) -> Void)
 }
@@ -28,9 +29,14 @@ extension GitHubRepositorySearchRepository {
             }
         }
     }
-    func getGitHubRepositories(request: GraphQLSearchRequest, completion: @escaping (GitHubReposQuery)) {
+    func getGitHubRepositories(request: GraphQLSearchRequest, completion: @escaping (Result<GitHubReposQuery.Data?, Error>)  -> Void) {
         GraphQLClient.shared.sendRequest(request) { result in
-            completion(result)
+            switch result {
+            case .success(let response):
+                completion(.success(response.data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
     @available(iOS 15.0, *)

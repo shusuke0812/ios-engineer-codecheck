@@ -8,13 +8,14 @@
 
 import Foundation
 import Apollo
+import GitHubGrapQL
 
 struct GraphQLSearchRequest: GraphQLRequestProtocol {
     typealias Query = GitHubReposQuery
     
     var query: GitHubReposQuery
-    var url: URL = "https://api.github.com/graphql".toURL()
+    var url: URL = URL(string: "https://api.github.com/graphql")!
     var httpAdditionalHeaders: [AnyHashable : Any]? = [
-        "Authorization": "Bearer \(GitHubAccessToken.load())"
+        "Authorization": "Bearer \(JsonFileReadHelper.getGitHubAccessToken())"
     ]
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import Apollo
+import GitHubGrapQL
 
 protocol GraphQLRequestProtocol {
     associatedtype Query: GraphQLQuery
