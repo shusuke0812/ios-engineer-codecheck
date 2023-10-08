@@ -62,3 +62,7 @@ $ open iOSEngineerCodeCheck.xcworkspace
 $ xcodebuild -showBuildSettings | grep "PROJECT"
 ```
 
+- GraphQL
+  - Create package configuration: `$ ./apollo-ios-cli init --schema-name GitHubGraphQL --module-type swiftPackageManager`
+  - Generate package: `$ ./apollo-ios-cli generate`
+  - [Apollo Reference](https://www.apollographql.com/docs/ios/tutorial/tutorial-add-graphql-schema#create-your-codegen-configuration)
