@@ -1,5 +1,5 @@
 {
-  "schemaNamespace" : "GitHubGraphQL",
+  "schemaNamespace" : "GitHubGrapQL",
   "input" : {
     "operationSearchPaths" : [
       "**/*.graphql"
@@ -14,10 +14,9 @@
       }
     },
     "schemaTypes" : {
-      "path" : "./GitHubGraphQL",
+      "path" : "./GitHubGrapQL",
       "moduleType" : {
-        "embeddedInTarget" : {
-          "name" : "iOSEngineerCodeCheck"
+        "swiftPackageManager" : {
         }
       }
     },

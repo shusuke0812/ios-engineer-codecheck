@@ -1,27 +1,11 @@
 PODS:
-  - Apollo (1.6.0):
-    - Apollo/Core (= 1.6.0)
-  - Apollo/Core (1.6.0)
-  - Apollo/SQLite (1.6.0):
-    - Apollo/Core
-    - SQLite.swift (~> 0.13.1)
-  - Apollo/WebSocket (1.6.0):
-    - Apollo/Core
   - FontAwesome.swift (1.9.1)
-  - LicensePlist (3.0.5)
+  - LicensePlist (3.24.11)
   - PKHUD (5.3.0)
-  - R.swift (5.3.1):
-    - R.swift.Library (~> 5.3.0)
-  - R.swift.Library (5.3.0)
+  - R.swift (7.3.2)
   - RxSwift (6.5.0)
-  - SQLite.swift (0.13.3):
-    - SQLite.swift/standard (= 0.13.3)
-  - SQLite.swift/standard (0.13.3)
 
 DEPENDENCIES:
-  - Apollo
-  - Apollo/SQLite
-  - Apollo/WebSocket
   - FontAwesome.swift
   - LicensePlist
   - PKHUD (~> 5.0)
@@ -30,25 +14,19 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Apollo
     - FontAwesome.swift
     - LicensePlist
     - PKHUD
     - R.swift
-    - R.swift.Library
     - RxSwift
-    - SQLite.swift
 
 SPEC CHECKSUMS:
-  Apollo: 583c6be3c9c7d90390e5712bea85bbd41b568e19
   FontAwesome.swift: 6b52cb7be66eacd28cbfaa0ca7ffd0de4a186a1d
-  LicensePlist: 11c638fa9dc22ddb5771cdf910242ae1ba2684da
+  LicensePlist: e8b5c7b30a914b92b83ffd78ded5af057621ba64
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
-  R.swift: 56ec7e3aef34b9eee47a659e42462db2c1cc5ac3
-  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  R.swift: 0af0d882f49f03711415cb4e5215daa977d8a480
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
-  SQLite.swift: 903bfa3bc9ab06345fdfbb578e34f47cfcf417da
 
-PODFILE CHECKSUM: a0d7578ec3bbb23ac16f492e85d3c1447f755ba2
+PODFILE CHECKSUM: 0a97e7ca87a73941af1000220e725f9a7674fb75
 
 COCOAPODS: 1.13.0
