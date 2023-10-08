@@ -9,6 +9,7 @@
 import UIKit
 import PKHUD
 import RxSwift
+import GitHubGrapQL
 
 class GitHubRepositorySearchViewController: UIViewController {
     private var baseView: GitHubRepositorySearchBaseView { view as! GitHubRepositorySearchBaseView } // swiftlint:disable:this force_cast
@@ -117,6 +118,21 @@ extension GitHubRepositorySearchViewController {
             setNoRepository()
         } else {
             getRepositorys(searchWord: searchText)
+            samleGraphQLFetch(searchText: searchText)
+        }
+    }
+    private func samleGraphQLFetch(searchText: String) {
+        let query = GitHubReposQuery(query: searchText, type: .case(.repository), first: 10, after: "")
+        let graphQLRequest = GraphQLSearchRequest(query: query)
+        
+        let repository = GitHubRepositorySearchRepository()
+        repository.getGitHubRepositories(request: graphQLRequest) { result in
+            switch result {
+            case .success(let response):
+                print("DEBUG: \(String(describing: response))")
+            case .failure(let error):
+                print("DEBUG: \(error.localizedDescription)")
+            }
         }
     }
 }
