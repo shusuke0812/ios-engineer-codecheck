@@ -94,3 +94,7 @@ fastlane/test_output
 *.generated.swift
 
 iOSInjectionProject/
+
+# GraphQL
+GitHubGraphQL/
+github-access-token.json

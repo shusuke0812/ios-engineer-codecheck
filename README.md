@@ -2,8 +2,8 @@
 
 ### System requirements
 
-- Xcode version 13.2.1(13C100)
-- pod version 1.11.3
+- Xcode version 15.0 (15A240d)
+- pod version 1.13.0
 - target iOS 13.0
 
 ### Get started
@@ -56,9 +56,53 @@ $ open iOSEngineerCodeCheck.xcworkspace
 
 ### Note
 
-- Find Xcode env variables
+#### Find Xcode env variables
 
 ```bash
 $ xcodebuild -showBuildSettings | grep "PROJECT"
 ```
 
+#### GraphQL GitHub
+
+1. Install Apollo sdk
+
+```bash
+$ npm install -g apollo
+```
+
+* node 14.3.0
+
+2. Get GitHub access token
+
+save in ``./github-access-token.json`（setting .gitignore）
+
+3. Get GitHub API Schema
+
+```bash
+$ apollo schema:download --endpoint="https://api.github.com/graphql" --header "Authorization: Bearer {ACCESS_TOKEN}"
+```
+
+4. Create query.graphql
+5. Install Apollo, CLI as SwiftPackageManager [doc](https://www.apollographql.com/docs/ios/get-started#4-setup-and-run-code-generation)
+6. Create config file
+
+```bash
+$ ./apollo-ios-cli init --schema-name GitHubGraphQL --module-type swiftPackageManager
+```
+
+7. Generate Package
+
+```bash
+$ ./apollo-ios-cli generate
+```
+8. Add Package(GitHubGraphQL) in Xcode project
+
+- Using SwiftPackageManager
+- Select Xcode > File > Add Package Dependencies... > Add Local...
+- Select GitHubGraphQL in root and select the target
+
+<img width="500" src="https://github.com/shusuke0812/ios-engineer-codecheck/assets/33107697/dff74c8f-4b01-423d-92c0-78a4fd374e73">
+
+<br />
+
+❗️ GraphQL Package is belong to gitignore like Pods because of large data

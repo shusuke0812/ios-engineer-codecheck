@@ -16,7 +16,7 @@ class GitHubRepositoryDetailViewController: UIViewController {
     private(set) var gitHubRepository: GitHubRepository? // 前画面から値を受け取るようにしているが、SplitView対応に伴い画面立ち上げ時にnilとなるためオプショナル型で宣言
 
     static func instantiate(gitHubRepository: GitHubRepository) -> GitHubRepositoryDetailViewController {
-        let vc = R.storyboard.gitHubRepositoryDetailViewController().instantiateInitialViewController() as! GitHubRepositoryDetailViewController // swiftlint:disable:this force_cast
+        let vc = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController()! // swiftlint:disable:this force_cast
         vc.gitHubRepository = gitHubRepository
         return vc
     }

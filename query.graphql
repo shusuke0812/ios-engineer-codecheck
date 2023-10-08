@@ -1,0 +1,39 @@
+# https://docs.github.com/ja/graphql/reference/queries#search
+query GitHubRepos($query: String!, $type: SearchType!, $first: Int) {
+    search(query: $query, type: $type, first: $first) {
+        # Field: https://docs.github.com/ja/graphql/reference/objects#searchresultitemconnection
+        repositoryCount
+        nodes {
+            ... on Repository {
+                name
+                nameWithOwner
+                languages {
+                    nodes {
+                        ... on Language {
+                            name
+                            color
+                        }
+                    }
+                }
+                stargazerCount
+                forkCount
+                description
+                watchers {
+                    totalCount
+                }
+                homepageUrl
+                updatedAt
+                owner {
+                    avatarUrl
+                    login
+                }
+            }
+        }
+        pageInfo {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+        }
+    }
+}
