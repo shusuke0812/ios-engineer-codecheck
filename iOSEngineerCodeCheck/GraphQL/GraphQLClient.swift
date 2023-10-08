@@ -8,7 +8,7 @@
 
 import Foundation
 import Apollo
-import GitHubGrapQL
+import GitHubGraphQL
 
 protocol GraphQLClientProtocol {
     func sendRequest<T: GraphQLRequestProtocol>(_ request: T, cachePolicy: CachePolicy, completion: @escaping ((Result<GraphQLResult<T.Query.Data>, Error>) -> Void))

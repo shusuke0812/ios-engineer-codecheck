@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import GitHubGrapQL
+import GitHubGraphQL
 
 protocol GitHubRepositorySearchRepositoryProtocol {
     func getGitHubRepositories(request: SearchRepositoriesRequest, completion: @escaping (Result<Items<GitHubRepository>, APIClientError>) -> Void)

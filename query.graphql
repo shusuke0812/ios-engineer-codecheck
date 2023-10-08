@@ -1,6 +1,6 @@
 # https://docs.github.com/ja/graphql/reference/queries#search
-query GitHubRepos($query: String!, $type: SearchType!, $first: Int, $last: Int, $before: String, $after: String) {
-    search(query: $query, type: $type, first: $first, last: $last, before: $before, after: $after) {
+query GitHubRepos($query: String!, $type: SearchType!, $first: Int) {
+    search(query: $query, type: $type, first: $first) {
         # Field: https://docs.github.com/ja/graphql/reference/objects#searchresultitemconnection
         repositoryCount
         nodes {

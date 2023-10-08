@@ -8,7 +8,7 @@
 
 import Foundation
 import Apollo
-import GitHubGrapQL
+import GitHubGraphQL
 
 struct GraphQLSearchRequest: GraphQLRequestProtocol {
     typealias Query = GitHubReposQuery
