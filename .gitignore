@@ -96,5 +96,10 @@ fastlane/test_output
 iOSInjectionProject/
 
 # GraphQL
+apollo-ios-cli
+!apollo-ios-cli/
+schema.json
+node_modules/
+package-lock.json
 GitHubGraphQL/
 github-access-token.json
