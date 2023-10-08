@@ -2,8 +2,8 @@
 
 ### System requirements
 
-- Xcode version 13.2.1(13C100)
-- pod version 1.11.3
+- Xcode version 15.0 (15A240d)
+- pod version 1.13.0
 - target iOS 13.0
 
 ### Get started
