@@ -8,28 +8,31 @@
 
 import Foundation
 
-struct JsonFileReadHelper {
+enum JsonFileReadHelper {
     static func load<T: Codable>(_ fileName: String) -> T {
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
-            assertionFailure("debug: Can not find JSON file")
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
+            fatalError("debug: Can not find JSON file")
         }
         guard let data = try? Data(contentsOf: url) else {
-            assertionFailure("debug: Failed to locad JSON file")
+            fatalError("debug: Failed to locad JSON file")
         }
         let decoder = JSONDecoder()
         guard let loaded = try? decoder.decode(T.self, from: data) else {
-            assertionFailure("debug: Failed to decode JSON file")
+            fatalError("debug: Failed to decode JSON file")
         }
         return loaded
     }
+
+    static func getGitHubAccessToken() -> String {
+        let githubAccessToken: GitHubAccessToken = JsonFileReadHelper.load("github-access-token")
+        return githubAccessToken.key
+    }
 }
 
-struct GitHubAccessToken {
-    let $comment: String
+struct GitHubAccessToken: Codable {
     let key: String
-    
-    static func load<Self>() -> String {
-        let githubAccessToken = JsonFileReadHelper.load("github-access-token")
-        return githubAccessToken.key
+
+    enum CodingKeys: String, CodingKey {
+        case key
     }
 }
