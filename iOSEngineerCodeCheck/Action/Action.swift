@@ -16,10 +16,6 @@ struct FetchRepositories: ActionProtocol {
     let request: SearchRepositoriesRequest
 }
 
-struct GraphQLFetchRepositories: ActionProtocol {
-    let request: GraphQLSearchRequest
-}
-
 struct SetRepositories: ActionProtocol {
     let repositories: [GitHubRepository]
 }
