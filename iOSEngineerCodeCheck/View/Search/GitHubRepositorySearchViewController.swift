@@ -9,7 +9,7 @@
 import UIKit
 import PKHUD
 import RxSwift
-import GitHubGrapQL
+import GitHubGraphQL
 
 class GitHubRepositorySearchViewController: UIViewController {
     private var baseView: GitHubRepositorySearchBaseView { view as! GitHubRepositorySearchBaseView } // swiftlint:disable:this force_cast
@@ -121,15 +121,21 @@ extension GitHubRepositorySearchViewController {
             samleGraphQLFetch(searchText: searchText)
         }
     }
+    // NOTE: GraphQL fetch デバッグ用
     private func samleGraphQLFetch(searchText: String) {
-        let query = GitHubReposQuery(query: searchText, type: .case(.repository), first: 10, after: "")
+        let query = GitHubReposQuery(query: searchText, type: .case(.repository), first: 20)
         let graphQLRequest = GraphQLSearchRequest(query: query)
-        
+
         let repository = GitHubRepositorySearchRepository()
         repository.getGitHubRepositories(request: graphQLRequest) { result in
             switch result {
             case .success(let response):
-                print("DEBUG: \(String(describing: response))")
+                if let optionalNodes = response?.search.nodes {
+                    let nodes = optionalNodes.compactMap { $0 }
+                    nodes.forEach { node in
+                        print("DEBUG: repository_name=\(String(describing: node.asRepository?.nameWithOwner))")
+                    }
+                }
             case .failure(let error):
                 print("DEBUG: \(error.localizedDescription)")
             }
