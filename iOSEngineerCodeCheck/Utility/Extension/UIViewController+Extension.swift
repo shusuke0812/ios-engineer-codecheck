@@ -34,3 +34,14 @@ extension UIViewController {
         }
     }
 }
+
+protocol AppStoreAccessible {
+    var store: AppStore<AppState> { get }
+}
+
+extension AppStoreAccessible where Self: UIViewController {
+    var store: AppStore<AppState> {
+        let delegate = UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+        return delegate.store
+    }
+}
