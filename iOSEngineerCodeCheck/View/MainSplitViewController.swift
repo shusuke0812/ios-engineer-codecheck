@@ -40,7 +40,8 @@ extension MainSplitViewController {
         // 詳細画面のボタン設定
         self.detailVC.navigationItem.leftBarButtonItem = .none
         // SplitView登録
-        self.viewControllers = [self.mainVC, self.detailVC]
+        //self.viewControllers = [self.mainVC, self.detailVC] // TODO: FontAwesomeで詳細画面に使用しているiconが読み込めずにクラッシュする
+        self.viewControllers = [self.mainVC]
     }
 }
 // MARK: - UISplitViewController Delegate Method

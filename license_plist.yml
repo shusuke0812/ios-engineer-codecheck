@@ -1,0 +1,3 @@
+options:
+  xcodeprojPath: "iOSEngineerCodeCheck.xcodeproj"
+  prefix: Acknowledgements

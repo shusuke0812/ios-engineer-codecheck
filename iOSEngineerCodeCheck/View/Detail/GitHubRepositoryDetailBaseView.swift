@@ -8,7 +8,7 @@
 
 import UIKit
 import WebKit
-import FontAwesome_swift
+import FontAwesome
 
 protocol GitHubRepositoryDetailBaseViewDelegate: AnyObject {
     /// ホームページボタンをタップした時の処理

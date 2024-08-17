@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FontAwesome_swift
+import FontAwesome
 
 /// モジュール内共通のデータ
 struct Common {
