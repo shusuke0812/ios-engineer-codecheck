@@ -89,8 +89,16 @@ $ apollo schema:download --endpoint="https://api.github.com/graphql" --header "A
 ```bash
 $ ./apollo-ios-cli init --schema-name GitHubGraphQL --module-type swiftPackageManager
 ```
+7. Update `apollo-codegen-config.json` as following;
 
-7. Generate Package
+```
+"schemaSearchPaths" : [
+  "./schema.json"
+]
+```
+
+
+8. Generate Package
 
 ```bash
 $ ./apollo-ios-cli generate
