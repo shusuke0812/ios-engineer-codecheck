@@ -14,7 +14,6 @@ target 'iOSEngineerCodeCheck' do
   pod 'R.swift'
   pod 'LicensePlist'
   pod 'RxSwift', '6.5.0'
-  pod 'Swinject'
 end
 
 target 'iOSEngineerCodeCheckTests' do
