@@ -13,50 +13,53 @@ protocol GitHubRepositorySearchErrorViewDelegate: AnyObject {
 }
 
 class GitHubRepositorySearchErrorView: UIView {
-    private var descriptionLabel: UILabel = UILabel()
-    private var retryButton: UIButton = UIButton()
-    
+    private var descriptionLabel = UILabel()
+    private var retryButton = UIButton()
+
+    private let buttonHeight: CGFloat = 44
+
     weak var delegate: GitHubRepositorySearchErrorViewDelegate?
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupComponent()
+        setupAction()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     func updateDescription(text: String) {
         descriptionLabel.text = text
     }
-    
+
     private func setupComponent() {
         backgroundColor = .white
-      
+
         descriptionLabel.text = ""
-        descriptionLabel.tintColor = .init(hex: "4D5156")
+        descriptionLabel.textColor = .lightGray
         descriptionLabel.font = .systemFont(ofSize: 20, weight: .bold)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         retryButton.setTitle("もう一度試す", for: .normal)
         retryButton.setTitleColor(.lightGray, for: .normal)
         retryButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .bold)
-        retryButton.layer.borderWidth = 0.5
-        retryButton.layer.cornerRadius = 8
+        retryButton.layer.borderColor = UIColor.lightGray.cgColor
+        retryButton.layer.borderWidth = 1.0
+        retryButton.layer.cornerRadius = buttonHeight / 2
         retryButton.translatesAutoresizingMaskIntoConstraints = false
-        
+
         addSubview(descriptionLabel)
         addSubview(retryButton)
-        
+
         NSLayoutConstraint.activate([
             descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             descriptionLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            
+
             retryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            retryButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 40),
+            retryButton.widthAnchor.constraint(equalToConstant: buttonHeight * 3),
+            retryButton.heightAnchor.constraint(equalToConstant: buttonHeight),
+            retryButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 40)
         ])
     }
-    
+
     private func setupAction() {
         retryButton.addAction(.init { [weak self] _ in
             guard let self else {
