@@ -1679,6 +1679,7 @@
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = iOSEngineerCodeCheck/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1699,6 +1700,7 @@
 				DEVELOPMENT_TEAM = 2XL9QYTD77;
 				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = iOSEngineerCodeCheck/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
