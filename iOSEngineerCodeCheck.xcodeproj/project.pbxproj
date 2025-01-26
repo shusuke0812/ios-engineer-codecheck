@@ -61,6 +61,7 @@
 		9CF78B702D46142200B579E3 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF78B6F2D46142200B579E3 /* HTTPMethod.swift */; };
 		9CF78B722D46148E00B579E3 /* APILoadingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF78B712D46148E00B579E3 /* APILoadingStatus.swift */; };
 		9CF78B752D46204C00B579E3 /* NetworkConnectivityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF78B742D46204C00B579E3 /* NetworkConnectivityHelper.swift */; };
+		9CF78B772D46319200B579E3 /* GitHubRepositorySearchErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF78B762D46319200B579E3 /* GitHubRepositorySearchErrorView.swift */; };
 		A45489064DF3F44EDFB862A2 /* Pods_iOSEngineerCodeCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC02F1CACFDD906B54C0DAB /* Pods_iOSEngineerCodeCheck.framework */; };
 		AD051E8423B433B52885F6F7 /* libPods-iOSEngineerCodeCheckTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5143B5832E3B2B61CB07E4 /* libPods-iOSEngineerCodeCheckTests.a */; };
 		BF0A658D244F2A3B00280FA6 /* GitHubRepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0A658C244F2A3B00280FA6 /* GitHubRepositoryDetailViewController.swift */; };
@@ -445,6 +446,7 @@
 		9CF78B6F2D46142200B579E3 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		9CF78B712D46148E00B579E3 /* APILoadingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoadingStatus.swift; sourceTree = "<group>"; };
 		9CF78B742D46204C00B579E3 /* NetworkConnectivityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectivityHelper.swift; sourceTree = "<group>"; };
+		9CF78B762D46319200B579E3 /* GitHubRepositorySearchErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositorySearchErrorView.swift; sourceTree = "<group>"; };
 		BF0A658C244F2A3B00280FA6 /* GitHubRepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSEngineerCodeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD945DE244DC5E80012785A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 				9CD370E02570D738001759F8 /* GitHubRepositorySearchBaseView.swift */,
 				BFD945E4244DC5E80012785A /* GitHubRepositorySearchViewController.storyboard */,
 				BFD945E2244DC5E80012785A /* GitHubRepositorySearchViewController.swift */,
+				9CF78B762D46319200B579E3 /* GitHubRepositorySearchErrorView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1475,6 +1478,7 @@
 				9CD370F22571C954001759F8 /* GitHubRepositorySearchRepository.swift in Sources */,
 				9C632DAE25BBEF3D00142A3D /* SearchRepositoriesRequest.swift in Sources */,
 				9CE200B62AD199E500932AE3 /* GraphQLRequestProtocol.swift in Sources */,
+				9CF78B772D46319200B579E3 /* GitHubRepositorySearchErrorView.swift in Sources */,
 				9C9684B8257468B500A5AAEA /* UIAlertController+Extension.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* GitHubRepositoryDetailViewController.swift in Sources */,
 				9C95476925D2C17C002EF380 /* GitHubAPIError.swift in Sources */,
