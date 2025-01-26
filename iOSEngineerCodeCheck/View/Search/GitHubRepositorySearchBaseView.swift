@@ -49,4 +49,7 @@ extension GitHubRepositorySearchBaseView {
     func cancelTableFooterView() {
         self.tableView.tableFooterView = nil
     }
+    func enabledSearchBar(enabled: Bool) {
+        searchBar.searchTextField.isEnabled = enabled
+    }
 }
