@@ -30,8 +30,15 @@ extension GitHubRepositorySearchBaseView {
         self.setLodingCellWithStartingAnimation()
         // リポジトリ検索結果の表示
         self.searchErrorView.isHidden = false
+        self.searchErrorView.delegate = self
+        self.searchErrorView.updateDescription(text: "リポジトリーがないよー")
     }
     func setNoRepositoryUI(gitHubRepositorys: [GitHubRepository]) {
+        if !NetworkConnectivity.shared.isOnline {
+            enabledSearchBar(enabled: false)
+            searchErrorView.updateDescription(text: "ネットワークに接続されていません")
+            return
+        }
         if gitHubRepositorys.isEmpty {
             searchErrorView.isHidden = false
             searchErrorView.updateDescription(text: "リポジトリーがないよー")
@@ -39,6 +46,7 @@ extension GitHubRepositorySearchBaseView {
             searchErrorView.isHidden = true
             searchErrorView.updateDescription(text: "")
         }
+        enabledSearchBar(enabled: true)
     }
     func setLodingCellWithStartingAnimation() {
         if self.tableView.tableFooterView == nil {
@@ -53,5 +61,11 @@ extension GitHubRepositorySearchBaseView {
     }
     func enabledSearchBar(enabled: Bool) {
         searchBar.searchTextField.isEnabled = enabled
+    }
+}
+
+extension GitHubRepositorySearchBaseView: GitHubRepositorySearchErrorViewDelegate {
+    func didTapRetryButton(_ view: GitHubRepositorySearchErrorView) {
+        setNoRepositoryUI(gitHubRepositorys: [])
     }
 }
