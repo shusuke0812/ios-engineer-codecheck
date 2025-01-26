@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         print("--- アプリ起動 ---")
         openTopPage()
+        
+        NetworkConnectivity.shared.setup()
         return true
     }
 
