@@ -13,19 +13,6 @@ import FontAwesome_swift
 struct Common {
 }
 
-enum HTTPMethod: String {
-    case get    = "GET"
-    case post   = "POST"
-    case put    = "PUT"
-    case delete = "DELETE"
-}
-
-enum APILoadingStatus {
-    case initial    // 初回
-    case fetching   // 読み込み中
-    case full       // 終わり
-}
-
 enum RepositoryDetail: Int {
     case star       = 0
     case watch      = 1
