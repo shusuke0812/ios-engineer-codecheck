@@ -11,8 +11,7 @@ import UIKit
 class GitHubRepositorySearchBaseView: UIView {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var noRepositoryView: UIView!
-    @IBOutlet weak var noRepositoryCommentLabel: UILabel!
+    @IBOutlet weak var searchErrorView: GitHubRepositorySearchErrorView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,13 +29,24 @@ extension GitHubRepositorySearchBaseView {
         self.tableView.register(R.nib.gitHubRepositoryCell)
         self.setLodingCellWithStartingAnimation()
         // リポジトリ検索結果の表示
-        self.noRepositoryView.isHidden = false
-        self.noRepositoryCommentLabel.text = "リポジトリがないよー"
-        self.noRepositoryCommentLabel.font = .boldSystemFont(ofSize: 17)
-        self.noRepositoryCommentLabel.textColor = .lightGray
+        self.searchErrorView.isHidden = false
+        self.searchErrorView.delegate = self
+        self.searchErrorView.updateDescription(text: "リポジトリーがないよー")
     }
     func setNoRepositoryUI(gitHubRepositorys: [GitHubRepository]) {
-        gitHubRepositorys.isEmpty ? (self.noRepositoryView.isHidden = false) : (self.noRepositoryView.isHidden = true)
+        if !NetworkConnectivity.shared.isOnline {
+            enabledSearchBar(enabled: false)
+            searchErrorView.updateDescription(text: "ネットワークに接続されていません")
+            return
+        }
+        if gitHubRepositorys.isEmpty {
+            searchErrorView.isHidden = false
+            searchErrorView.updateDescription(text: "リポジトリーがないよー")
+        } else {
+            searchErrorView.isHidden = true
+            searchErrorView.updateDescription(text: "")
+        }
+        enabledSearchBar(enabled: true)
     }
     func setLodingCellWithStartingAnimation() {
         if self.tableView.tableFooterView == nil {
@@ -48,5 +58,14 @@ extension GitHubRepositorySearchBaseView {
     }
     func cancelTableFooterView() {
         self.tableView.tableFooterView = nil
+    }
+    func enabledSearchBar(enabled: Bool) {
+        searchBar.searchTextField.isEnabled = enabled
+    }
+}
+
+extension GitHubRepositorySearchBaseView: GitHubRepositorySearchErrorViewDelegate {
+    func didTapRetryButton(_ view: GitHubRepositorySearchErrorView) {
+        setNoRepositoryUI(gitHubRepositorys: [])
     }
 }

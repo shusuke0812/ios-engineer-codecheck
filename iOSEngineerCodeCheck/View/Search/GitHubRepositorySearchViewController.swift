@@ -44,6 +44,8 @@ class GitHubRepositorySearchViewController: UIViewController {
         setNavigation()
         setDissmissKeyboard()
         setObservers()
+
+        baseView.setNoRepositoryUI(gitHubRepositorys: [])
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
