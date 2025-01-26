@@ -1070,6 +1070,7 @@
 			isa = PBXGroup;
 			children = (
 				9CF78B6D2D46139C00B579E3 /* Infrastructure */,
+				9C0804A7256D507900A8CBEF /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1078,6 +1079,7 @@
 			isa = PBXGroup;
 			children = (
 				9CF78B6E2D4613B200B579E3 /* RestApi */,
+				9CE200B22AD1995700932AE3 /* GraphQL */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -1125,8 +1127,6 @@
 				9C0E527127CBD85300A9F575 /* Action */,
 				9C0E527327CBD89000A9F575 /* Store */,
 				9C0804A5256D500C00A8CBEF /* Entity */,
-				9C0804A7256D507900A8CBEF /* Repository */,
-				9CE200B22AD1995700932AE3 /* GraphQL */,
 				BFD945E7244DC5EB0012785A /* Assets.xcassets */,
 				BFD945EC244DC5EB0012785A /* Info.plist */,
 				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
