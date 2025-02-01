@@ -2,11 +2,9 @@
 //  SceneDelegate.swift
 //  iOSEngineerCodeCheck
 //
-//  Created by 史 翔新 on 2020/04/20.
-//  Copyright © 2020 YUMEMI Inc. All rights reserved.
+//  Created by Shusuke Ota on 2025/2/1.
+//  Copyright © 2025 YUMEMI Inc. All rights reserved.
 //
-
-/* 任意で設定するクラス */
 
 import UIKit
 
@@ -17,7 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        openTopPage(windowScene: windowScene)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -46,5 +45,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+    }
+}
+
+extension SceneDelegate {
+    private func openTopPage(windowScene: UIWindowScene) {
+        // 画面設定
+        window = UIWindow(windowScene: windowScene)
+        guard let mainVC = R.storyboard.gitHubRepositorySearchViewController.instantiateInitialViewController() else { return }
+        guard let detailVC = R.storyboard.gitHubRepositoryDetailViewController.instantiateInitialViewController() else { return }
+        let splitVC = MainSplitViewController(mainVC: mainVC, detailVC: detailVC)
+        window?.rootViewController = splitVC
+        // 画面表示
+        window?.makeKeyAndVisible()
     }
 }
