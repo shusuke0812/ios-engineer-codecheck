@@ -31,20 +31,20 @@ extension GitHubRepositorySearchBaseView {
         // リポジトリ検索結果の表示
         self.searchErrorView.isHidden = false
         self.searchErrorView.delegate = self
-        self.searchErrorView.updateDescription(text: "リポジトリーがないよー")
+        self.searchErrorView.updateErrorState(.ready)
     }
     func setNoRepositoryUI(gitHubRepositorys: [GitHubRepository]) {
         if !NetworkConnectivity.shared.isOnline {
             enabledSearchBar(enabled: false)
-            searchErrorView.updateDescription(text: "ネットワークに接続されていません")
+            searchErrorView.updateErrorState(.noNetwork)
             return
         }
         if gitHubRepositorys.isEmpty {
             searchErrorView.isHidden = false
-            searchErrorView.updateDescription(text: "リポジトリーがないよー")
+            searchErrorView.updateErrorState(.noRepositories)
         } else {
             searchErrorView.isHidden = true
-            searchErrorView.updateDescription(text: "")
+            searchErrorView.updateErrorState(.ready)
         }
         enabledSearchBar(enabled: true)
     }
