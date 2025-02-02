@@ -527,6 +527,7 @@
 		9C0804A7256D507900A8CBEF /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				9C0804A5256D500C00A8CBEF /* Entity */,
 				9CD370F12571C954001759F8 /* GitHubRepositorySearchRepository.swift */,
 				9C67F56325C24A5A0031F233 /* GitHubLicenseRepository.swift */,
 				9C94A95425CE5E07000BB17A /* GitHubReadmeRepository.swift */,
@@ -1138,7 +1139,6 @@
 				9C0E526F27CBD67100A9F575 /* View */,
 				9C0E527127CBD85300A9F575 /* Action */,
 				9C0E527327CBD89000A9F575 /* Store */,
-				9C0804A5256D500C00A8CBEF /* Entity */,
 				BFD945E7244DC5EB0012785A /* Assets.xcassets */,
 				BFD945EC244DC5EB0012785A /* Info.plist */,
 				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
