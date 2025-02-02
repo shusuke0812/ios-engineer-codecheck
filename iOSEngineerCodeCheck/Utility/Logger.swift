@@ -28,7 +28,7 @@ class Logger {
 
     private func basePrint(filePath: String, function: String, line: Int, _ message: String) {
         #if DEBUG
-        print("debug: \(className(from: filePath)) \(function) \(line) \(message)")
+        print("debug: \(timeStamp) \(className(from: filePath)) \(function) \(line) \(message)")
         #endif
     }
 
