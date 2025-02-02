@@ -29,7 +29,7 @@ extension APIClient {
                 completion(.failure(.unknown))
                 return
             }
-            kLogger.debugPrint("status=\(response.statusCode)\n", response)
+            kLogger.debugPrint("status=\(response.statusCode)")
             kLogger.debugPrint("data=\(String(data: data, encoding: .utf8))")
             let decoder = JSONDecoder()
             // TODO: dateのフォーマット型はレスポンスによるのでデコーダー処理を別に定義した方が良さそう（ex. APIRequest型に実装する）
