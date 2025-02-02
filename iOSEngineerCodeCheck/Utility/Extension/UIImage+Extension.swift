@@ -14,12 +14,12 @@ extension UIImageView {
     ///   - imageUrlString: 画像URL
     func getImage(imageUrlString: String) {
         guard let url = URL(string: imageUrlString) else {
-            print("画像URLの変換に失敗しました")
+            kLogger.debugPrint("画像URLの変換に失敗しました")
             return
         }
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
-                print("画像の読み込みに失敗しました" + "DEBUG: error=\(error)")
+                kLogger.debugPrint("画像の読み込みに失敗しました \(error)")
                 return
             }
             guard let data = data else { return }

@@ -135,11 +135,11 @@ extension GitHubRepositorySearchViewController {
                 if let optionalNodes = response?.search.nodes {
                     let nodes = optionalNodes.compactMap { $0 }
                     nodes.forEach { node in
-                        print("DEBUG: repository_name=\(String(describing: node.asRepository?.nameWithOwner))")
+                        kLogger.debugPrint("repository_name=\(String(describing: node.asRepository?.nameWithOwner))")
                     }
                 }
             case .failure(let error):
-                print("DEBUG: \(error.localizedDescription)")
+                kLogger.debugPrint("\(error.localizedDescription)")
             }
         }
     }
