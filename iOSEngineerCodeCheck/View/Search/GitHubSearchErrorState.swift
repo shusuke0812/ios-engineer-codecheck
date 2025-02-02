@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum GitHubSearchError {
+enum GitHubSearchErrorState {
     case ready
     case noRepositories
     case noNetwork

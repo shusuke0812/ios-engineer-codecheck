@@ -26,7 +26,7 @@ class GitHubRepositorySearchErrorView: UIView {
         setupAction()
     }
 
-    func updateErrorState(_ error: GitHubSearchError) {
+    func updateErrorState(_ error: GitHubSearchErrorState) {
         descriptionLabel.text = error.description
         retryButton.isHidden = error.retryButtonIsHidden
     }
