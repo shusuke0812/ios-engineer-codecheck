@@ -12,11 +12,14 @@ protocol GitHubReadmeRepositoryProtocol {
     func getRepositoryReadme(request: GetRepositoryReadmeRequest, completion: @escaping (Result<GitHubReadme, APIClientError>) -> Void)
 }
 class GitHubReadmeRepository: GitHubReadmeRepositoryProtocol {
-}
-// MARK: - API Method
-extension GitHubReadmeRepository {
+    private let apiClient: APIClientProtocol
+    
+    init(apiClient: APIClientProtocol = APIClient()) {
+        self.apiClient = apiClient
+    }
+    
     func getRepositoryReadme(request: GetRepositoryReadmeRequest, completion: @escaping (Result<GitHubReadme, APIClientError>) -> Void) {
-        APIClient.shared.sendRequest(request) { result in
+        apiClient.sendRequest(request) { result in
             switch result {
             case .success(let response):
                 completion(.success(response))

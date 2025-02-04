@@ -13,11 +13,6 @@ protocol APIClientProtocol {
     func sendRequest<T: GitHubAPIRequest>(_ request: T) async throws -> T.Response
 }
 class APIClient: APIClientProtocol {
-    static let shared = APIClient()
-    init() {}
-}
-// MARK: - API Base Method
-extension APIClient {
     func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void) {
         let session = URLSession.shared
         let task = session.dataTask(with: request.buildURLRequest()) { data, response, error in
