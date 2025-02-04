@@ -18,17 +18,17 @@ class RetryAPIClient {
     }
     
     func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void) {
-        sendRequestWithRetry(request, retryCount: maxRetryCount, completion: completion)
+        sendRequestWithRetry(request, retriesLeft: maxRetryCount, completion: completion)
     }
     
-    private func sendRequestWithRetry<T: GitHubAPIRequest>(_ request: T, retryCount: Int, completion: @escaping (Result<T.Response, APIClientError>) -> Void) {
+    private func sendRequestWithRetry<T: GitHubAPIRequest>(_ request: T, retriesLeft: Int, completion: @escaping (Result<T.Response, APIClientError>) -> Void) {
         basedAPIClient.sendRequest(request) { [weak self] result in
             switch result {
             case .success(let data):
                 completion(.success(data))
             case .failure(let error):
-                if retryCount > 0 {
-                    self?.sendRequestWithRetry(request, retryCount: retryCount - 1, completion: completion)
+                if retriesLeft > 0 {
+                    self?.sendRequestWithRetry(request, retriesLeft: retriesLeft - 1, completion: completion)
                 } else {
                     completion(.failure(error))
                 }
