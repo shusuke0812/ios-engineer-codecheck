@@ -9,7 +9,6 @@ import Foundation
 
 protocol APIClientProtocol {
     func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void)
-    @available(iOS 15.0, *)
     func sendRequest<T: GitHubAPIRequest>(_ request: T) async throws -> T.Response
 }
 class APIClient: APIClientProtocol {
@@ -49,7 +48,6 @@ class APIClient: APIClientProtocol {
         task.resume()
     }
 
-    @available(iOS 15.0, *)
     func sendRequest<T: GitHubAPIRequest>(_ request: T) async throws -> T.Response {
         let session = URLSession.shared
         do {
