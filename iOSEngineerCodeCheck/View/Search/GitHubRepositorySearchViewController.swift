@@ -129,7 +129,7 @@ extension GitHubRepositorySearchViewController {
         let graphQLRequest = GraphQLSearchRequest(query: query)
 
         let repository = GitHubRepositorySearchRepository()
-        repository.getGitHubRepositories(request: graphQLRequest) { result in
+        repository.grql_getGitHubRepositories(request: graphQLRequest) { result in
             switch result {
             case .success(let response):
                 if let optionalNodes = response?.search.nodes {
