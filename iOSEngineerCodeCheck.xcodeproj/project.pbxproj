@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9147F7B654CCBB26CAEF5ED0 /* libPods-iOSEngineerCodeCheckUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 069BC90FF56FCC621F6EE6FE /* libPods-iOSEngineerCodeCheckUITests.a */; };
 		9C0F7D0E25C38AF7009EB961 /* MainSplitViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C0F7D0D25C38AF7009EB961 /* MainSplitViewController.storyboard */; };
-		9C167FEA2D5191DA00BD911E /* RetryAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C167FE92D5191DA00BD911E /* RetryAPIClient.swift */; };
 		9C3EEB812C79AA42004B2BA3 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 9C3EEB802C79AA42004B2BA3 /* Apollo */; };
 		9C3EEB842C79EBBE004B2BA3 /* GitHubGraphQL in Frameworks */ = {isa = PBXBuildFile; productRef = 9C3EEB832C79EBBE004B2BA3 /* GitHubGraphQL */; };
 		9C57F9F129228CB000B375A6 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C57F9F029228CB000B375A6 /* APIClient.swift */; };
@@ -105,7 +104,6 @@
 		5B2C933EE51FFD7417374754 /* Pods-iOSEngineerCodeCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSEngineerCodeCheck.release.xcconfig"; path = "Target Support Files/Pods-iOSEngineerCodeCheck/Pods-iOSEngineerCodeCheck.release.xcconfig"; sourceTree = "<group>"; };
 		5F5143B5832E3B2B61CB07E4 /* libPods-iOSEngineerCodeCheckTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOSEngineerCodeCheckTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0F7D0D25C38AF7009EB961 /* MainSplitViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainSplitViewController.storyboard; sourceTree = "<group>"; };
-		9C167FE92D5191DA00BD911E /* RetryAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryAPIClient.swift; sourceTree = "<group>"; };
 		9C57F9F029228CB000B375A6 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		9C632DA525BBE53D00142A3D /* GitHubAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIRequest.swift; sourceTree = "<group>"; };
 		9C632DAD25BBEF3D00142A3D /* SearchRepositoriesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesRequest.swift; sourceTree = "<group>"; };
@@ -1110,7 +1108,6 @@
 				9C95476025D2BF67002EF380 /* APIClientError.swift */,
 				9CF78B6F2D46142200B579E3 /* HTTPMethod.swift */,
 				9CF78B712D46148E00B579E3 /* APILoadingStatus.swift */,
-				9C167FE92D5191DA00BD911E /* RetryAPIClient.swift */,
 				9CEC1F6D2D558C7600D0110F /* NetworkConnection.swift */,
 				9CEBE5202D57122F00177C8A /* APIResponse.swift */,
 			);
@@ -1488,7 +1485,6 @@
 				9C632DA625BBE53D00142A3D /* GitHubAPIRequest.swift in Sources */,
 				9C636E39287B32A00076B279 /* RepositoryReducer.swift in Sources */,
 				9CF78B702D46142200B579E3 /* HTTPMethod.swift in Sources */,
-				9C167FEA2D5191DA00BD911E /* RetryAPIClient.swift in Sources */,
 				9CD370F72571CAE7001759F8 /* GitHubRepository.swift in Sources */,
 				9CD370E12570D738001759F8 /* GitHubRepositorySearchBaseView.swift in Sources */,
 				9CF88D242D4F68B3004E4176 /* GitHubSearchErrorState.swift in Sources */,
