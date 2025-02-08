@@ -59,6 +59,7 @@
 		9CE200BA2AD19FC300932AE3 /* GraphQLSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE200B92AD19FC300932AE3 /* GraphQLSearchRequest.swift */; };
 		9CE200BC2AD1A0C600932AE3 /* github-access-token.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE200BB2AD1A0C600932AE3 /* github-access-token.json */; };
 		9CE200BE2AD1A19F00932AE3 /* JsonFileReadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE200BD2AD1A19F00932AE3 /* JsonFileReadHelper.swift */; };
+		9CEC1F6E2D558C7600D0110F /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC1F6D2D558C7600D0110F /* NetworkConnection.swift */; };
 		9CEF9C0F2D4E01C600FB65AC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF9C0E2D4E01C600FB65AC /* Logger.swift */; };
 		9CF78B702D46142200B579E3 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF78B6F2D46142200B579E3 /* HTTPMethod.swift */; };
 		9CF78B722D46148E00B579E3 /* APILoadingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF78B712D46148E00B579E3 /* APILoadingStatus.swift */; };
@@ -447,6 +448,7 @@
 		9CE2FE562AD1978F00932AE3 /* Lockable.graphql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lockable.graphql.swift; sourceTree = "<group>"; };
 		9CE2FE572AD1978F00932AE3 /* ProfileOwner.graphql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileOwner.graphql.swift; sourceTree = "<group>"; };
 		9CE2FE582AD1978F00932AE3 /* GitHubGraphQL.graphql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubGraphQL.graphql.swift; sourceTree = "<group>"; };
+		9CEC1F6D2D558C7600D0110F /* NetworkConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
 		9CEF9C0E2D4E01C600FB65AC /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		9CF78B6F2D46142200B579E3 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		9CF78B712D46148E00B579E3 /* APILoadingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoadingStatus.swift; sourceTree = "<group>"; };
@@ -1107,6 +1109,7 @@
 				9CF78B6F2D46142200B579E3 /* HTTPMethod.swift */,
 				9CF78B712D46148E00B579E3 /* APILoadingStatus.swift */,
 				9C167FE92D5191DA00BD911E /* RetryAPIClient.swift */,
+				9CEC1F6D2D558C7600D0110F /* NetworkConnection.swift */,
 			);
 			path = RestApi;
 			sourceTree = "<group>";
@@ -1488,6 +1491,7 @@
 				9CF88D242D4F68B3004E4176 /* GitHubSearchErrorState.swift in Sources */,
 				9CD370F22571C954001759F8 /* GitHubRepositorySearchRepository.swift in Sources */,
 				9C632DAE25BBEF3D00142A3D /* SearchRepositoriesRequest.swift in Sources */,
+				9CEC1F6E2D558C7600D0110F /* NetworkConnection.swift in Sources */,
 				9CE200B62AD199E500932AE3 /* GraphQLRequestProtocol.swift in Sources */,
 				9CF78B772D46319200B579E3 /* GitHubRepositorySearchErrorView.swift in Sources */,
 				9C9684B8257468B500A5AAEA /* UIAlertController+Extension.swift in Sources */,
