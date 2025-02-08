@@ -32,7 +32,7 @@ class APIClient: APIClientProtocol {
             }
             .completion { data, _ in
                 guard let data = data else {
-                    // TODO: noBodyを成功通知として返す
+                    completion(.success(() as! T.Response))
                     return
                 }
                 do {
