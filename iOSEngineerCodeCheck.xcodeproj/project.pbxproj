@@ -59,6 +59,7 @@
 		9CE200BA2AD19FC300932AE3 /* GraphQLSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE200B92AD19FC300932AE3 /* GraphQLSearchRequest.swift */; };
 		9CE200BC2AD1A0C600932AE3 /* github-access-token.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE200BB2AD1A0C600932AE3 /* github-access-token.json */; };
 		9CE200BE2AD1A19F00932AE3 /* JsonFileReadHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE200BD2AD1A19F00932AE3 /* JsonFileReadHelper.swift */; };
+		9CEBE5212D57122F00177C8A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEBE5202D57122F00177C8A /* APIResponse.swift */; };
 		9CEC1F6E2D558C7600D0110F /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEC1F6D2D558C7600D0110F /* NetworkConnection.swift */; };
 		9CEF9C0F2D4E01C600FB65AC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEF9C0E2D4E01C600FB65AC /* Logger.swift */; };
 		9CF78B702D46142200B579E3 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF78B6F2D46142200B579E3 /* HTTPMethod.swift */; };
@@ -448,6 +449,7 @@
 		9CE2FE562AD1978F00932AE3 /* Lockable.graphql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lockable.graphql.swift; sourceTree = "<group>"; };
 		9CE2FE572AD1978F00932AE3 /* ProfileOwner.graphql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileOwner.graphql.swift; sourceTree = "<group>"; };
 		9CE2FE582AD1978F00932AE3 /* GitHubGraphQL.graphql.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubGraphQL.graphql.swift; sourceTree = "<group>"; };
+		9CEBE5202D57122F00177C8A /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		9CEC1F6D2D558C7600D0110F /* NetworkConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
 		9CEF9C0E2D4E01C600FB65AC /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		9CF78B6F2D46142200B579E3 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -1110,6 +1112,7 @@
 				9CF78B712D46148E00B579E3 /* APILoadingStatus.swift */,
 				9C167FE92D5191DA00BD911E /* RetryAPIClient.swift */,
 				9CEC1F6D2D558C7600D0110F /* NetworkConnection.swift */,
+				9CEBE5202D57122F00177C8A /* APIResponse.swift */,
 			);
 			path = RestApi;
 			sourceTree = "<group>";
@@ -1516,6 +1519,7 @@
 				9C8E168625BEE5DB005CC118 /* UIColor+Extension.swift in Sources */,
 				9C950C4C25C37C2D001BC95B /* MainSplitViewController.swift in Sources */,
 				9C57F9F129228CB000B375A6 /* APIClient.swift in Sources */,
+				9CEBE5212D57122F00177C8A /* APIResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
