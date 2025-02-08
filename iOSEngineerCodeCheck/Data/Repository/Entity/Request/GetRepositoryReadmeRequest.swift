@@ -10,12 +10,16 @@
 
 import Foundation
 
-struct GetRepositoryReadmeRequest: GitHubAPIRequest {
+struct GetRepositoryReadmeRequest: APIRequestProtocol {
     let owner: String
     let repository: String
 
     typealias Response = GitHubReadme
     typealias ErrorResponse = GitHubAPIError
+
+    var baseURL: String {
+        "https://api.github.com"
+    }
 
     var method: HTTPMethod {
         .get

@@ -13,13 +13,14 @@ protocol GitHubLicenseRepositoryProtocol {
 }
 
 class GitHubLicenseRepository: GitHubLicenseRepositoryProtocol {
-}
-
-// MARK: - API Method
-
-extension GitHubLicenseRepository {
+    private let apiClient: APIClientProtocol
+    
+    init(apiClient: APIClientProtocol = APIClient()) {
+        self.apiClient = apiClient
+    }
+    
     func getGitHubLicense(request: LicenseRequest, completion: @escaping (Result<GitHubLicense, APIClientError>) -> Void) {
-        APIClient.shared.sendRequest(request) { result in
+        apiClient.sendRequest(request) { result in
             switch result {
             case .success(let response):
                 completion(.success(response))

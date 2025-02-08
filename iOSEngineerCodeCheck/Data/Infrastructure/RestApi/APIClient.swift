@@ -8,54 +8,44 @@
 import Foundation
 
 protocol APIClientProtocol {
-    func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void)
-    @available(iOS 15.0, *)
-    func sendRequest<T: GitHubAPIRequest>(_ request: T) async throws -> T.Response
+    func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void)
+    func sendRequest<T: APIRequestProtocol>(_ request: T) async throws -> T.Response
 }
 class APIClient: APIClientProtocol {
-    static let shared = APIClient()
-    private init() {}
-}
-// MARK: - API Base Method
-extension APIClient {
-    func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void) {
-        let session = URLSession.shared
-        let task = session.dataTask(with: request.buildURLRequest()) { data, response, error in
-            if let error = error {
-                completion(.failure(.connectionError(error)))
-                return
-            }
-            guard let data = data, let response = response as? HTTPURLResponse else {
-                completion(.failure(.unknown))
-                return
-            }
-            kLogger.debugPrint("status=\(response.statusCode)")
-            kLogger.debugPrint("data=\(String(data: data, encoding: .utf8))")
-            let decoder = JSONDecoder()
-            // TODO: dateのフォーマット型はレスポンスによるのでデコーダー処理を別に定義した方が良さそう（ex. APIRequest型に実装する）
-            decoder.dateDecodingStrategy = .iso8601
-            if (200..<300).contains(response.statusCode) {
-                do {
-                    let apiResponse = try decoder.decode(T.Response.self, from: data)
-                    completion(.success(apiResponse))
-                } catch {
-                    completion(.failure(.responseParseError(error)))
-                }
-            } else {
-                do {
-                    // TODO: 他のAPIError型でも使えるように汎用化する
-                    let apiError = try decoder.decode(GitHubAPIError.self, from: data)
-                    completion(.failure(.apiError(apiError)))
-                } catch {
-                    completion(.failure(.responseParseError(error)))
-                }
-            }
-        }
-        task.resume()
+    private let decoder: JSONDecoder
+
+    init() {
+        decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
     }
 
-    @available(iOS 15.0, *)
-    func sendRequest<T: GitHubAPIRequest>(_ request: T) async throws -> T.Response {
+    func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void) {
+        let networkConnection = NetworkConnection(request: request.buildURLRequest())
+        networkConnection
+            .retry(3)
+            .error { error, _ in
+                guard let error = error as? APIClientError else {
+                    completion(.failure(.unknown))
+                    return
+                }
+                completion(.failure(error))
+            }
+            .completion { data, _ in
+                guard let data = data else {
+                    completion(.success(() as! T.Response)) // swiftlint:disable:this force_cast
+                    return
+                }
+                do {
+                    let res = try self.decoder.decode(T.Response.self, from: data)
+                    completion(.success(res))
+                } catch {
+                    completion(.failure(.responseParseError(error)))
+                }
+            }
+            .resume()
+    }
+
+    func sendRequest<T: APIRequestProtocol>(_ request: T) async throws -> T.Response {
         let session = URLSession.shared
         do {
             let (data, response) = try await session.data(for: request.buildURLRequest(), delegate: nil)

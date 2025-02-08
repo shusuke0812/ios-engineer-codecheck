@@ -1,14 +1,14 @@
 //
-//  GitHubAPIRequest.swift
+//  APIRequest.swift
 //  iOSEngineerCodeCheck
 //
-//  Created by Shusuke Ota on 2021/1/23.
-//  Copyright © 2021 YUMEMI Inc. All rights reserved.
+//  Created by Shusuke Ota on 2025/2/8.
+//  Copyright © 2025 YUMEMI Inc. All rights reserved.
 //
 
 import Foundation
 
-protocol GitHubAPIRequest {
+protocol APIRequestProtocol {
     associatedtype Response: Decodable
     associatedtype ErrorResponse: Decodable, Error
 
@@ -19,13 +19,9 @@ protocol GitHubAPIRequest {
     var header: [String: String]? { get }
     var body: Data? { get }
 }
-// MARK: - Custom Setting
-extension GitHubAPIRequest {
-    var baseURL: String {
-        "https://api.github.com"
-    }
+
+extension APIRequestProtocol {
     func buildURLRequest() -> URLRequest {
-        // baseURL, pathは各apiクラスで正しく定義されているという前提で強制アンラップさせた
         let url = URL(string: baseURL.appending(path))! // swiftlint:disable:this force_unwrapping
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         switch method {

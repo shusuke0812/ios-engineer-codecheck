@@ -10,13 +10,17 @@
 
 import Foundation
 
-struct SearchRepositoriesRequest: GitHubAPIRequest {
+struct SearchRepositoriesRequest: APIRequestProtocol {
     let searchWord: String
     let searchCount: Int
     let page: Int
 
     typealias Response = Items<GitHubRepository>
     typealias ErrorResponse = GitHubAPIError
+
+    var baseURL: String {
+        "https://api.github.com"
+    }
 
     var method: HTTPMethod {
         .get

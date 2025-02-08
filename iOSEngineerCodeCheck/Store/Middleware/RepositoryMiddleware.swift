@@ -17,7 +17,7 @@ func repositoryMiddleware() -> Middleware<AppState> {
                 case .success(let repository):
                     dispatch(SetRepositories(repositories: repository.items))
                 case .failure(let error):
-                    kLogger.debugPrint(error.description())
+                    kLogger.debugPrint(error.description)
                 }
             }
         case let fetchAction as FetchRepositoryReadme:
@@ -26,7 +26,7 @@ func repositoryMiddleware() -> Middleware<AppState> {
                 case .success(let readme):
                     dispatch(SetRepositoryReadme(readme: readme))
                 case .failure(let error):
-                    kLogger.debugPrint(error.description())
+                    kLogger.debugPrint(error.description)
                 }
             }
         case let fetchAction as FetchRepositoryLicense:
@@ -35,7 +35,7 @@ func repositoryMiddleware() -> Middleware<AppState> {
                 case .success(let license):
                     dispatch(SetRepositoryLicense(license: license))
                 case .failure(let error):
-                    kLogger.debugPrint(error.description())
+                    kLogger.debugPrint(error.description)
                 }
             }
         default:
