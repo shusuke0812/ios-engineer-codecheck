@@ -59,19 +59,7 @@ final class NetworkConnection {
         do {
             let responseData = try APIResponse(data: data, response: response as? HTTPURLResponse, error: error).validate() as? Data
             completionHandler?(responseData, response)
-        } catch APIClientError.connectionError {
-            if retriesLeft > 0 {
-                recursiveResume(retriesLeft: retriesLeft - 1)
-                return
-            }
-            errorHandler?(error, response)
-        } catch APIClientError.unknown {
-            if retriesLeft > 0 {
-                recursiveResume(retriesLeft: retriesLeft - 1)
-                return
-            }
-            errorHandler?(nil, response)
-        } catch APIClientError.apiError {
+        } catch APIClientError.connectionError, APIClientError.unknown, APIClientError.apiError  {
             if retriesLeft > 0 {
                 recursiveResume(retriesLeft: retriesLeft - 1)
                 return
