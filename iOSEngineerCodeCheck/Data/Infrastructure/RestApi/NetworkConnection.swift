@@ -14,13 +14,14 @@ final class NetworkConnection {
 
     private let session: URLSession
     private let request: URLRequest
-    private var dataTask: URLSessionDataTask?
     private var completionHandler: Completion?
     private var errorHandler: ErrorCompletion?
 
-    init(session: URLSession = URLSession.shared, request: URLRequest) {
-        self.session = session
+    private var retriesLeft: Int = 0
+
+    init(request: URLRequest, session: URLSession = URLSession.shared) {
         self.request = request
+        self.session = session
     }
 
     @discardableResult
@@ -36,19 +37,50 @@ final class NetworkConnection {
     }
 
     @discardableResult
-    func resume() -> Self {
-        dataTask = session.dataTask(with: request, completionHandler: { [weak self] (data, response, error) in
-            self?.taskHandler(data: data, response: response, error: error)
-        })
-        dataTask?.resume()
+    func retry(_ count: Int) -> Self {
+        retriesLeft = count
         return self
     }
 
-    private func taskHandler(data: Data?, response: URLResponse?, error: Error?) {
-        if let error = error {
-            errorHandler?(error, response)
-            return
+    @discardableResult
+    func resume() -> Self {
+        recursiveResume(retriesLeft: retriesLeft)
+        return self
+    }
+
+    private func recursiveResume(retriesLeft: Int) {
+        let dataTask = session.dataTask(with: request) { data, response, error in
+            self.taskHandler(data: data, response: response, error: error)
         }
-        completionHandler?(data, response)
+        dataTask.resume()
+    }
+
+    private func taskHandler(data: Data?, response: URLResponse?, error: Error?) {
+        do {
+            let responseData = try APIResponse(data: data, response: response as? HTTPURLResponse, error: error).validate() as? Data
+            completionHandler?(responseData, response)
+        } catch APIClientError.connectionError {
+            if retriesLeft > 0 {
+                recursiveResume(retriesLeft: retriesLeft - 1)
+                return
+            }
+            errorHandler?(error, response)
+        } catch APIClientError.unknown {
+            if retriesLeft > 0 {
+                recursiveResume(retriesLeft: retriesLeft - 1)
+                return
+            }
+            errorHandler?(nil, response)
+        } catch APIClientError.apiError {
+            if retriesLeft > 0 {
+                recursiveResume(retriesLeft: retriesLeft - 1)
+                return
+            }
+            errorHandler?(error, response)
+        } catch APIClientError.invalidRequest {
+            errorHandler?(error, response)
+        } catch {
+            errorHandler?(error, response)
+        }
     }
 }
