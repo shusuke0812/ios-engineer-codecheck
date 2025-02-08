@@ -8,7 +8,7 @@
 import Foundation
 
 protocol APIClientProtocol {
-    func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response?, APIClientError>) -> Void)
+    func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void)
     func sendRequest<T: GitHubAPIRequest>(_ request: T) async throws -> T.Response
 }
 class APIClient: APIClientProtocol {
@@ -19,7 +19,7 @@ class APIClient: APIClientProtocol {
         decoder.dateDecodingStrategy = .iso8601
     }
 
-    func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response?, APIClientError>) -> Void) {
+    func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void) {
         let networkConnection = NetworkConnection(request: request.buildURLRequest())
         networkConnection
             .retry(3)
@@ -32,7 +32,7 @@ class APIClient: APIClientProtocol {
             }
             .completion { data, _ in
                 guard let data = data else {
-                    completion(.success(nil))
+                    // TODO: noBodyを成功通知として返す
                     return
                 }
                 do {
