@@ -8,11 +8,15 @@
 
 import Foundation
 
-struct LicenseRequest: GitHubAPIRequest {
+struct LicenseRequest: APIRequestProtocol {
     let key: String
 
     typealias Response = GitHubLicense
     typealias ErrorResponse = GitHubAPIError
+
+    var baseURL: String {
+        "https://api.github.com"
+    }
 
     var method: HTTPMethod {
         .get

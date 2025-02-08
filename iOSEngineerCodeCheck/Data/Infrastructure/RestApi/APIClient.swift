@@ -8,8 +8,8 @@
 import Foundation
 
 protocol APIClientProtocol {
-    func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void)
-    func sendRequest<T: GitHubAPIRequest>(_ request: T) async throws -> T.Response
+    func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void)
+    func sendRequest<T: APIRequestProtocol>(_ request: T) async throws -> T.Response
 }
 class APIClient: APIClientProtocol {
     private let decoder: JSONDecoder
@@ -19,7 +19,7 @@ class APIClient: APIClientProtocol {
         decoder.dateDecodingStrategy = .iso8601
     }
 
-    func sendRequest<T: GitHubAPIRequest>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void) {
+    func sendRequest<T: APIRequestProtocol>(_ request: T, completion: @escaping (Result<T.Response, APIClientError>) -> Void) {
         let networkConnection = NetworkConnection(request: request.buildURLRequest())
         networkConnection
             .retry(3)
@@ -45,7 +45,7 @@ class APIClient: APIClientProtocol {
             .resume()
     }
 
-    func sendRequest<T: GitHubAPIRequest>(_ request: T) async throws -> T.Response {
+    func sendRequest<T: APIRequestProtocol>(_ request: T) async throws -> T.Response {
         let session = URLSession.shared
         do {
             let (data, response) = try await session.data(for: request.buildURLRequest(), delegate: nil)
