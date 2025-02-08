@@ -32,7 +32,7 @@ class APIClient: APIClientProtocol {
             }
             .completion { data, _ in
                 guard let data = data else {
-                    completion(.success(() as! T.Response))
+                    completion(.success(() as! T.Response)) // swiftlint:disable:this force_cast
                     return
                 }
                 do {
