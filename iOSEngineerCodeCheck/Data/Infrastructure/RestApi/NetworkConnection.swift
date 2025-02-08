@@ -50,16 +50,16 @@ final class NetworkConnection {
 
     private func recursiveResume(retriesLeft: Int) {
         let dataTask = session.dataTask(with: request) { data, response, error in
-            self.taskHandler(data: data, response: response, error: error)
+            self.taskHandler(retriesLeft: retriesLeft, data: data, response: response, error: error)
         }
         dataTask.resume()
     }
 
-    private func taskHandler(data: Data?, response: URLResponse?, error: Error?) {
+    private func taskHandler(retriesLeft: Int, data: Data?, response: URLResponse?, error: Error?) {
         do {
             let responseData = try APIResponse(data: data, response: response as? HTTPURLResponse, error: error).validate() as? Data
             completionHandler?(responseData, response)
-        } catch APIClientError.connectionError, APIClientError.unknown, APIClientError.apiError  {
+        } catch APIClientError.connectionError, APIClientError.unknown, APIClientError.apiError {
             if retriesLeft > 0 {
                 recursiveResume(retriesLeft: retriesLeft - 1)
                 return
