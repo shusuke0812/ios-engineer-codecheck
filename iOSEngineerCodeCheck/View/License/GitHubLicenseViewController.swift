@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class GitHubLicenseViewController: UIViewController {
+class GitHubLicenseViewController: UIViewController, AppStoreAccessible {
     private var baseView: GitHubLicenseBaseView { self.view as! GitHubLicenseBaseView } // swiftlint:disable:this force_cast
     private let disposeBag = RxSwift.DisposeBag()
 
@@ -22,11 +22,6 @@ class GitHubLicenseViewController: UIViewController {
     }
 
     // MARK: Redux
-    private var store: AppStore<AppState> {
-        let delegate = UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
-        return delegate.store
-    }
-
     private struct Props {
         let license: GitHubLicense
         let fetchRepositoryLicense: () -> Void
